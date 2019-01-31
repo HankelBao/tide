@@ -64,4 +64,10 @@ impl TextBuffer {
     pub fn insert_at(&mut self, line_offset: u32, line_num: u32, ch: char) {
         self.lines[line_offset as usize].insert(line_offset as usize + 1, ch);
     }
+
+    pub fn backspace_at(&mut self, line_offset: u32, line_num: u32) {
+        if line_offset > 0 {
+
+        }
+    }
 }
