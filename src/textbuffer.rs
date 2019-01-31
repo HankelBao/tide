@@ -11,7 +11,7 @@ impl CursorPos {
         };
     }
 
-    fn to(&mut self, x: u32, y: u32) {
+    fn set(&mut self, x: u32, y: u32) {
         self.line_num = y;
         self.line_offset = x;
     }
@@ -82,8 +82,10 @@ impl TextBuffer {
     pub fn insert_at(&mut self, line_offset: u32, line_num: u32, ch: char) {
         let buffer_index = self.line_info[line_num as usize].buffer_index;
         let buffer_offset = self.line_info[line_num as usize].buffer_offset;
+
         if buffer_offset + line_offset as usize == self.buffers[buffer_index].len() {
             self.buffers[buffer_index].push(ch);
+            
         } else {
             let rest_str = self.buffers[buffer_index].split_off(buffer_offset + line_offset as usize);
             self.buffers.insert(buffer_index+1, Box::new(String::from(rest_str)));
