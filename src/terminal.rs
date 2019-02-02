@@ -1,14 +1,20 @@
 extern crate termion;
 
-use termion::event::Event;
-use termion::input::{TermRead, MouseTerminal};
+use termion::input::MouseTerminal;
 use termion::raw::IntoRawMode;
 use termion::raw::RawTerminal;
 use termion::terminal_size;
 use std::io::{Write, stdout, stdin, Stdin, Stdout};
 
+pub use termion::event::{Key, Event, MouseEvent};
+pub use termion::input::TermRead;
+
 pub struct Terminal {
-    stdin: Stdin,
+    /*
+     * The main event loop should have the
+     * ownership of stdin, so stdin is not 
+     * restored here.
+     */
     stdout: MouseTerminal<RawTerminal<Stdout>>,
     width: u16,
     height: u16,
@@ -21,7 +27,6 @@ pub fn new() -> Terminal {
 impl Terminal {
     pub fn new() -> Terminal {
         let mut terminal = Terminal {
-            stdin: stdin(),
             stdout: MouseTerminal::from(stdout().into_raw_mode().unwrap()),
             width: 0,
             height: 0,
@@ -43,20 +48,28 @@ impl Terminal {
         self.height = height;
     }
 
+    pub fn get_scale(&self) -> (u16, u16) {
+        return (self.width, self.height);
+    }
+
     pub fn set_content(&mut self, start_x: u16, start_y: u16, width: u16, height: u16, content: Vec<String>) {
+        write!(self.stdout, "{}", termion::cursor::Hide).unwrap();
+        self.set_cursor_pos(1, 1);
         for y in 0..height {
             for x in 0..width {
-                match content.get(y as usize) {
+                let char_to_draw = match content.get(y as usize) {
                     Some(line) => {
                         match line.chars().nth(x as usize) {
-                            Some(c) => self.set_content_at(start_x+x, start_y+y, c),
-                            None => self.set_content_at(start_x+x, start_y+y, ' '),
+                            Some(c) => c,
+                            None => ' ',
                         }
                     },
-                    None => self.set_content_at(start_x+x, start_y+y, ' '),
-                }
+                    None => ' ',
+                };
+                write!(self.stdout, "{}", char_to_draw).unwrap();
             }
         }
+        write!(self.stdout, "{}", termion::cursor::Show).unwrap();
     }
 
     pub fn set_cursor_pos(&mut self, x: u16, y: u16) {
@@ -73,6 +86,10 @@ impl Terminal {
     pub fn set_content_at(&mut self, x: u16, y: u16, content: char) {
         self.set_cursor_pos(x, y);
         write!(self.stdout, "{}", content).unwrap();
+    }
+
+    pub fn get_events(&mut self) -> termion::input::Events<Stdin> {
+        return stdin().events();
     }
 
     pub fn finish(&mut self) {
