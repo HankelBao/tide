@@ -31,7 +31,15 @@ impl<'a> TextBuffer<'a> {
             syntax: default_syntax_ref,
             syntax_name: default_syntax_ref.name.clone(),
         };
-        return textbuffer;
+        textbuffer
     }
 
+    pub fn as_string(&self) -> String {
+        let mut content_string: String = String::new();
+        for line in &self.lines {
+            content_string.push_str(line);
+            content_string.push('\n');
+        }
+        content_string
+    }
 }
