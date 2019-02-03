@@ -5,6 +5,7 @@ mod terminal;
 mod core;
 
 use std::env;
+use std::time::Instant;
 
 use crate::core::{TextBuffer, TextEditing, HighlightEngine, SyntaxHighlight, TextDisplay, FileRW};
 use crate::terminal::{Event, Key};
@@ -35,6 +36,7 @@ fn main() {
     terminal.flush();
 
     for e in terminal.get_events() {
+        let start = Instant::now();
         let evt = e.unwrap();
         match evt {
             Event::Key(key) => {
@@ -60,13 +62,19 @@ fn main() {
             },
             _ => {},
         };
+        let operation_time = start.elapsed();
         let (t_width, t_height) = terminal.get_scale();
         textbuffer.adjust_viewpoint(t_width as u32, t_height as u32);
         textbuffer.highlight(&highlightengine);
+        let highlight_time = start.elapsed();
         terminal.set_content(1, 1, t_width, t_height, textbuffer.get_display_lines(t_width as u32, t_height as u32), textbuffer.left_col);
+        let content_time = start.elapsed();
 
         let (cursor_x, cursor_y) = textbuffer.get_local_cursor();
         terminal.set_cursor_pos(cursor_x, cursor_y);
+        terminal.flush();
+        
+        print!(" {:?}", content_time - highlight_time);
         terminal.flush();
     }
 
