@@ -8,4 +8,13 @@ class A(Object):
         self.a = a
         return 1
 
+    def func2(self, b):
+        self.b = b
+        return 2
+
+"""
+Tested some comments?
+"""
+
+if_works = "Succeed"
 

@@ -16,7 +16,11 @@ fn main() {
     let args: Vec<String> = env::args().collect();
 
     let mut textbuffer = TextBuffer::new(highlightengine.get_syntax_plain_text());
-    textbuffer.set_file_path(args.get(1).unwrap().clone());
+    let file_path = match args.get(1) {
+        Some(path) => path.clone(),
+        None => String::from(""),
+    };
+    textbuffer.set_file_path(file_path);
     textbuffer.load_file();
 
     textbuffer.update_syntax(&highlightengine);

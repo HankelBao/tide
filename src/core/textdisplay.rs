@@ -29,7 +29,7 @@ impl<'a> TextDisplay for TextBuffer<'a> {
             let index = (self.top_line+i) as usize;
             let line:DisplayLine;
             if index < self.lines.len() {
-                line = self.rendered_cache[i as usize].clone();
+                line = self.rendered_cache[index as usize].clone();
             } else {
                 break;
             }
