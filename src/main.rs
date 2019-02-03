@@ -4,6 +4,8 @@ extern crate syntect;
 mod terminal;
 mod core;
 
+use std::env;
+
 use crate::core::{TextBuffer, TextEditing, HighlightEngine, SyntaxHighlight, TextDisplay, FileRW};
 use crate::terminal::{Event, Key};
 
@@ -11,8 +13,10 @@ fn main() {
     let mut terminal = terminal::Terminal::new();
     let highlightengine = HighlightEngine::new();
 
+    let args: Vec<String> = env::args().collect();
+
     let mut textbuffer = TextBuffer::new(highlightengine.get_syntax_plain_text());
-    textbuffer.set_file_path(String::from("test.rs"));
+    textbuffer.set_file_path(args.get(1).unwrap().clone());
     textbuffer.load_file();
 
     textbuffer.update_syntax(&highlightengine);

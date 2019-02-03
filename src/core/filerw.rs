@@ -18,7 +18,7 @@ impl<'a> FileRW for TextBuffer<'a> {
     fn load_file(&mut self) {
         let f = match File::open(self.file_path.clone()) {
             Ok(file) => file,
-            Err(e) => panic!(e),
+            Err(_) => return,
         };
         let buffered_f = BufReader::new(f);
 
