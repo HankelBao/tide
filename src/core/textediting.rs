@@ -15,7 +15,7 @@ pub trait TextEditing {
     fn del_to_end(&mut self);
 }
 
-impl TextEditing for TextBuffer {
+impl<'a> TextEditing for TextBuffer<'a> {
     fn insert(&mut self, ch: char) {
         match ch {
             '\n' => {

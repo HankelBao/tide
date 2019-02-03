@@ -5,10 +5,9 @@ pub trait TextDisplay {
     fn adjust_viewpoint(&mut self, width: u32, height: u32);
     fn get_display_lines(&self, width: u32, height: u32) -> Vec<DisplayLine>;
     fn get_local_cursor(&self) -> (u16, u16);
-
 }
 
-impl TextDisplay for TextBuffer {
+impl<'a> TextDisplay for TextBuffer<'a> {
     fn adjust_viewpoint(&mut self, width: u32, height: u32) {
         if self.top_line > self.line_num {
             self.top_line = self.line_num;
