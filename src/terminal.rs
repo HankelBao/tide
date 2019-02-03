@@ -91,6 +91,12 @@ impl Terminal {
     }
 
     pub fn set_content(&mut self, start_x: u16, start_y: u16, width: u16, height: u16, content: Vec<DisplayLine>, offset: u32) {
+        /*
+         * Warning: Performance is critical here!
+         * 
+         * Try to reduce loop time and 
+         * the time write! macro is called.
+         */
         write!(self.screen, "{}", termion::cursor::Hide).unwrap();
         for y in 0..height {
             self.set_cursor_pos(start_x, start_y+y);
@@ -106,17 +112,17 @@ impl Terminal {
                                     }
                                     dividing_point += style_descriptor.size;
                                 }
-                                write!(self.screen, "{}", c);
+                                write!(self.screen, "{}", c).unwrap();
                             },
                             None => {
-                                write!(self.screen, "{}", termion::clear::UntilNewline);
+                                write!(self.screen, "{}", " ".repeat((offset+width as u32-x) as usize));
                                 break;
                             },
                         }
                     }
                 },
                 None => {
-                    write!(self.screen, "{}", termion::clear::CurrentLine);
+                    write!(self.screen, "{}", " ".repeat(width as usize));
                 },
             }
         }
