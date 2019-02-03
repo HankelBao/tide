@@ -114,7 +114,7 @@ impl Terminal {
                             }
                             write!(self.screen, "{}", c).unwrap();
                         } else {
-                            write!(self.screen, "{}", " ".repeat((offset+width as u32-x) as usize));
+                            write!(self.screen, "{}", " ".repeat((offset+width as u32-x) as usize)).unwrap();
                             break;
                         }
                     }
