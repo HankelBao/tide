@@ -93,6 +93,7 @@ impl Terminal {
     pub fn set_content(&mut self, start_x: u16, start_y: u16, width: u16, height: u16, content: Vec<DisplayLine>, offset: u32) {
         /*
          * Warning: Performance is critical here!
+         * Time matters more than memory.
          * 
          * Try to reduce loop time and 
          * the time write! macro is called.
@@ -102,27 +103,24 @@ impl Terminal {
             self.set_cursor_pos(start_x, start_y+y);
             match content.get(y as usize) {
                 Some(display_line) => {
+                    let mut dividing_point: usize = 0;
+                    let mut style_iter = display_line.styles.iter();
                     for x in offset..offset+width as u32{
-                        match display_line.content.chars().nth(x as usize) {
-                            Some(c) => {
-                                let mut dividing_point: usize = 0;
-                                for style_descriptor in &display_line.styles {
-                                    if x as usize == dividing_point {
-                                        self.switch_style(style_descriptor.style);
-                                    }
-                                    dividing_point += style_descriptor.size;
-                                }
-                                write!(self.screen, "{}", c).unwrap();
-                            },
-                            None => {
-                                write!(self.screen, "{}", " ".repeat((offset+width as u32-x) as usize));
-                                break;
-                            },
+                        if let Some(c) = display_line.content.chars().nth(x as usize) {
+                            if x as usize == dividing_point {
+                                let active_style = style_iter.next().unwrap();
+                                self.switch_style(active_style.style);
+                                dividing_point += active_style.size;
+                            }
+                            write!(self.screen, "{}", c).unwrap();
+                        } else {
+                            write!(self.screen, "{}", " ".repeat((offset+width as u32-x) as usize));
+                            break;
                         }
                     }
                 },
                 None => {
-                    write!(self.screen, "{}", " ".repeat(width as usize));
+                    write!(self.screen, "{}", " ".repeat(width as usize)).unwrap();
                 },
             }
         }
