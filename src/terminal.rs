@@ -119,27 +119,6 @@ impl Terminal {
                     write!(self.screen, "{}", termion::clear::CurrentLine);
                 },
             }
-            /*for x in offset..offset+width as u32{
-                let char_to_draw = match content.get(y as usize) {
-                    Some(display_line) => {
-                        match display_line.content.chars().nth(x as usize) {
-                            Some(c) => {
-                                let mut dividing_point: usize = 0;
-                                for style_descriptor in &display_line.styles {
-                                    if x as usize == dividing_point {
-                                        self.switch_style(style_descriptor.style);
-                                    }
-                                    dividing_point += style_descriptor.size;
-                                }
-                                c
-                            },
-                            None => ' ',
-                        }
-                    },
-                    None => ' ',
-                };
-                write!(self.screen, "{}", char_to_draw).unwrap();
-            }*/
         }
         write!(self.screen, "{}", termion::cursor::Show).unwrap();
     }
