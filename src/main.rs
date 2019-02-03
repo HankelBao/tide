@@ -1,7 +1,6 @@
 extern crate termion;
 extern crate syntect;
 
-mod highlight;
 mod terminal;
 mod core;
 
