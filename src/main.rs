@@ -64,9 +64,7 @@ fn main() {
         let (t_width, t_height) = terminal.get_scale();
         textbuffer.adjust_viewpoint(t_width as u32, t_height as u32);
 
-        let start = Instant::now();
         textbuffer.highlight(&highlightengine);
-        let highlight_time = start.elapsed();
 
         let display_lines = textbuffer.get_display_lines(t_width as u32, t_height as u32);
         terminal.set_content(1, 1, t_width, t_height, display_lines, textbuffer.left_col as usize);
@@ -75,7 +73,6 @@ fn main() {
         terminal.set_cursor_pos(cursor_x, cursor_y);
         terminal.flush();
         
-        print!(" {:?}", highlight_time);
         terminal.flush();
     }
 

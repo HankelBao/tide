@@ -1,4 +1,7 @@
-// Comments?
-fn main() {
-    println!("Hello, world!");
+struct Wow {
+    a: u32,
 }
+/*fn main() {
+    println!("Hello");
+}*/
+
