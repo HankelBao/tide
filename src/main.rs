@@ -29,7 +29,7 @@ fn main() {
     let (t_width, t_height) = terminal.get_scale();
     textbuffer.adjust_viewpoint(t_width as u32, t_height as u32);
     textbuffer.highlight(&highlightengine);
-    terminal.set_content(1, 1, t_width, t_height, textbuffer.get_display_lines(t_width as u32, t_height as u32), textbuffer.left_col);
+    terminal.set_content(1, 1, t_width, t_height, textbuffer.get_display_lines(t_width as u32, t_height as u32), textbuffer.left_col as usize);
 
     let (cursor_x, cursor_y) = textbuffer.get_local_cursor();
     terminal.set_cursor_pos(cursor_x, cursor_y);
@@ -63,19 +63,19 @@ fn main() {
         };
         let (t_width, t_height) = terminal.get_scale();
         textbuffer.adjust_viewpoint(t_width as u32, t_height as u32);
-        textbuffer.highlight(&highlightengine);
 
         let start = Instant::now();
+        textbuffer.highlight(&highlightengine);
+        let highlight_time = start.elapsed();
+
         let display_lines = textbuffer.get_display_lines(t_width as u32, t_height as u32);
-        let get_lines_time = start.elapsed();
-        terminal.set_content(1, 1, t_width, t_height, display_lines, textbuffer.left_col);
-        let display_time = start.elapsed() - get_lines_time;
+        terminal.set_content(1, 1, t_width, t_height, display_lines, textbuffer.left_col as usize);
 
         let (cursor_x, cursor_y) = textbuffer.get_local_cursor();
         terminal.set_cursor_pos(cursor_x, cursor_y);
         terminal.flush();
         
-        print!(" {:?} {:?}", get_lines_time, display_time);
+        print!(" {:?}", highlight_time);
         terminal.flush();
     }
 

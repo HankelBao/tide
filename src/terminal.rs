@@ -90,7 +90,7 @@ impl Terminal {
         };
     }
 
-    pub fn set_content(&mut self, start_x: u16, start_y: u16, width: u16, height: u16, content: Vec<DisplayLine>, offset: u32) {
+    pub fn set_content(&mut self, start_x: u16, start_y: u16, width: u16, height: u16, content: Vec<DisplayLine>, offset: usize) {
         /*
          * Warning: Performance is critical here!
          * Time matters more than memory.
@@ -103,18 +103,58 @@ impl Terminal {
             self.set_cursor_pos(start_x, start_y+y);
             match content.get(y as usize) {
                 Some(display_line) => {
-                    let mut dividing_point: usize = 0;
                     let mut style_iter = display_line.styles.iter();
-                    for x in offset..offset+width as u32{
+                    let mut style_descriptor: &StyleDescriptor;
+                    let mut searched_end: usize = 0;
+
+                    /*
+                     * Load the initial style.
+                     */ 
+                    loop {
+                        /*
+                         * None indicate:
+                         * - Null line with no descriptors.
+                         * - Offset is still not found after iterating
+                         *   all the style descriptors.
+                         * 
+                         * break it and nothing except for printing space till end
+                         * would be done in the x loop.
+                         */
+                        style_descriptor = match style_iter.next() {
+                            Some(sd) => sd,
+                            None => break,
+                        };
+                        if searched_end <= offset && offset < searched_end + style_descriptor.size {
+                            self.switch_style(style_descriptor.style);
+                            searched_end += style_descriptor.size;
+                            break
+                        }
+                        searched_end += style_descriptor.size;
+                    }
+
+                    /*
+                     * searched_end:
+                     *      now points to the first index that we don't have a style for it.
+                     * style_descriptor:
+                     *      now points to the current style_descriptor
+                     */
+                    for x in offset..offset+width as usize{
                         if let Some(c) = display_line.content.chars().nth(x as usize) {
-                            if x as usize == dividing_point {
-                                let active_style = style_iter.next().unwrap();
-                                self.switch_style(active_style.style);
-                                dividing_point += active_style.size;
+                            if x as usize == searched_end {
+                                /*
+                                 * There definitely would be another style behind
+                                 * when x == searched_end (which means goes beyond 
+                                 * known range).
+                                 * 
+                                 * Otherwise the style and the content is not matched.
+                                 */
+                                style_descriptor = style_iter.next().unwrap();
+                                self.switch_style(style_descriptor.style);
+                                searched_end += style_descriptor.size;
                             }
                             write!(self.screen, "{}", c).unwrap();
                         } else {
-                            write!(self.screen, "{}", " ".repeat((offset+width as u32-x) as usize)).unwrap();
+                            write!(self.screen, "{}", " ".repeat(offset+width as usize-x)).unwrap();
                             break;
                         }
                     }
