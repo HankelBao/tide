@@ -6,76 +6,95 @@ mod core;
 
 use std::env;
 use std::thread;
+use std::time::Duration;
 use std::sync::{Arc, Mutex, mpsc};
 // use std::time::Instant;
 
-use crate::core::{TextBuffer, TextEditing, HighlightEngine, SyntaxHighlight, TextDisplay, FileRW};
+use crate::core::{TextBuffer, TextEditing, HighlightEngine, TextDisplay, FileRW};
 
-use std::io::{Write, stdout, stdin, Stdin, Stdout};
+use std::io::stdin;
 use termion::event::{Key, Event, MouseEvent};
 use termion::input::TermRead;
 
 fn main() {
-    let mut terminal = terminal::Terminal::new();
+    let terminal = Arc::new(Mutex::new(terminal::Terminal::new()));
     let highlightengine = HighlightEngine::new();
 
     let args: Vec<String> = env::args().collect();
 
-    let mut textbuffer = TextBuffer::new(&highlightengine);
+    let textbuffer = Arc::new(Mutex::new(TextBuffer::new()));
     let file_path = match args.get(1) {
         Some(path) => path.clone(),
         None => String::from(""),
     };
-    textbuffer.set_file_path(file_path);
-    textbuffer.load_file();
-    let refresh_render = highlightengine.start_highlight(&textbuffer);
-    /*thread::sleep_ms(2000);
-    let (t_width, t_height) = terminal.get_scale();
-    textbuffer.adjust_viewpoint(t_width as u32, t_height as u32);
-    terminal.set_content(1, 1, t_width, t_height, textbuffer.get_display_lines(t_width as u32, t_height as u32), textbuffer.left_col as usize);
 
-    let (cursor_x, cursor_y) = textbuffer.get_local_cursor();
-    terminal.set_cursor_pos(cursor_x, cursor_y);
-    terminal.flush();
+    {
+        let mut t = textbuffer.lock().unwrap();
+        t.set_file_path(file_path);
+        t.load_file();
+    }
 
-    thread::sleep_ms(2000);*/
+    let (screen_refresh_send, screen_refresh_recv) = mpsc::channel();
+    let highlight_refresh_sender = highlightengine.start_highlight(textbuffer.clone(), screen_refresh_send.clone());
+
+    let terminal_clone = terminal.clone();
+    let textbuffer_clone = textbuffer.clone();
+    let screen_refresh_handle = thread::spawn(move || {
+        loop {
+            if let Ok(b) = screen_refresh_recv.try_recv() {
+                if b == false {
+                    break;
+                }
+                let mut t = terminal_clone.lock().unwrap();
+                let mut tb = textbuffer_clone.lock().unwrap();
+                let (t_width, t_height) = t.get_scale();
+                tb.adjust_viewpoint(t_width as u32, t_height as u32);
+                t.set_content(1, 1, t_width, t_height, tb.get_display_lines(t_width as u32, t_height as u32), tb.left_col as usize);
+
+                let (cursor_x, cursor_y) = tb.get_local_cursor();
+                t.set_cursor_pos(cursor_x, cursor_y);
+                t.flush();
+            }
+            thread::sleep(Duration::from_millis(10));
+        }
+    });
 
     for e in stdin().events() {
         let evt = e.unwrap();
+        let mut t = textbuffer.lock().unwrap();
         match evt {
             Event::Key(key) => {
                 match key {
-                    Key::Char(ch) => textbuffer.insert(ch),
-                    Key::Ctrl('q') => break,
-                    Key::Ctrl('a') => textbuffer.head(),
-                    Key::Ctrl('e') => textbuffer.end(),
-                    Key::Ctrl('u') => textbuffer.del_to_head(),
-                    Key::Ctrl('h') => textbuffer.del_to_end(),
-                    Key::Ctrl('b') => textbuffer.left(),
-                    Key::Ctrl('f') => textbuffer.right(),
-                    Key::Ctrl('p') => textbuffer.up(),
-                    Key::Ctrl('n') => textbuffer.down(),
-                    Key::Ctrl('s') => textbuffer.save_file(),
-                    Key::Backspace => textbuffer.backspace(),
-                    Key::Up => textbuffer.up(),
-                    Key::Down => textbuffer.down(),
-                    Key::Left => textbuffer.left(),
-                    Key::Right => textbuffer.right(),
+                    Key::Ctrl('q')  => break,
+                    Key::Char(ch)   => t.insert(ch),
+                    Key::Ctrl('a')  => t.head(),
+                    Key::Ctrl('e')  => t.end(),
+                    Key::Ctrl('u')  => t.del_to_head(),
+                    Key::Ctrl('h')  => t.del_to_end(),
+                    Key::Ctrl('b')  => t.left(),
+                    Key::Ctrl('f')  => t.right(),
+                    Key::Ctrl('p')  => t.up(),
+                    Key::Ctrl('n')  => t.down(),
+                    Key::Ctrl('s')  => t.save_file(),
+                    Key::Backspace  => t.backspace(),
+                    Key::Up         => t.up(),
+                    Key::Down       => t.down(),
+                    Key::Left       => t.left(),
+                    Key::Right      => t.right(),
                     _ => {},
                 }
             },
             _ => {},
         };
-        let (t_width, t_height) = terminal.get_scale();
-        textbuffer.adjust_viewpoint(t_width as u32, t_height as u32);
-        terminal.set_content(1, 1, t_width, t_height, textbuffer.get_display_lines(t_width as u32, t_height as u32), textbuffer.left_col as usize);
-
-        let (cursor_x, cursor_y) = textbuffer.get_local_cursor();
-        terminal.set_cursor_pos(cursor_x, cursor_y);
-        terminal.flush();
-        refresh_render.send(textbuffer.line_num).unwrap();
+        screen_refresh_send.clone().send(true).unwrap();
+        highlight_refresh_sender.clone().send((match t.line_num {
+            0 => 0,
+            l => l-1,
+        } as u32, t.top_line+100)).unwrap();
     }
 
-    terminal.finish();
+    screen_refresh_send.clone().send(false).unwrap();
+    screen_refresh_handle.join().unwrap();
+    { terminal.lock().unwrap().finish() };
 
 }

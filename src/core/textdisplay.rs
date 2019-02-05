@@ -24,13 +24,12 @@ impl TextDisplay for TextBuffer {
     }
 
     fn get_display_lines(&self, _width: u32, height: u32) -> Vec<DisplayLine> {
-        let lines = self.lines.lock().unwrap();
         let mut return_content: Vec<DisplayLine> = Vec::new();
         for i in 0..height {
             let index = (self.top_line+i) as usize;
             let line:DisplayLine;
-            if index < lines.len() {
-                line = lines[index as usize].cache.clone();
+            if index < self.lines.len() {
+                line = self.lines[index as usize].cache.clone();
             } else {
                 break;
             }

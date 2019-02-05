@@ -3,9 +3,11 @@ use super::TextBuffer;
 
 use std::thread;
 use std::time::Duration;
-use std::sync::mpsc;
+use std::sync::{Arc, Mutex, mpsc};
 use syntect::parsing::{ParseState, SyntaxSet, SyntaxReference, ScopeStack};
 use syntect::highlighting::{ThemeSet, Highlighter, HighlightState, HighlightIterator, Style};
+
+static CACHE_RANGE: usize = 3;
 
 pub struct HighlightEngine {
     pub ps: SyntaxSet,
@@ -34,12 +36,11 @@ impl<'a>  HighlightEngine {
         }
     }
 
-    pub fn start_highlight(&'a self, textbuffer: &TextBuffer) -> mpsc::Sender<u32> {
-        let lines = textbuffer.lines.clone();
-        let file_path = textbuffer.file_path.clone();
+    pub fn start_highlight(&'a self, textbuffer: Arc<Mutex<TextBuffer>>, ready_sender: mpsc::Sender<bool>) -> mpsc::Sender<(u32, u32)> {
         let ps = self.ps.clone();
+        let file_path = { textbuffer.lock().unwrap().file_path.clone() };
         let theme = self.ts.themes["base16-ocean.dark"].clone();
-        let (send, recv): (mpsc::Sender<u32>, mpsc::Receiver<u32>)= mpsc::channel();
+        let (send, recv): (mpsc::Sender<(u32, u32)>, mpsc::Receiver<(u32, u32)>)= mpsc::channel();
 
         thread::spawn(move || {
             let syntax = match ps.find_syntax_for_file(&file_path) {
@@ -62,29 +63,32 @@ impl<'a>  HighlightEngine {
             };
             let mut state_cache = vec![current_state.clone()];
 
+            let mut target_line_num: usize = 0;
+
 
             loop {
                 /*
                  * Check Refresh Signal
                  */
-                if let Ok(request_line_num) = recv.try_recv() {
+                if let Ok((request_line_num, target_line_num_local)) = recv.try_recv() {
                     if (request_line_num as usize) < current_line_num {
                         /*
                          * Update cureent_line_num and current_state here.
                          */
-                        let mut request_cache_point = (request_line_num / 100) as usize;
+                        let mut request_cache_point = (request_line_num / CACHE_RANGE as u32) as usize;
                         if request_cache_point >= state_cache.len() {
                             request_cache_point = state_cache.len() - 1;
                         }
-                        current_line_num = request_cache_point * 100;
+                        current_line_num = request_cache_point * CACHE_RANGE;
                         current_state = state_cache[request_cache_point].clone();
                     }
+                    target_line_num = target_line_num_local as usize;
                 }
 
                 /*
                  * Check if necessary of render anything
                  */
-                let lines_len = { lines.lock().unwrap().len().clone() };
+                let lines_len = { textbuffer.lock().unwrap().lines.len().clone() };
                 if current_line_num >= lines_len {
                     thread::sleep(Duration::from_millis(100));
                     continue
@@ -93,8 +97,8 @@ impl<'a>  HighlightEngine {
                 /*
                  * Record when at cache point
                  */
-                let cache_point = (current_line_num / 100) as usize;
-                let cache_offset = current_line_num - (cache_point * 100);
+                let cache_point = (current_line_num / CACHE_RANGE) as usize;
+                let cache_offset = current_line_num - (cache_point * CACHE_RANGE);
                 if cache_offset == 0 {
                     if cache_point < state_cache.len() {
                         state_cache[cache_point] = current_state.clone();
@@ -107,13 +111,19 @@ impl<'a>  HighlightEngine {
                 /*
                  * Render the current line
                  */
-                let line_content: String = { lines.lock().unwrap()[current_line_num].content() };
+                let line_content: String = { textbuffer.lock().unwrap().lines[current_line_num].content() };
                 let ops = current_state.parse_state.parse_line(&line_content, &ps);
                 let range_iter = HighlightIterator::new(&mut current_state.highlight_state, &ops[..], &line_content, &highlighter);
                 let ranges: Vec<(Style, &str)> = range_iter.collect();
 
-                { lines.lock().unwrap()[current_line_num].cache = DisplayLine::from(line_content.clone(), ranges); }
+                { textbuffer.lock().unwrap().lines[current_line_num].cache = DisplayLine::from(line_content.clone(), ranges); }
 
+                /*
+                 * Check if needed to consult the caller
+                 */
+                if current_line_num == target_line_num || current_line_num == lines_len-1 {
+                    ready_sender.send(true).unwrap();
+                }
                 
                 current_line_num += 1;
             }

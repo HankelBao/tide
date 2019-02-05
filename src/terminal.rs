@@ -87,7 +87,8 @@ impl Terminal {
         self.height = height;
     }
 
-    pub fn get_scale(&self) -> (u16, u16) {
+    pub fn get_scale(&mut self) -> (u16, u16) {
+        self.update_scale();
         return (self.width, self.height);
     }
 
