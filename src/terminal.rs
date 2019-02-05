@@ -21,14 +21,14 @@ pub struct Terminal {
     height: u16,
 }
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct StyleDescriptor {
     size: usize,
     style: Style,
 }
 
 impl StyleDescriptor {
-    pub fn new(size: usize, style: Style) -> StyleDescriptor {
+    pub fn from(style: Style, size: usize) -> StyleDescriptor {
         return StyleDescriptor {
             size,
             style,
@@ -36,14 +36,26 @@ impl StyleDescriptor {
     }
 }
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct DisplayLine {
     content: String,
     styles: Vec<StyleDescriptor>,
 }
 
 impl DisplayLine {
-    pub fn new(content: String, styles: Vec<StyleDescriptor>) -> DisplayLine {
+    pub fn new() -> DisplayLine {
+        return DisplayLine {
+            content: String::new(),
+            styles: Vec::new(),
+        };
+    }
+
+    pub fn from(content: String, ranges: Vec<(Style, &str)>) -> DisplayLine {
+        let mut styles = Vec::new();
+        for (style, substring) in ranges.iter() {
+            let style_descriptor = StyleDescriptor::from(*style, substring.len());
+            styles.push(style_descriptor);
+        }
         return DisplayLine {
             content,
             styles,
@@ -148,7 +160,13 @@ impl Terminal {
                                  * 
                                  * Otherwise the style and the content is not matched.
                                  */
-                                style_descriptor = style_iter.next().unwrap();
+                                style_descriptor = match style_iter.next() {
+                                    Some(sd) => sd,
+                                    None => {
+                                        write!(self.screen, "{}", " ".repeat(offset+width as usize-x)).unwrap();
+                                        break;
+                                    }
+                                };
                                 self.switch_style(style_descriptor.style);
                                 searched_end += style_descriptor.size;
                             }

@@ -5,10 +5,15 @@ mod terminal;
 mod core;
 
 use std::env;
-use std::time::Instant;
+use std::thread;
+use std::sync::{Arc, Mutex, mpsc};
+// use std::time::Instant;
 
 use crate::core::{TextBuffer, TextEditing, HighlightEngine, SyntaxHighlight, TextDisplay, FileRW};
-use crate::terminal::{Event, Key};
+
+use std::io::{Write, stdout, stdin, Stdin, Stdout};
+use termion::event::{Key, Event, MouseEvent};
+use termion::input::TermRead;
 
 fn main() {
     let mut terminal = terminal::Terminal::new();
@@ -16,26 +21,26 @@ fn main() {
 
     let args: Vec<String> = env::args().collect();
 
-    let mut textbuffer = TextBuffer::new(highlightengine.get_syntax_plain_text());
+    let mut textbuffer = TextBuffer::new(&highlightengine);
     let file_path = match args.get(1) {
         Some(path) => path.clone(),
         None => String::from(""),
     };
     textbuffer.set_file_path(file_path);
     textbuffer.load_file();
-
-    textbuffer.update_syntax(&highlightengine);
-
+    let refresh_render = highlightengine.start_highlight(&textbuffer);
+    /*thread::sleep_ms(2000);
     let (t_width, t_height) = terminal.get_scale();
     textbuffer.adjust_viewpoint(t_width as u32, t_height as u32);
-    textbuffer.highlight(&highlightengine);
     terminal.set_content(1, 1, t_width, t_height, textbuffer.get_display_lines(t_width as u32, t_height as u32), textbuffer.left_col as usize);
 
     let (cursor_x, cursor_y) = textbuffer.get_local_cursor();
     terminal.set_cursor_pos(cursor_x, cursor_y);
     terminal.flush();
 
-    for e in terminal.get_events() {
+    thread::sleep_ms(2000);*/
+
+    for e in stdin().events() {
         let evt = e.unwrap();
         match evt {
             Event::Key(key) => {
@@ -63,17 +68,12 @@ fn main() {
         };
         let (t_width, t_height) = terminal.get_scale();
         textbuffer.adjust_viewpoint(t_width as u32, t_height as u32);
-
-        textbuffer.highlight(&highlightengine);
-
-        let display_lines = textbuffer.get_display_lines(t_width as u32, t_height as u32);
-        terminal.set_content(1, 1, t_width, t_height, display_lines, textbuffer.left_col as usize);
+        terminal.set_content(1, 1, t_width, t_height, textbuffer.get_display_lines(t_width as u32, t_height as u32), textbuffer.left_col as usize);
 
         let (cursor_x, cursor_y) = textbuffer.get_local_cursor();
         terminal.set_cursor_pos(cursor_x, cursor_y);
         terminal.flush();
-        
-        terminal.flush();
+        refresh_render.send(textbuffer.line_num).unwrap();
     }
 
     terminal.finish();

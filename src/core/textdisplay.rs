@@ -7,7 +7,7 @@ pub trait TextDisplay {
     fn get_local_cursor(&self) -> (u16, u16);
 }
 
-impl<'a> TextDisplay for TextBuffer<'a> {
+impl TextDisplay for TextBuffer {
     fn adjust_viewpoint(&mut self, width: u32, height: u32) {
         if self.top_line > self.line_num {
             self.top_line = self.line_num;
@@ -24,12 +24,13 @@ impl<'a> TextDisplay for TextBuffer<'a> {
     }
 
     fn get_display_lines(&self, _width: u32, height: u32) -> Vec<DisplayLine> {
+        let lines = self.lines.lock().unwrap();
         let mut return_content: Vec<DisplayLine> = Vec::new();
         for i in 0..height {
             let index = (self.top_line+i) as usize;
             let line:DisplayLine;
-            if index < self.lines.len() {
-                line = self.rendered_cache[index as usize].clone();
+            if index < lines.len() {
+                line = lines[index as usize].cache.clone();
             } else {
                 break;
             }

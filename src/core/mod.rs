@@ -1,3 +1,4 @@
+mod textline;
 mod textbuffer;
 mod textediting;
 mod syntaxhighlight;
@@ -5,6 +6,7 @@ mod textdisplay;
 mod filerw;
 
 pub use self::textbuffer::TextBuffer;
+pub use self::textline::TextLine;
 pub use self::textediting::TextEditing;
 pub use self::syntaxhighlight::HighlightEngine;
 pub use self::syntaxhighlight::SyntaxHighlight;
