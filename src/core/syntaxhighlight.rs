@@ -1,4 +1,4 @@
-use crate::terminal::{DisplayLine};
+use crate::terminal::{StyleDescriptor};
 use super::TextBuffer;
 
 use std::thread;
@@ -116,7 +116,12 @@ impl<'a>  HighlightEngine {
                 let range_iter = HighlightIterator::new(&mut current_state.highlight_state, &ops[..], &line_content, &highlighter);
                 let ranges: Vec<(Style, &str)> = range_iter.collect();
 
-                { textbuffer.lock().unwrap().lines[current_line_num].cache = DisplayLine::from(line_content.clone(), ranges); }
+                let mut style_descriptors = Vec::new();
+                for (style, substring) in ranges.iter() {
+                    style_descriptors.push(StyleDescriptor::from(*style, substring.len()));
+                }
+
+                { textbuffer.lock().unwrap().lines[current_line_num].styles_cache = style_descriptors; }
 
                 /*
                  * Check if needed to consult the caller

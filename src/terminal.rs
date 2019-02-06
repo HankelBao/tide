@@ -38,8 +38,8 @@ impl StyleDescriptor {
 
 #[derive(Clone, Debug)]
 pub struct DisplayLine {
-    content: String,
-    styles: Vec<StyleDescriptor>,
+    pub content: String,
+    pub styles: Vec<StyleDescriptor>,
 }
 
 impl DisplayLine {

@@ -1,23 +1,23 @@
-use crate::terminal::DisplayLine;
+use crate::terminal::StyleDescriptor;
 
 #[derive(Debug)]
 pub struct TextLine {
     pub content: String,
-    pub cache: DisplayLine,
+    pub styles_cache: Vec<StyleDescriptor>,
 }
 
 impl TextLine {
     pub fn new() -> TextLine {
         return TextLine {
             content: String::new(),
-            cache: DisplayLine::new(),
+            styles_cache: Vec::new(),
         }
     }
 
     pub fn from(content: String) -> TextLine {
         return TextLine {
             content,
-            cache: DisplayLine::new(),
+            styles_cache: Vec::new(),
         }
     }
 
