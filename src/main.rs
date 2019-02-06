@@ -36,26 +36,24 @@ fn main() {
 
     let (screen_refresh_send, screen_refresh_recv) = mpsc::channel();
     let highlight_refresh_sender = highlightengine.start_highlight(textbuffer.clone(), screen_refresh_send.clone());
+    highlight_refresh_sender.send((0, 100)).unwrap();
 
     let terminal_clone = terminal.clone();
     let textbuffer_clone = textbuffer.clone();
     let screen_refresh_handle = thread::spawn(move || {
-        loop {
-            if let Ok(b) = screen_refresh_recv.try_recv() {
-                if b == false {
-                    break;
-                }
-                let mut t = terminal_clone.lock().unwrap();
-                let mut tb = textbuffer_clone.lock().unwrap();
-                let (t_width, t_height) = t.get_scale();
-                tb.adjust_viewpoint(t_width as u32, t_height as u32);
-                t.set_content(1, 1, t_width, t_height, tb.get_display_lines(t_width as u32, t_height as u32), tb.left_col as usize);
-
-                let (cursor_x, cursor_y) = tb.get_local_cursor();
-                t.set_cursor_pos(cursor_x, cursor_y);
-                t.flush();
+        for b in screen_refresh_recv {
+            if b == false {
+                break;
             }
-            thread::sleep(Duration::from_millis(10));
+            let mut t = terminal_clone.lock().unwrap();
+            let mut tb = textbuffer_clone.lock().unwrap();
+            let (t_width, t_height) = t.get_scale();
+            tb.adjust_viewpoint(t_width as u32, t_height as u32);
+            t.set_content(1, 1, t_width, t_height, tb.get_display_lines(t_width as u32, t_height as u32), tb.left_col as usize);
+
+            let (cursor_x, cursor_y) = tb.get_local_cursor();
+            t.set_cursor_pos(cursor_x, cursor_y);
+            t.flush();
         }
     });
 

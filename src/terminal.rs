@@ -161,15 +161,13 @@ impl Terminal {
                                  * 
                                  * Otherwise the style and the content is not matched.
                                  */
-                                style_descriptor = match style_iter.next() {
-                                    Some(sd) => sd,
-                                    None => {
-                                        write!(self.screen, "{}", " ".repeat(offset+width as usize-x)).unwrap();
-                                        break;
-                                    }
-                                };
-                                self.switch_style(style_descriptor.style);
-                                searched_end += style_descriptor.size;
+                                if let Some(sd) = style_iter.next() {
+                                    self.switch_style(sd.style);
+                                    searched_end += sd.size;
+                                } else {
+                                    //write!(self.screen, "{}", " ".repeat(offset+width as usize-x)).unwrap();
+                                    //break;
+                                }
                             }
                             write!(self.screen, "{}", c).unwrap();
                         } else {
