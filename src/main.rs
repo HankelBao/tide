@@ -8,7 +8,7 @@ use std::env;
 use std::thread;
 use std::time::Duration;
 use std::sync::{Arc, Mutex, mpsc};
-// use std::time::Instant;
+use std::time::Instant;
 
 use crate::core::{TextBuffer, TextEditing, HighlightEngine, TextDisplay, FileRW};
 
@@ -42,17 +42,22 @@ fn main() {
     let textbuffer_clone = textbuffer.clone();
     let screen_refresh_handle = thread::spawn(move || {
         for b in screen_refresh_recv {
+            let print_time = Duration::from_micros(1000);
             if b == false {
                 break;
             }
+            let start = Instant::now();
             let mut t = terminal_clone.lock().unwrap();
             let mut tb = textbuffer_clone.lock().unwrap();
             let (t_width, t_height) = t.get_scale();
             tb.adjust_viewpoint(t_width as u32, t_height as u32);
-            t.set_content(1, 1, t_width, t_height, tb.get_display_lines(t_width as u32, t_height as u32), tb.left_col as usize);
+            let display_lines = tb.get_display_lines(t_width as u32, t_height as u32);
+            t.set_content(1, 1, t_width, t_height, display_lines);
+            let print_time = start.elapsed();
 
             let (cursor_x, cursor_y) = tb.get_local_cursor();
             t.set_cursor_pos(cursor_x, cursor_y);
+            print!("{:?}", print_time);
             t.flush();
         }
     });
@@ -94,5 +99,6 @@ fn main() {
     screen_refresh_send.clone().send(false).unwrap();
     screen_refresh_handle.join().unwrap();
     { terminal.lock().unwrap().finish() };
+
 
 }

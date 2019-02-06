@@ -1,4 +1,4 @@
-use crate::terminal::DisplayLine;
+use crate::terminal::{DisplayLine, StyleDescriptor};
 use super::TextBuffer;
 
 pub trait TextDisplay {
@@ -23,19 +23,39 @@ impl TextDisplay for TextBuffer {
         }
     }
 
-    fn get_display_lines(&self, _width: u32, height: u32) -> Vec<DisplayLine> {
+    fn get_display_lines(&self, width: u32, height: u32) -> Vec<DisplayLine> {
         let mut return_content: Vec<DisplayLine> = Vec::new();
         for i in 0..height {
             let index = (self.top_line+i) as usize;
-            let line:DisplayLine;
-            if index < self.lines.len() {
-                line = DisplayLine {
-                    content: self.lines[index as usize].content(),
-                    styles: self.lines[index as usize].styles_cache.clone(),
-                };
-            } else {
+            if index >= self.lines.len() {
                 break;
             }
+            let line:DisplayLine;
+            let offset = self.left_col as usize;
+
+            let content: String = self.lines[index].content().chars().skip(offset).take(width as usize).collect();
+
+            let mut styles: Vec<StyleDescriptor> = Vec::new();
+            let mut current_style_start: usize = 0;
+            for style in self.lines[index as usize].styles_cache.iter() {
+                if current_style_start + style.size < offset || current_style_start > offset+width as usize {
+                    continue;
+                }
+                let mut cloned_style = style.clone();
+                if current_style_start <= offset && offset < current_style_start+style.size {
+                    cloned_style.size -= offset - current_style_start;
+                }
+                if current_style_start <= (offset + width as usize) && (offset + width as usize) < current_style_start+style.size {
+                    cloned_style.size -= current_style_start+style.size-offset;
+                }
+                current_style_start += style.size;
+                styles.push(cloned_style);
+            }
+
+            line = DisplayLine {
+                content,
+                styles,
+            };
             return_content.push(line);
         }
         return return_content;
