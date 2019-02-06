@@ -3,11 +3,6 @@ use super::TextLine;
 
 
 pub trait TextEditing {
-    /*
-     * Warning:
-     * Since any operation about lines will lock itself.
-     * Functions here should never call any function here.
-     */
     fn insert(&mut self, ch: char);
     fn backspace(&mut self);
     fn goto_line(&mut self, line_num: u32);
