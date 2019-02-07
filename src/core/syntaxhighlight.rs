@@ -1,46 +1,34 @@
 use crate::terminal::{StyleDescriptor};
 use super::TextBuffer;
+use super::HighlightEngine;
 
 use std::thread;
 use std::time::Duration;
-use std::sync::{Arc, Mutex, mpsc};
-use syntect::parsing::{ParseState, SyntaxSet, SyntaxReference, ScopeStack};
-use syntect::highlighting::{ThemeSet, Highlighter, HighlightState, HighlightIterator, Style};
+use std::sync::{mpsc};
+use syntect::parsing::{ParseState, ScopeStack};
+use syntect::highlighting::{Highlighter, HighlightState, HighlightIterator, Style};
 
 static CACHE_RANGE: usize = 3;
 
-pub struct HighlightEngine {
-    pub ps: SyntaxSet,
-    pub ts: ThemeSet,
+#[derive(Clone)]
+pub struct HighlightCache {
+    highlight_state: HighlightState,
+    parse_state: ParseState,
 }
 
-impl<'a>  HighlightEngine {
-    pub fn new() -> HighlightEngine {
-        let ps = SyntaxSet::load_defaults_nonewlines();
-        let ts = ThemeSet::load_defaults();
-        HighlightEngine {
-            ps,
-            ts,
-        }
-    }
+pub trait SyntaxHighlight {
+    fn start_highlight_thread(&mut self, highlightengine: &HighlightEngine);
+    fn highlight_from(&self, index: u32);
+}
 
-    pub fn get_syntax(&'a self, file_path: String) -> &'a SyntaxReference {
-        match self.ps.find_syntax_for_file(&file_path) {
-            Ok(o) => {
-                match o {
-                    Some(s) => s,
-                    None => self.ps.find_syntax_plain_text()
-                }
-            },
-            Err(_) => self.ps.find_syntax_plain_text()
-        }
-    }
-
-    pub fn start_highlight(&'a self, textbuffer: Arc<Mutex<TextBuffer>>, ready_sender: mpsc::Sender<bool>) -> mpsc::Sender<(u32, u32)> {
-        let ps = self.ps.clone();
-        let file_path = { textbuffer.lock().unwrap().file_path.clone() };
-        let theme = self.ts.themes["base16-ocean.dark"].clone();
-        let (send, recv): (mpsc::Sender<(u32, u32)>, mpsc::Receiver<(u32, u32)>)= mpsc::channel();
+impl SyntaxHighlight for TextBuffer {
+    fn start_highlight_thread(&mut self, highlightengine: &HighlightEngine) {
+        let ps = highlightengine.ps.clone();
+        let file_path = { self.file_path.clone() };
+        let theme = highlightengine.ts.themes["base16-ocean.dark"].clone();
+        let (highlight_send, highlight_recv): (mpsc::Sender<(u32, u32)>, mpsc::Receiver<(u32, u32)>)= mpsc::channel();
+        let display_send = self.display_send.clone();
+        let lines = self.lines.clone();
 
         thread::spawn(move || {
             let syntax = match ps.find_syntax_for_file(&file_path) {
@@ -70,25 +58,31 @@ impl<'a>  HighlightEngine {
                 /*
                  * Check Refresh Signal
                  */
-                if let Ok((request_line_num, target_line_num_local)) = recv.try_recv() {
-                    if (request_line_num as usize) < current_line_num {
-                        /*
-                         * Update cureent_line_num and current_state here.
-                         */
-                        let mut request_cache_point = (request_line_num / CACHE_RANGE as u32) as usize;
-                        if request_cache_point >= state_cache.len() {
-                            request_cache_point = state_cache.len() - 1;
+                match highlight_recv.try_recv() {
+                    Ok((request_line_num, target_line_num_local)) => {
+                        if (request_line_num as usize) < current_line_num {
+                            /*
+                            * Update cureent_line_num and current_state here.
+                            */
+                            let mut request_cache_point = (request_line_num / CACHE_RANGE as u32) as usize;
+                            if request_cache_point >= state_cache.len() {
+                                request_cache_point = state_cache.len() - 1;
+                            }
+                            current_line_num = request_cache_point * CACHE_RANGE;
+                            current_state = state_cache[request_cache_point].clone();
                         }
-                        current_line_num = request_cache_point * CACHE_RANGE;
-                        current_state = state_cache[request_cache_point].clone();
+                        target_line_num = target_line_num_local as usize;
+                    },
+                    Err(mpsc::TryRecvError::Disconnected) => {
+                        break;
                     }
-                    target_line_num = target_line_num_local as usize;
+                    _ => {},
                 }
 
                 /*
                  * Check if necessary of render anything
                  */
-                let lines_len = { textbuffer.lock().unwrap().lines.len().clone() };
+                let lines_len = { lines.lock().unwrap().len().clone() };
                 if current_line_num >= lines_len {
                     thread::sleep(Duration::from_millis(100));
                     continue
@@ -111,7 +105,7 @@ impl<'a>  HighlightEngine {
                 /*
                  * Render the current line
                  */
-                let line_content: String = { textbuffer.lock().unwrap().lines[current_line_num].content() };
+                let line_content: String = { lines.lock().unwrap()[current_line_num].content() };
                 let ops = current_state.parse_state.parse_line(&line_content, &ps);
                 let range_iter = HighlightIterator::new(&mut current_state.highlight_state, &ops[..], &line_content, &highlighter);
                 let ranges: Vec<(Style, &str)> = range_iter.collect();
@@ -121,32 +115,24 @@ impl<'a>  HighlightEngine {
                     style_descriptors.push(StyleDescriptor::from(*style, substring.len()));
                 }
 
-                { textbuffer.lock().unwrap().lines[current_line_num].styles_cache = style_descriptors; }
+                { lines.lock().unwrap()[current_line_num].styles_cache = style_descriptors; }
 
                 /*
                  * Check if needed to consult the caller
                  */
                 if current_line_num == target_line_num || current_line_num == lines_len-1 {
-                    ready_sender.send(true).unwrap();
+                    { display_send.lock().unwrap().send(true).unwrap(); }
                 }
                 
                 current_line_num += 1;
             }
         });
-        return send;
+        self.highlight_send = Some(highlight_send);
+    }
+
+    fn highlight_from(&self, index: u32) {
+        if let Some(highlight_send) = self.highlight_send.clone() {
+            highlight_send.send((index, self.top_line+self.view_height)).unwrap();
+        }
     }
 }
-
-#[derive(Clone)]
-pub struct HighlightCache {
-    highlight_state: HighlightState,
-    parse_state: ParseState,
-}
-
-pub trait SyntaxHighlight {
-/*    fn start_highlight_thread(&mut self);
-    fn highlight_from(&self, index: u32);*/
-}
-
-/*impl SyntaxHighlight for TextBuffer {
-}*/

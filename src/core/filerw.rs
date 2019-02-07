@@ -22,13 +22,14 @@ impl FileRW for TextBuffer {
             Err(_) => return,
         };
         let buffered_f = BufReader::new(f);
+        let mut lines = self.lines.lock().unwrap();
 
-        self.lines.clear();
+        lines.clear();
         for line in buffered_f.lines() {
-            self.lines.push(Box::new(TextLine::from(line.unwrap())));
+            lines.push(Box::new(TextLine::from(line.unwrap())));
         }
-        if self.lines.len() == 0 {
-            self.lines.push(Box::new(TextLine::new()));
+        if lines.len() == 0 {
+            lines.push(Box::new(TextLine::new()));
         }
     }
 
