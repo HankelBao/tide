@@ -38,6 +38,10 @@ impl View {
         return (self.width, self.height)
     }
 
+    pub fn get_width(&self) -> u16 {
+        return self.width
+    }
+
     pub fn set_content(&self, display_lines: Vec<DisplayLine>) {
         let mut terminal = self.terminal.lock().unwrap();
         terminal.set_content(self.start_x, self.start_y, self.width, self.height, display_lines);
@@ -53,4 +57,3 @@ impl View {
         terminal.flush();
     }
 }
-

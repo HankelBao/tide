@@ -13,7 +13,7 @@ pub use termion::input::TermRead;
 pub struct Terminal {
     /*
      * The main event loop should have the
-     * ownership of stdin, so stdin is not 
+     * ownership of stdin, so stdin is not
      * restored here.
      */
     screen: MouseTerminal<RawTerminal<Stdout>>,
@@ -50,15 +50,10 @@ impl DisplayLine {
         };
     }
 
-    pub fn from(content: String, ranges: Vec<(Style, &str)>) -> DisplayLine {
-        let mut styles = Vec::new();
-        for (style, substring) in ranges.iter() {
-            let style_descriptor = StyleDescriptor::from(*style, substring.len());
-            styles.push(style_descriptor);
-        }
+    pub fn from(content: String, style_descriptors: Vec<StyleDescriptor>) -> DisplayLine {
         return DisplayLine {
             content,
-            styles,
+            styles: style_descriptors,
         };
     }
 }
@@ -107,10 +102,11 @@ impl Terminal {
         /*
          * Warning: Performance is critical here!
          * Time matters more than memory.
-         * 
-         * Try to reduce loop time and 
+         *
+         * Try to reduce loop time and
          * the time write! macro is called.
          */
+        write!(self.screen, "{}", termion::cursor::Save).unwrap();
         write!(self.screen, "{}", termion::cursor::Hide).unwrap();
         for y in 0..height {
             self.set_cursor_pos(start_x, start_y+y);
@@ -133,13 +129,14 @@ impl Terminal {
                     if content_len < width as usize {
                         write!(self.screen, "{}", " ".repeat(width as usize - content_len)).unwrap();
                     }
-                    
+
                 },
                 None => {
                     write!(self.screen, "{}", " ".repeat(width as usize)).unwrap();
                 },
             }
         }
+        write!(self.screen, "{}", termion::cursor::Restore).unwrap();
         write!(self.screen, "{}", termion::cursor::Show).unwrap();
     }
 
@@ -158,7 +155,7 @@ impl Terminal {
         /*
          * We have the set the cursor back to
          * the origin. Otherwise, there would be
-         * a % when the program exits and the 
+         * a % when the program exits and the
          * printing history would be left.
          */
         self.set_cursor_pos(1, 1);

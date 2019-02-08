@@ -7,10 +7,13 @@ mod core;
 mod ui;
 
 use std::env;
-use std::sync::{Arc, Mutex};
+use std::sync::{Arc, Mutex, mpsc};
+use std::thread;
+use std::time::Duration;
 
 use crate::core::{HighlightEngine};
 use crate::components::TextEditor;
+use crate::components::Statusline;
 use crate::ui::ViewManager;
 
 use std::io::stdin;
@@ -25,10 +28,15 @@ fn main() {
 
     let args: Vec<String> = env::args().collect();
 
+    let (statusline_display_send, statusline_display_recv) = mpsc::channel();
+
     let mut texteditor: TextEditor = match args.get(1) {
-        Some(path) => TextEditor::new_with_file(main_view.clone(), &highlightengine, path.clone()),
-        None => TextEditor::new(main_view.clone(), &highlightengine),
+        Some(path) => TextEditor::new_with_file(main_view.clone(), &highlightengine, path.clone(), statusline_display_send.clone()),
+        None => TextEditor::new(main_view.clone(), &highlightengine, statusline_display_send.clone()),
     };
+
+    let mut statusline: Statusline = Statusline::new(viewmanager.statusline_view.clone(), &highlightengine, statusline_display_recv);
+    statusline.start_display_thread();
 
     texteditor.start_display_thread();
 
@@ -45,6 +53,9 @@ fn main() {
         };
     }
 
-    { terminal.lock().unwrap().finish() };
-
+    {
+        let mut t = terminal.lock().unwrap();
+        t.finish();
+        drop(t);
+    };
 }

@@ -1,6 +1,7 @@
 use crate::terminal::Terminal;
 use super::View;
 use std::sync::{Arc, Mutex};
+use std::thread;
 
 pub struct ViewManager {
     terminal: Arc<Mutex<Terminal>>,
@@ -28,7 +29,7 @@ impl ViewManager {
             right_view: Arc::new(Mutex::new(View::from(terminal.clone(), t_width, 1, 0, t_height-1))),
             bottom_view: Arc::new(Mutex::new(View::from(terminal.clone(), 1, t_height, t_width, 0))),
             main_view: Arc::new(Mutex::new(View::from(terminal.clone(), 1, 1, t_width, t_height-1))),
-            statusline_view: Arc::new(Mutex::new(View::from(terminal.clone(), 1, t_height-1, t_width, 1))),
+            statusline_view: Arc::new(Mutex::new(View::from(terminal.clone(), 1, t_height, t_width, 1))),
         };
         vm
     }
@@ -36,4 +37,20 @@ impl ViewManager {
     pub fn set_left_view_width(&self) {
 
     }
+
+    pub fn start_monitor_thread(&self) {
+        /*
+         *  Response the size change event for view
+         *  Monitor the terminal size.
+         */
+        let (origin_width, origin_height) = (0, 0);
+        let terminal = self.terminal.clone();
+        thread::spawn(move || {
+            let (current_width, current_height) = {terminal.lock().unwrap().get_scale() };
+            if current_width != origin_width && current_height != origin_height {
+                
+            }
+        });
+    }
+
 }

@@ -6,3 +6,5 @@ authors = ["HankelBao <hankelbao@outlook.com>"]
 [dependencies]
 syntect = "*"
 termion = "*"
+fst = "0.3"
+fst-levenshtein = "0.2"

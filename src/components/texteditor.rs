@@ -9,7 +9,7 @@ use crate::core::TextEditing;
 use crate::core::FileRW;
 use crate::ui::View;
 
-use std::sync::{Arc, Mutex};
+use std::sync::{Arc, Mutex, mpsc};
 use std::thread;
 use std::time::Duration;
 
@@ -18,25 +18,29 @@ pub struct TextEditor {
 
     textbuffers: Vec<Arc<Mutex<TextBuffer>>>,
     current_textbuffer: Arc<Mutex<TextBuffer>>,
+
+    statusline_display_send: mpsc::Sender<(String, (u16, u16))>,
 }
 
 impl TextEditor {
-    pub fn new(view: Arc<Mutex<View>>, highlightengine: &HighlightEngine) -> TextEditor {
+    pub fn new(view: Arc<Mutex<View>>, highlightengine: &HighlightEngine, statusline_display_send: mpsc::Sender<(String, (u16, u16))>) -> TextEditor {
         let first_textbuffer = Arc::new(Mutex::new(TextBuffer::new(highlightengine)));
         let texteditor = TextEditor {
             view,
             textbuffers: vec![first_textbuffer.clone()],
             current_textbuffer: first_textbuffer.clone(),
+            statusline_display_send,
         };
         return texteditor;
     }
 
-    pub fn new_with_file(view: Arc<Mutex<View>>, highlightengine: &HighlightEngine, file_path: String) -> TextEditor {
+    pub fn new_with_file(view: Arc<Mutex<View>>, highlightengine: &HighlightEngine, file_path: String, statusline_display_send: mpsc::Sender<(String, (u16, u16))>) -> TextEditor {
         let first_textbuffer = Arc::new(Mutex::new(TextBuffer::from_file(highlightengine, file_path)));
         let texteditor = TextEditor {
             view,
             textbuffers: vec![first_textbuffer.clone()],
             current_textbuffer: first_textbuffer.clone(),
+            statusline_display_send,
         };
         return texteditor;
     }
@@ -87,6 +91,7 @@ impl TextEditor {
             Key::Right      => t.right(),
             _ => {},
         }
+        self.statusline_display_send.send((t.file_path.clone(), (t.line_offset as u16, t.line_num as u16))).unwrap();
         { t.display_send.lock().unwrap().send(true).unwrap(); }
     }
 }
