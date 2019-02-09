@@ -4,5 +4,5 @@ version = "0.1.0"
 authors = ["HankelBao <hankelbao@outlook.com>"]
 
 [dependencies]
-syntect = "3.0"
+syntect = "*"
 termion = "*"
