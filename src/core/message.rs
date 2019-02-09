@@ -1,11 +1,14 @@
 use std::sync::{Arc, Mutex, mpsc};
 use super::TextLine;
+use crate::terminal::Key;
 
-pub type MessageKey = u32;
+pub type MessageSender = mpsc::Sender<Message>;
 
-pub enum Message<T> {
-    Other(T),
-    CursorMove(usize, (u16, u16)),
+#[derive(Clone)]
+pub enum Message {
+    TerminalKey(Key),
+    FocusFileUpdate(String),
+    FocusCursorMove(u16, u16),
     HighlightReady(usize),
-    StartBufferHighlight(usize, Arc<Mutex<Vec<TextLine>>>, mpsc::Sender<(u32, u32)>),
+    Quit,
 }

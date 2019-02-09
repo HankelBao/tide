@@ -1,97 +1,115 @@
 extern crate termion;
 use termion::event::Key;
 
+use crate::core::{Message, MessageListener};
 use crate::core::TextBuffer;
 use crate::terminal::Terminal;
 use crate::core::TextDisplay;
 use crate::core::HighlightEngine;
+use crate::core::SyntaxHighlight;
 use crate::core::TextEditing;
 use crate::core::FileRW;
 use crate::ui::View;
+use crate::ui::{UIComponent, UISelector};
 
 use std::sync::{Arc, Mutex, mpsc};
 use std::thread;
 use std::time::Duration;
 
 pub struct TextEditor {
+    messagesender: mpsc::Sender<Message>,
     view: Arc<Mutex<View>>,
 
-    textbuffers: Vec<Arc<Mutex<TextBuffer>>>,
-    current_textbuffer: Arc<Mutex<TextBuffer>>,
-
-    statusline_display_send: mpsc::Sender<(String, (u16, u16))>,
+    textbuffers: Vec<TextBuffer>,
+    current_textbuffer_index: usize,
 }
 
 impl TextEditor {
-    pub fn new(view: Arc<Mutex<View>>, highlightengine: &HighlightEngine, statusline_display_send: mpsc::Sender<(String, (u16, u16))>) -> TextEditor {
-        let first_textbuffer = Arc::new(Mutex::new(TextBuffer::new(highlightengine)));
+    pub fn new(messagesender: mpsc::Sender<Message>, view: Arc<Mutex<View>>, highlightengine: &HighlightEngine) -> TextEditor {
+        let mut first_textbuffer = TextBuffer::new(0, messagesender.clone());
+        first_textbuffer.start_highlight_thread(highlightengine);
+        first_textbuffer.view_height = {view.lock().unwrap().get_height() as u32};
+        first_textbuffer.highlight_from(0);
         let texteditor = TextEditor {
+            messagesender,
             view,
-            textbuffers: vec![first_textbuffer.clone()],
-            current_textbuffer: first_textbuffer.clone(),
-            statusline_display_send,
+            textbuffers: vec![first_textbuffer],
+            current_textbuffer_index: 0,
         };
         return texteditor;
     }
 
-    pub fn new_with_file(view: Arc<Mutex<View>>, highlightengine: &HighlightEngine, file_path: String, statusline_display_send: mpsc::Sender<(String, (u16, u16))>) -> TextEditor {
-        let first_textbuffer = Arc::new(Mutex::new(TextBuffer::from_file(highlightengine, file_path)));
+    pub fn new_with_file(messagesender: mpsc::Sender<Message>, view: Arc<Mutex<View>>, highlightengine: &HighlightEngine, file_path: String) -> TextEditor {
+        let mut first_textbuffer = TextBuffer::from_file(0, messagesender.clone(), file_path.clone());
+        first_textbuffer.start_highlight_thread(highlightengine);
+        first_textbuffer.view_height = {view.lock().unwrap().get_height() as u32};
+        first_textbuffer.highlight_from(0);
+        messagesender.send(Message::FocusFileUpdate(file_path.clone())).unwrap();
         let texteditor = TextEditor {
+            messagesender,
             view,
-            textbuffers: vec![first_textbuffer.clone()],
-            current_textbuffer: first_textbuffer.clone(),
-            statusline_display_send,
+            textbuffers: vec![first_textbuffer],
+            current_textbuffer_index: 0,
         };
         return texteditor;
     }
 
-    pub fn start_display_thread(&self) {
-        let view = self.view.clone();
-        let current_textbuffer = self.current_textbuffer.clone();
-        thread::spawn(move || {
-            loop {
-                {
-                    let mut textbuffer = current_textbuffer.lock().unwrap();
-                    let display_recv_raw = textbuffer.display_recv.clone();
-                    let display_recv = display_recv_raw.lock().unwrap();
-                    if let Ok(_) = display_recv.try_recv() {
-                        let mut v = view.lock().unwrap();
-                        let (t_width, t_height) = v.get_scale();
-                        textbuffer.adjust_viewpoint(t_width as u32, t_height as u32);
-                        let display_lines = textbuffer.get_display_lines(t_width as u32, t_height as u32);
-                        v.set_content(display_lines);
+}
 
-                        let (cursor_x, cursor_y) = textbuffer.get_local_cursor();
-                        v.set_cursor(cursor_x, cursor_y);
-                        v.flush();
-                    }
+impl MessageListener for TextEditor {
+    fn on_message(&mut self, message: Message) {
+        match message {
+            Message::HighlightReady(buffer_index) => {
+                if buffer_index == self.current_textbuffer_index {
+                    self.display();
                 }
-                thread::sleep(Duration::from_millis(10));
+            },
+            Message::TerminalKey(key) => {
             }
-        });
-    }
-
-    pub fn key(&self, key: Key) {
-        let mut t = self.current_textbuffer.lock().unwrap();
-        match key {
-            Key::Char(ch)   => t.insert(ch),
-            Key::Ctrl('a')  => t.head(),
-            Key::Ctrl('e')  => t.end(),
-            Key::Ctrl('u')  => t.del_to_head(),
-            Key::Ctrl('h')  => t.del_to_end(),
-            Key::Ctrl('b')  => t.left(),
-            Key::Ctrl('f')  => t.right(),
-            Key::Ctrl('p')  => t.up(),
-            Key::Ctrl('n')  => t.down(),
-            Key::Ctrl('s')  => t.save_file(),
-            Key::Backspace  => t.backspace(),
-            Key::Up         => t.up(),
-            Key::Down       => t.down(),
-            Key::Left       => t.left(),
-            Key::Right      => t.right(),
             _ => {},
         }
-        self.statusline_display_send.send((t.file_path.clone(), (t.line_offset as u16, t.line_num as u16))).unwrap();
-        { t.display_send.lock().unwrap().send(true).unwrap(); }
+    }
+}
+
+impl UIComponent for TextEditor {
+    fn display(&mut self) {
+        let mut textbuffer = &mut self.textbuffers[self.current_textbuffer_index];
+        let mut v = self.view.lock().unwrap();
+        let (t_width, t_height) = v.get_scale();
+        textbuffer.adjust_viewpoint(t_width as u32, t_height as u32);
+        let display_lines = textbuffer.get_display_lines(t_width as u32, t_height as u32);
+        v.set_content(display_lines);
+
+        let (cursor_x, cursor_y) = textbuffer.get_local_cursor();
+        v.set_cursor(cursor_x, cursor_y);
+        v.flush();
+    }
+}
+
+impl UISelector for TextEditor {
+    fn key(&mut self, key: Key) {
+        match key {
+            Key::Char(ch)   => self.textbuffers[self.current_textbuffer_index].insert(ch),
+            Key::Ctrl('a')  => self.textbuffers[self.current_textbuffer_index].head(),
+            Key::Ctrl('e')  => self.textbuffers[self.current_textbuffer_index].end(),
+            Key::Ctrl('u')  => self.textbuffers[self.current_textbuffer_index].del_to_head(),
+            Key::Ctrl('h')  => self.textbuffers[self.current_textbuffer_index].del_to_end(),
+            Key::Ctrl('b')  => self.textbuffers[self.current_textbuffer_index].left(),
+            Key::Ctrl('f')  => self.textbuffers[self.current_textbuffer_index].right(),
+            Key::Ctrl('p')  => self.textbuffers[self.current_textbuffer_index].up(),
+            Key::Ctrl('n')  => self.textbuffers[self.current_textbuffer_index].down(),
+            Key::Ctrl('s')  => self.textbuffers[self.current_textbuffer_index].save_file(),
+            Key::Backspace  => self.textbuffers[self.current_textbuffer_index].backspace(),
+            Key::Up         => self.textbuffers[self.current_textbuffer_index].up(),
+            Key::Down       => self.textbuffers[self.current_textbuffer_index].down(),
+            Key::Left       => self.textbuffers[self.current_textbuffer_index].left(),
+            Key::Right      => self.textbuffers[self.current_textbuffer_index].right(),
+            _ => {},
+        }
+        self.messagesender.send(Message::FocusCursorMove(
+            self.textbuffers[self.current_textbuffer_index].line_num as u16,
+            self.textbuffers[self.current_textbuffer_index].line_offset as u16,
+        )).unwrap();
+        self.display();
     }
 }

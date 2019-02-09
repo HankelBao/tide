@@ -8,8 +8,8 @@ mod syntaxhighlight;
 mod textdisplay;
 mod filerw;
 
-pub use self::message::{Message, MessageKey};
-pub use self::messagemanager::MessageManager;
+pub use self::message::{Message, MessageSender};
+pub use self::messagemanager::{MessageManager, MessageListener};
 pub use self::textbuffer::TextBuffer;
 pub use self::textline::TextLine;
 pub use self::textediting::TextEditing;

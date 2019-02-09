@@ -4,7 +4,7 @@ use termion::input::MouseTerminal;
 use termion::raw::IntoRawMode;
 use termion::raw::RawTerminal;
 use termion::terminal_size;
-use std::io::{Write, stdout, Stdout};
+use std::io::{Write, stdout, stdin, Stdin, Stdout};
 use crate::core::{Style, FontStyle};
 
 pub use termion::event::{Key, Event, MouseEvent};
@@ -70,6 +70,10 @@ impl Terminal {
         terminal.clear();
         terminal.flush();
         return terminal;
+    }
+
+    pub fn get_stdin(&self) -> Stdin {
+        return stdin()
     }
 
     pub fn clear(&mut self) {

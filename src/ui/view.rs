@@ -3,6 +3,8 @@ use crate::terminal::Terminal;
 
 use std::sync::{Arc, Mutex};
 
+pub type SyncView = Arc<Mutex<View>>;
+
 pub struct View {
     terminal: Arc<Mutex<Terminal>>,
     start_x: u16,
@@ -40,6 +42,10 @@ impl View {
 
     pub fn get_width(&self) -> u16 {
         return self.width
+    }
+
+    pub fn get_height(&self) -> u16 {
+        return self.height
     }
 
     pub fn set_content(&self, display_lines: Vec<DisplayLine>) {

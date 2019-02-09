@@ -10,52 +10,66 @@ use std::env;
 use std::sync::{Arc, Mutex, mpsc};
 use std::thread;
 use std::time::Duration;
+use std::time::Instant;
+use std::io::stdin;
+use std::rc::Rc;
+use std::cell::RefCell;
 
 use crate::core::{HighlightEngine};
+use crate::core::Message;
+use crate::core::MessageManager;
 use crate::components::TextEditor;
 use crate::components::Statusline;
 use crate::ui::ViewManager;
+use crate::ui::{UIComponent, UISelector};
+use crate::ui::SelectorManager;
+use crate::ui::TerminalEventWatcher;
 
-use std::io::stdin;
 use termion::event::{Key, Event};
-use termion::input::TermRead;
 
 fn main() {
     let terminal = Arc::new(Mutex::new(terminal::Terminal::new()));
     let viewmanager = ViewManager::new(terminal.clone());
-    let main_view = viewmanager.main_view.clone();
+
+    let (mut messagemanager, message_recv) = MessageManager::new();
     let highlightengine = HighlightEngine::new();
 
     let args: Vec<String> = env::args().collect();
 
-    let (statusline_display_send, statusline_display_recv) = mpsc::channel();
+    let mut texteditor: Rc<RefCell<TextEditor>> = Rc::new(RefCell::new(match args.get(1) {
+        Some(path) => TextEditor::new_with_file(
+            messagemanager.get_messagesender(),
+            viewmanager.main_view.clone(),
+            &highlightengine,
+            path.clone()),
+        None => TextEditor::new(
+            messagemanager.get_messagesender(),
+            viewmanager.main_view.clone(),
+            &highlightengine),
+    }));
 
-    let mut texteditor: TextEditor = match args.get(1) {
-        Some(path) => TextEditor::new_with_file(main_view.clone(), &highlightengine, path.clone(), statusline_display_send.clone()),
-        None => TextEditor::new(main_view.clone(), &highlightengine, statusline_display_send.clone()),
-    };
+    let mut statusline: Rc<RefCell<Statusline>> = Rc::new(RefCell::new(Statusline::new(
+        messagemanager.get_messagesender(),
+        viewmanager.statusline_view.clone(),
+        &highlightengine)));
 
-    let mut statusline: Statusline = Statusline::new(viewmanager.statusline_view.clone(), &highlightengine, statusline_display_recv);
-    statusline.start_display_thread();
 
-    texteditor.start_display_thread();
+    texteditor.borrow_mut().display();
+    statusline.borrow_mut().display();
 
-    for e in stdin().events() {
-        let evt = e.unwrap();
-        match evt {
-            Event::Key(key) => {
-                match key {
-                    Key::Ctrl('q')  => break,
-                    _ => {texteditor.key(key)},
-                }
-            },
-            _ => {},
-        };
-    }
+    let mut selectormanager = Rc::new(RefCell::new(SelectorManager::new(texteditor.clone())));
 
-    {
-        let mut t = terminal.lock().unwrap();
-        t.finish();
-        drop(t);
-    };
+    messagemanager.register(texteditor);
+    messagemanager.register(statusline);
+    messagemanager.register(selectormanager);
+
+    let terminalevent_watcher = TerminalEventWatcher::new(
+        messagemanager.get_messagesender(),
+        terminal.clone());
+    terminalevent_watcher.start_watch_thread();
+
+    messagemanager.start_loop(message_recv);
+
+    { terminal.lock().unwrap().finish(); }
+
 }

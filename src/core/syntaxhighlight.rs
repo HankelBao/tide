@@ -1,3 +1,4 @@
+use super::Message;
 use crate::terminal::{StyleDescriptor};
 use super::TextBuffer;
 use super::HighlightEngine;
@@ -26,9 +27,11 @@ impl SyntaxHighlight for TextBuffer {
         let ps = highlightengine.ps.clone();
         let file_path = { self.file_path.clone() };
         let theme = highlightengine.ts.themes["base16-ocean.dark"].clone();
-        let (highlight_send, highlight_recv): (mpsc::Sender<(u32, u32)>, mpsc::Receiver<(u32, u32)>)= mpsc::channel();
-        let display_send = self.display_send.clone();
         let lines = self.lines.clone();
+        let messagesender = self.messagesender.clone();
+        let buffer_index = self.buffer_index.clone();
+        let (highlight_send, highlight_recv) = mpsc::channel();
+        self.highlight_send = Some(highlight_send);
 
         thread::spawn(move || {
             let syntax = match ps.find_syntax_for_file(&file_path) {
@@ -52,7 +55,6 @@ impl SyntaxHighlight for TextBuffer {
             let mut state_cache = vec![current_state.clone()];
 
             let mut target_line_num: usize = 0;
-
 
             loop {
                 /*
@@ -86,7 +88,7 @@ impl SyntaxHighlight for TextBuffer {
                 if current_line_num >= lines_len {
                     thread::sleep(Duration::from_millis(100));
                     continue
-                } 
+                }
 
                 /*
                  * Record when at cache point
@@ -121,13 +123,12 @@ impl SyntaxHighlight for TextBuffer {
                  * Check if needed to consult the caller
                  */
                 if current_line_num == target_line_num || current_line_num == lines_len-1 {
-                    { display_send.lock().unwrap().send(true).unwrap(); }
+                    messagesender.send(Message::HighlightReady(buffer_index)).unwrap();
                 }
-                
+
                 current_line_num += 1;
             }
         });
-        self.highlight_send = Some(highlight_send);
     }
 
     fn highlight_from(&self, index: u32) {
