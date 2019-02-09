@@ -32,20 +32,21 @@ impl SyntaxHighlight for TextBuffer {
         let buffer_index = self.buffer_index.clone();
         let (highlight_send, highlight_recv) = mpsc::channel();
         self.highlight_send = Some(highlight_send);
+        let syntax = match ps.find_syntax_for_file(&file_path) {
+            Ok(o) => {
+                match o {
+                    Some(s) => s,
+                    None => ps.find_syntax_plain_text()
+                }
+            },
+            Err(_) => ps.find_syntax_plain_text()
+        }.clone();
+        self.syntax_name = syntax.name.clone();
 
         thread::spawn(move || {
-            let syntax = match ps.find_syntax_for_file(&file_path) {
-                Ok(o) => {
-                    match o {
-                        Some(s) => s,
-                        None => ps.find_syntax_plain_text()
-                    }
-                },
-                Err(_) => ps.find_syntax_plain_text()
-            };
             let highlighter = Highlighter::new(&theme);
             let initial_highlight_state = HighlightState::new(&highlighter, ScopeStack::new());
-            let initial_parse_state = ParseState::new(syntax);
+            let initial_parse_state = ParseState::new(&syntax);
 
             let mut current_line_num: usize = 0;
             let mut current_state = HighlightCache {

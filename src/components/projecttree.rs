@@ -7,6 +7,8 @@ use crate::core::HighlightEngine;
 
 use std::fs;
 use std::sync::{Arc, Mutex};
+use std::rc::Rc;
+use std::cell::RefCell;
 
 pub struct NodeLine {
     name: String,
@@ -56,14 +58,14 @@ impl ProjectNode {
 
 pub struct ProjectTree {
     messagesender: MessageSender,
-    view: Arc<Mutex<View>>,
+    view: Rc<RefCell<View>>,
     style: Style,
     projectnode_root: ProjectNode,
     display_lines: Vec<DisplayLine>,
 }
 
 impl ProjectTree {
-    pub fn new(messagesender: MessageSender, view: Arc<Mutex<View>>, highlightengine: &HighlightEngine) -> ProjectTree {
+    pub fn new(messagesender: MessageSender, view: Rc<RefCell<View>>, highlightengine: &HighlightEngine) -> ProjectTree {
         let mut projecttree = ProjectTree {
             messagesender,
             view,
@@ -79,7 +81,7 @@ impl ProjectTree {
 impl UIComponent for ProjectTree {
     fn display(&mut self) {
         let display_lines = self.projectnode_root.get_display_lines(0);
-        let view = self.view.lock().unwrap();
+        let view = self.view.borrow();
         view.set_content(display_lines, self.style);
     }
 }

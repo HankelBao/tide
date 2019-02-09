@@ -3,7 +3,7 @@ use super::TextBuffer;
 
 pub trait TextDisplay {
     fn adjust_viewpoint(&mut self, width: u32, height: u32);
-    fn get_display_lines(&self, width: u32, height: u32) -> Vec<DisplayLine>;
+    fn get_display_lines(&mut self, width: u32, height: u32) -> Vec<DisplayLine>;
     fn get_local_cursor(&self) -> (u16, u16);
 }
 
@@ -24,7 +24,8 @@ impl TextDisplay for TextBuffer {
         }
     }
 
-    fn get_display_lines(&self, width: u32, height: u32) -> Vec<DisplayLine> {
+    fn get_display_lines(&mut self, width: u32, height: u32) -> Vec<DisplayLine> {
+        self.adjust_viewpoint(width, height);
         let mut return_content: Vec<DisplayLine> = Vec::new();
         let lines = self.lines.lock().unwrap();
         for i in 0..height {

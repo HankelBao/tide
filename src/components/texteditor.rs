@@ -17,10 +17,12 @@ use std::sync::{Arc, Mutex, mpsc};
 use std::thread;
 use std::time::Duration;
 use std::time::Instant;
+use std::rc::Rc;
+use std::cell::RefCell;
 
 pub struct TextEditor {
     messagesender: mpsc::Sender<Message>,
-    view: Arc<Mutex<View>>,
+    view: Rc<RefCell<View>>,
 
     textbuffers: Vec<TextBuffer>,
     current_textbuffer_index: usize,
@@ -28,15 +30,15 @@ pub struct TextEditor {
 }
 
 impl TextEditor {
-    pub fn new(messagesender: mpsc::Sender<Message>, view: Arc<Mutex<View>>, highlightengine: &HighlightEngine) -> TextEditor {
+    pub fn new(messagesender: mpsc::Sender<Message>, view: Rc<RefCell<View>>, highlightengine: &HighlightEngine) -> TextEditor {
         let mut first_textbuffer = TextBuffer::new(0, messagesender.clone());
         first_textbuffer.start_highlight_thread(highlightengine);
-        first_textbuffer.view_height = {view.lock().unwrap().get_height() as u32};
+        first_textbuffer.view_height = view.borrow().height as u32;
         first_textbuffer.highlight_from(0);
         messagesender.send(Message::FocusCursorMove(0, 0)).unwrap();
         let texteditor = TextEditor {
             messagesender,
-            view,
+            view: view,
             textbuffers: vec![first_textbuffer],
             current_textbuffer_index: 0,
             default_style: highlightengine.default_style.clone(),
@@ -44,13 +46,14 @@ impl TextEditor {
         return texteditor;
     }
 
-    pub fn new_with_file(messagesender: mpsc::Sender<Message>, view: Arc<Mutex<View>>, highlightengine: &HighlightEngine, file_path: String) -> TextEditor {
+    pub fn new_with_file(messagesender: mpsc::Sender<Message>, view: Rc<RefCell<View>>, highlightengine: &HighlightEngine, file_path: String) -> TextEditor {
         let mut first_textbuffer = TextBuffer::from_file(0, messagesender.clone(), file_path.clone());
         first_textbuffer.start_highlight_thread(highlightengine);
-        first_textbuffer.view_height = {view.lock().unwrap().get_height() as u32};
+        first_textbuffer.view_height = view.borrow().height as u32;
         first_textbuffer.highlight_from(0);
         messagesender.send(Message::FocusFileUpdate(file_path.clone())).unwrap();
         messagesender.send(Message::FocusCursorMove(0, 0)).unwrap();
+        messagesender.send(Message::FocusSyntaxUpdate(first_textbuffer.syntax_name.clone())).unwrap();
         let texteditor = TextEditor {
             messagesender,
             view,
@@ -81,9 +84,8 @@ impl MessageListener for TextEditor {
 impl UIComponent for TextEditor {
     fn display(&mut self) {
         let textbuffer = &mut self.textbuffers[self.current_textbuffer_index];
-        let v = self.view.lock().unwrap();
+        let v = self.view.borrow();
         let (t_width, t_height) = v.get_scale();
-        textbuffer.adjust_viewpoint(t_width as u32, t_height as u32);
         let display_lines = textbuffer.get_display_lines(t_width as u32, t_height as u32);
         v.set_content(display_lines, self.default_style);
         v.flush();
@@ -93,7 +95,7 @@ impl UIComponent for TextEditor {
 impl UISelector for TextEditor {
     fn display_cursor(&mut self) {
         let textbuffer = &mut self.textbuffers[self.current_textbuffer_index];
-        let v = self.view.lock().unwrap();
+        let v = self.view.borrow();
         let (cursor_x, cursor_y) = textbuffer.get_local_cursor();
         v.set_cursor(cursor_x, cursor_y);
         v.flush();

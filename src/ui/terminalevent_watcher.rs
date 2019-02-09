@@ -5,6 +5,7 @@ use termion::terminal_size;
 use std::io::stdin;
 use std::sync::{Arc, Mutex};
 use std::thread;
+use std::time::Duration;
 
 pub struct TerminalEventWatcher {
     messagesender: MessageSender,
@@ -45,7 +46,6 @@ impl TerminalEventWatcher {
                         messagesender.send(Message::TerminalResize(t_width, t_height)).unwrap();
                     }
                 }
-
             }
         });
     }
