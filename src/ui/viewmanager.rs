@@ -25,15 +25,15 @@ impl ViewManager {
         let (t_width, t_height) =  { terminal.lock().unwrap().get_scale().clone() };
         let vm = ViewManager {
             terminal: terminal.clone(),
-            left_view: Arc::new(Mutex::new(View::from(terminal.clone(), 1, 1, 0, t_height-1))),
+            left_view: Arc::new(Mutex::new(View::from(terminal.clone(), 1, 1, 5, t_height-1))),
             right_view: Arc::new(Mutex::new(View::from(terminal.clone(), t_width, 1, 0, t_height-1))),
-            bottom_view: Arc::new(Mutex::new(View::from(terminal.clone(), 1, t_height, t_width, 0))),
-            main_view: Arc::new(Mutex::new(View::from(terminal.clone(), 1, 1, t_width, t_height-1))),
+            bottom_view: Arc::new(Mutex::new(View::from(terminal.clone(), 6, t_height, t_width, 0))),
+            main_view: Arc::new(Mutex::new(View::from(terminal.clone(), 6, 1, t_width-5, t_height-1))),
             statusline_view: Arc::new(Mutex::new(View::from(terminal.clone(), 1, t_height, t_width, 1))),
         };
         vm
     }
-    
+
     pub fn set_left_view_width(&self) {
 
     }
@@ -48,7 +48,7 @@ impl ViewManager {
         thread::spawn(move || {
             let (current_width, current_height) = {terminal.lock().unwrap().get_scale() };
             if current_width != origin_width && current_height != origin_height {
-                
+
             }
         });
     }

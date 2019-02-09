@@ -20,6 +20,7 @@ use crate::core::Message;
 use crate::core::MessageManager;
 use crate::components::TextEditor;
 use crate::components::Statusline;
+use crate::components::ProjectTree;
 use crate::ui::ViewManager;
 use crate::ui::{UIComponent, UISelector};
 use crate::ui::SelectorManager;
@@ -53,9 +54,14 @@ fn main() {
         viewmanager.statusline_view.clone(),
         &highlightengine)));
 
+    /*let mut projecttree = Rc::new(RefCell::new(ProjectTree::new(
+        messagemanager.get_messagesender(),
+        viewmanager.left_view.clone(),
+    )));*/
 
     texteditor.borrow_mut().display();
     statusline.borrow_mut().display();
+    //projecttree.borrow_mut().display();
 
     let mut selectormanager = Rc::new(RefCell::new(SelectorManager::new(texteditor.clone())));
 

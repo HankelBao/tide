@@ -73,20 +73,25 @@ impl MessageListener for TextEditor {
 
 impl UIComponent for TextEditor {
     fn display(&mut self) {
-        let mut textbuffer = &mut self.textbuffers[self.current_textbuffer_index];
-        let mut v = self.view.lock().unwrap();
+        let textbuffer = &mut self.textbuffers[self.current_textbuffer_index];
+        let v = self.view.lock().unwrap();
         let (t_width, t_height) = v.get_scale();
         textbuffer.adjust_viewpoint(t_width as u32, t_height as u32);
         let display_lines = textbuffer.get_display_lines(t_width as u32, t_height as u32);
         v.set_content(display_lines);
-
-        let (cursor_x, cursor_y) = textbuffer.get_local_cursor();
-        v.set_cursor(cursor_x, cursor_y);
         v.flush();
     }
 }
 
 impl UISelector for TextEditor {
+    fn display_cursor(&mut self) {
+        let textbuffer = &mut self.textbuffers[self.current_textbuffer_index];
+        let v = self.view.lock().unwrap();
+        let (cursor_x, cursor_y) = textbuffer.get_local_cursor();
+        v.set_cursor(cursor_x, cursor_y);
+        v.flush();
+    }
+
     fn key(&mut self, key: Key) {
         match key {
             Key::Char(ch)   => self.textbuffers[self.current_textbuffer_index].insert(ch),

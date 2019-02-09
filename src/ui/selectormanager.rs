@@ -22,6 +22,7 @@ impl MessageListener for SelectorManager {
         match message {
             Message::TerminalKey(key) => {
                 self.focus_selector.borrow_mut().key(key);
+                self.focus_selector.borrow_mut().display_cursor();
             },
             _ => {},
         }

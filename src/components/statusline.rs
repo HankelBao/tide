@@ -4,6 +4,7 @@ use crate::core::HighlightEngine;
 use crate::core::Style;
 use crate::terminal::StyleDescriptor;
 use crate::core::{Message, MessageSender, MessageListener};
+use crate::ui::UIComponent;
 
 use std::sync::{Arc, Mutex, mpsc};
 use std::thread;
@@ -30,8 +31,10 @@ impl Statusline {
         };
         statusline
     }
+}
 
-    pub fn display(&self) {
+impl UIComponent for Statusline {
+    fn display(&mut self) {
         let mut v = self.view.lock().unwrap();
         let width = v.get_width() as usize;
         let file_info = self.file_name.clone();
