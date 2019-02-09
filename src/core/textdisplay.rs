@@ -48,7 +48,7 @@ impl TextDisplay for TextBuffer {
                     cloned_style.size -= offset - current_style_start;
                 }
                 if current_style_start <= (offset + width as usize) && (offset + width as usize) < current_style_start+style.size {
-                    cloned_style.size -= current_style_start+style.size-offset;
+                    cloned_style.size -= current_style_start+style.size-(offset+width as usize);
                 }
                 current_style_start += style.size;
                 styles.push(cloned_style);

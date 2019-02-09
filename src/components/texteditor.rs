@@ -11,10 +11,12 @@ use crate::core::TextEditing;
 use crate::core::FileRW;
 use crate::ui::View;
 use crate::ui::{UIComponent, UISelector};
+use crate::core::Style;
 
 use std::sync::{Arc, Mutex, mpsc};
 use std::thread;
 use std::time::Duration;
+use std::time::Instant;
 
 pub struct TextEditor {
     messagesender: mpsc::Sender<Message>,
@@ -22,6 +24,7 @@ pub struct TextEditor {
 
     textbuffers: Vec<TextBuffer>,
     current_textbuffer_index: usize,
+    default_style: Style,
 }
 
 impl TextEditor {
@@ -30,11 +33,13 @@ impl TextEditor {
         first_textbuffer.start_highlight_thread(highlightengine);
         first_textbuffer.view_height = {view.lock().unwrap().get_height() as u32};
         first_textbuffer.highlight_from(0);
+        messagesender.send(Message::FocusCursorMove(0, 0)).unwrap();
         let texteditor = TextEditor {
             messagesender,
             view,
             textbuffers: vec![first_textbuffer],
             current_textbuffer_index: 0,
+            default_style: highlightengine.default_style.clone(),
         };
         return texteditor;
     }
@@ -45,11 +50,13 @@ impl TextEditor {
         first_textbuffer.view_height = {view.lock().unwrap().get_height() as u32};
         first_textbuffer.highlight_from(0);
         messagesender.send(Message::FocusFileUpdate(file_path.clone())).unwrap();
+        messagesender.send(Message::FocusCursorMove(0, 0)).unwrap();
         let texteditor = TextEditor {
             messagesender,
             view,
             textbuffers: vec![first_textbuffer],
             current_textbuffer_index: 0,
+            default_style: highlightengine.default_style.clone(),
         };
         return texteditor;
     }
@@ -78,7 +85,7 @@ impl UIComponent for TextEditor {
         let (t_width, t_height) = v.get_scale();
         textbuffer.adjust_viewpoint(t_width as u32, t_height as u32);
         let display_lines = textbuffer.get_display_lines(t_width as u32, t_height as u32);
-        v.set_content(display_lines);
+        v.set_content(display_lines, self.default_style);
         v.flush();
     }
 }

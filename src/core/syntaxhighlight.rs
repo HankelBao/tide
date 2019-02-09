@@ -9,7 +9,7 @@ use std::sync::{mpsc};
 use syntect::parsing::{ParseState, ScopeStack};
 use syntect::highlighting::{Highlighter, HighlightState, HighlightIterator, Style};
 
-static CACHE_RANGE: usize = 3;
+static CACHE_RANGE: usize = 100;
 
 #[derive(Clone)]
 pub struct HighlightCache {
@@ -26,7 +26,7 @@ impl SyntaxHighlight for TextBuffer {
     fn start_highlight_thread(&mut self, highlightengine: &HighlightEngine) {
         let ps = highlightengine.ps.clone();
         let file_path = { self.file_path.clone() };
-        let theme = highlightengine.ts.themes["base16-ocean.dark"].clone();
+        let theme = highlightengine.theme.clone();
         let lines = self.lines.clone();
         let messagesender = self.messagesender.clone();
         let buffer_index = self.buffer_index.clone();
@@ -76,6 +76,14 @@ impl SyntaxHighlight for TextBuffer {
                         target_line_num = target_line_num_local as usize;
                     },
                     Err(mpsc::TryRecvError::Disconnected) => {
+                        /*
+                         * If the paired sender variable is dropped,
+                         * this thread is no longer useful.
+                         *
+                         * This is how a texteditor kills
+                         * the syntax highlighting thread for a buffer.
+                         * (Start a new highlighting thread for the same buffer)
+                         */
                         break;
                     }
                     _ => {},

@@ -38,17 +38,17 @@ impl UIComponent for Statusline {
         let mut v = self.view.lock().unwrap();
         let width = v.get_width() as usize;
         let file_info = self.file_name.clone();
-        let cursor_info = self.line_num.clone()+":"+&self.line_offset.clone();
+        let cursor_info = String::from("Line ") + &self.line_num.clone() + ", Column " + &self.line_offset.clone();
 
-        let left_aligned = file_info;
-        let right_aligned = cursor_info;
+        let left_aligned = String::from(" × ") + &file_info + ", " + &cursor_info;
+        let right_aligned = String::from("");
 
         let mut display_content: String = " ".repeat(width);
         display_content.replace_range(..left_aligned.len(), &left_aligned);
         display_content.replace_range(width-right_aligned.len().., &right_aligned);
         let displayline = DisplayLine::from(display_content, vec![StyleDescriptor::from(self.style.clone(), 0)]);
 
-        v.set_content(vec![displayline]);
+        v.set_content(vec![displayline], self.style);
         v.flush();
     }
 }
@@ -61,8 +61,8 @@ impl MessageListener for Statusline {
                 self.display();
             },
             Message::FocusCursorMove(line_num, line_offset) => {
-                self.line_num = line_num.to_string();
-                self.line_offset = line_offset.to_string();
+                self.line_num = (line_num+1).to_string();
+                self.line_offset = (line_offset+1).to_string();
                 self.display();
             },
             _ => {},

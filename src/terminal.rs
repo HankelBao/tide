@@ -6,20 +6,10 @@ use termion::raw::RawTerminal;
 use termion::terminal_size;
 use std::io::{Write, stdout, stdin, Stdin, Stdout};
 use crate::core::{Style, FontStyle};
+use crate::core::HighlightEngine;
 
 pub use termion::event::{Key, Event, MouseEvent};
 pub use termion::input::TermRead;
-
-pub struct Terminal {
-    /*
-     * The main event loop should have the
-     * ownership of stdin, so stdin is not
-     * restored here.
-     */
-    screen: MouseTerminal<RawTerminal<Stdout>>,
-    width: u16,
-    height: u16,
-}
 
 #[derive(Clone, Debug)]
 pub struct StyleDescriptor {
@@ -56,6 +46,17 @@ impl DisplayLine {
             styles: style_descriptors,
         };
     }
+}
+
+pub struct Terminal {
+    /*
+     * The main event loop should have the
+     * ownership of stdin, so stdin is not
+     * restored here.
+     */
+    screen: MouseTerminal<RawTerminal<Stdout>>,
+    width: u16,
+    height: u16,
 }
 
 impl Terminal {
@@ -102,7 +103,11 @@ impl Terminal {
         };
     }
 
-    pub fn set_content(&mut self, start_x: u16, start_y: u16, width: u16, height: u16, content: Vec<DisplayLine>) {
+    fn reset_style(&mut self) {
+        write!(self.screen, "{}", termion::style::Reset).unwrap();
+    }
+
+    pub fn set_content(&mut self, start_x: u16, start_y: u16, width: u16, height: u16, content: Vec<DisplayLine>, default_style: Style) {
         /*
          * Warning: Performance is critical here!
          * Time matters more than memory.
@@ -126,22 +131,26 @@ impl Terminal {
 
                     let content_len = display_line.content.len();
                     if current_style_start < content_len {
-                        let content: String = display_line.content.chars().skip(current_style_start).take(content_len - current_style_start).collect();
+                        self.switch_style(default_style.clone());
+                        let content: String = display_line.content.chars().skip(current_style_start).take(width as usize- current_style_start).collect();
                         write!(self.screen, "{}", content).unwrap();
                     }
 
                     if content_len < width as usize {
+                        self.switch_style(default_style.clone());
                         write!(self.screen, "{}", " ".repeat(width as usize - content_len)).unwrap();
                     }
 
                 },
                 None => {
+                    self.switch_style(default_style.clone());
                     write!(self.screen, "{}", " ".repeat(width as usize)).unwrap();
                 },
             }
         }
         write!(self.screen, "{}", termion::cursor::Restore).unwrap();
         write!(self.screen, "{}", termion::cursor::Show).unwrap();
+        self.reset_style();
     }
 
     pub fn set_cursor_pos(&mut self, x: u16, y: u16) {

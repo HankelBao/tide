@@ -11,6 +11,7 @@ pub struct SelectorManager {
 
 impl SelectorManager {
     pub fn new(uiselector: Rc<RefCell<UISelector>>) -> SelectorManager {
+        uiselector.borrow_mut().display_cursor();
         SelectorManager {
             focus_selector: uiselector,
         }

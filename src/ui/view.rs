@@ -1,5 +1,6 @@
 use crate::terminal::DisplayLine;
 use crate::terminal::Terminal;
+use crate::core::Style;
 
 use std::sync::{Arc, Mutex};
 
@@ -48,9 +49,9 @@ impl View {
         return self.height
     }
 
-    pub fn set_content(&self, display_lines: Vec<DisplayLine>) {
+    pub fn set_content(&self, display_lines: Vec<DisplayLine>, default_style: Style) {
         let mut terminal = self.terminal.lock().unwrap();
-        terminal.set_content(self.start_x, self.start_y, self.width, self.height, display_lines);
+        terminal.set_content(self.start_x, self.start_y, self.width, self.height, display_lines, default_style);
     }
 
     pub fn set_cursor(&self, x: u16, y: u16) {

@@ -2,9 +2,17 @@ use crate::core::{Message, MessageSender};
 use crate::ui::{UIComponent, UISelector};
 use crate::ui::{View};
 use crate::terminal::DisplayLine;
+use crate::core::Style;
+use crate::core::HighlightEngine;
 
 use std::fs;
 use std::sync::{Arc, Mutex};
+
+pub struct NodeLine {
+    name: String,
+    path: String,
+    display_line: DisplayLine,
+}
 
 pub struct ProjectNode {
     name: String,
@@ -26,8 +34,8 @@ impl ProjectNode {
         if let Ok(entries) = fs::read_dir(self.path.clone()) {
             for entry in entries {
                 if let Ok(entry) = entry {
-                    let name = format!("{:?}", entry.file_name());
-                    let path = format!("{:?}", entry.path());
+                    let name = format!("{}", entry.file_name().into_string().unwrap());
+                    let path = format!("{}", entry.path().into_os_string().into_string().unwrap());
                     self.children.push(ProjectNode::new(name, path));
                 }
             }
@@ -35,7 +43,7 @@ impl ProjectNode {
     }
 
     pub fn get_display_lines(&self, parent_indent_level: usize) -> Vec<DisplayLine> {
-        let title_content = " ".repeat(parent_indent_level*4)+&self.name.clone();
+        let title_content = " ".repeat(parent_indent_level*2) + "-" + &self.name.clone();
         let first_displayline = DisplayLine::from(title_content, Vec::new());
         let mut display_lines = vec![first_displayline];
         for child in &self.children {
@@ -49,18 +57,22 @@ impl ProjectNode {
 pub struct ProjectTree {
     messagesender: MessageSender,
     view: Arc<Mutex<View>>,
+    style: Style,
     projectnode_root: ProjectNode,
     display_lines: Vec<DisplayLine>,
 }
 
 impl ProjectTree {
-    pub fn new(messagesender: MessageSender, view: Arc<Mutex<View>>) -> ProjectTree {
-        ProjectTree {
+    pub fn new(messagesender: MessageSender, view: Arc<Mutex<View>>, highlightengine: &HighlightEngine) -> ProjectTree {
+        let mut projecttree = ProjectTree {
             messagesender,
             view,
+            style: highlightengine.inversed_style.clone(),
             projectnode_root: ProjectNode::new(String::from("Project"), String::from("./")),
             display_lines: Vec::new(),
-        }
+        };
+        projecttree.projectnode_root.build_children();
+        projecttree
     }
 }
 
@@ -68,6 +80,6 @@ impl UIComponent for ProjectTree {
     fn display(&mut self) {
         let display_lines = self.projectnode_root.get_display_lines(0);
         let view = self.view.lock().unwrap();
-        view.set_content(display_lines);
+        view.set_content(display_lines, self.style);
     }
 }

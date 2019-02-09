@@ -29,11 +29,12 @@ use crate::ui::TerminalEventWatcher;
 use termion::event::{Key, Event};
 
 fn main() {
+    let highlightengine = HighlightEngine::new(String::from("base16-ocean.dark"));
+
     let terminal = Arc::new(Mutex::new(terminal::Terminal::new()));
     let viewmanager = ViewManager::new(terminal.clone());
 
     let (mut messagemanager, message_recv) = MessageManager::new();
-    let highlightengine = HighlightEngine::new();
 
     let args: Vec<String> = env::args().collect();
 
@@ -52,12 +53,14 @@ fn main() {
     let mut statusline: Rc<RefCell<Statusline>> = Rc::new(RefCell::new(Statusline::new(
         messagemanager.get_messagesender(),
         viewmanager.statusline_view.clone(),
-        &highlightengine)));
+        &highlightengine
+    )));
 
-    /*let mut projecttree = Rc::new(RefCell::new(ProjectTree::new(
+    let mut projecttree = Rc::new(RefCell::new(ProjectTree::new(
         messagemanager.get_messagesender(),
         viewmanager.left_view.clone(),
-    )));*/
+        &highlightengine
+    )));
 
     texteditor.borrow_mut().display();
     statusline.borrow_mut().display();
@@ -71,7 +74,7 @@ fn main() {
 
     let terminalevent_watcher = TerminalEventWatcher::new(
         messagemanager.get_messagesender(),
-        terminal.clone());
+    );
     terminalevent_watcher.start_watch_thread();
 
     messagemanager.start_loop(message_recv);

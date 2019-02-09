@@ -1,28 +1,26 @@
 use crate::core::{Message, MessageSender};
-use crate::terminal::Terminal;
 use crate::terminal::{Event, Key};
 use termion::input::TermRead;
+use termion::terminal_size;
+use std::io::stdin;
 use std::sync::{Arc, Mutex};
 use std::thread;
 
 pub struct TerminalEventWatcher {
     messagesender: MessageSender,
-    terminal: Arc<Mutex<Terminal>>,
 }
 
 impl TerminalEventWatcher {
-    pub fn new(messagesender: MessageSender, terminal: Arc<Mutex<Terminal>>) -> TerminalEventWatcher {
+    pub fn new(messagesender: MessageSender) -> TerminalEventWatcher {
         return TerminalEventWatcher {
             messagesender,
-            terminal,
         }
     }
 
     pub fn start_watch_thread(&self) {
         let messagesender = self.messagesender.clone();
-        let terminal = self.terminal.clone();
         thread::spawn(move || {
-            let stdin = {terminal.lock().unwrap().get_stdin()};
+            let stdin = stdin();
             for e in stdin.events() {
                 let evt = e.unwrap();
                 match evt {
@@ -36,5 +34,20 @@ impl TerminalEventWatcher {
                 };
             }
         });
+        let messagesender = self.messagesender.clone();
+        thread::spawn(move || {
+            let (mut t_width, mut t_height) = (0, 0);
+            loop {
+                if let Ok((width, height)) = terminal_size() {
+                    if width != t_width || height != t_height {
+                        t_width = width;
+                        t_height = height;
+                        messagesender.send(Message::TerminalResize(t_width, t_height)).unwrap();
+                    }
+                }
+
+            }
+        });
     }
+
 }
