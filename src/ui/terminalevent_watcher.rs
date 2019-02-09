@@ -28,7 +28,7 @@ impl TerminalEventWatcher {
                 match evt {
                     Event::Key(key) => {
                         match key {
-                            Key::Ctrl('q')  => { messagesender.send(Message::Quit).unwrap() },
+                            Key::Ctrl('q')  => { messagesender.send(Message::Quit).unwrap(); break },
                             _ => { messagesender.send(Message::TerminalKey(key)).unwrap(); },
                         }
                     },
