@@ -31,9 +31,9 @@ pub struct TextEditor {
 
 impl TextEditor {
     pub fn new(messagesender: mpsc::Sender<Message>, view: Rc<RefCell<View>>, highlightengine: &HighlightEngine) -> TextEditor {
-        let mut first_textbuffer = TextBuffer::new(0, messagesender.clone());
+        let mut first_textbuffer = TextBuffer::new(0, messagesender.clone(), highlightengine);
         first_textbuffer.start_highlight_thread(highlightengine);
-        first_textbuffer.view_height = view.borrow().height as u32;
+        first_textbuffer.view_height = 200;
         first_textbuffer.highlight_from(0);
         messagesender.send(Message::FocusCursorMove(0, 0)).unwrap();
         let texteditor = TextEditor {
@@ -47,9 +47,9 @@ impl TextEditor {
     }
 
     pub fn new_with_file(messagesender: mpsc::Sender<Message>, view: Rc<RefCell<View>>, highlightengine: &HighlightEngine, file_path: String) -> TextEditor {
-        let mut first_textbuffer = TextBuffer::from_file(0, messagesender.clone(), file_path.clone());
+        let mut first_textbuffer = TextBuffer::from_file(0, messagesender.clone(), highlightengine, file_path.clone());
         first_textbuffer.start_highlight_thread(highlightengine);
-        first_textbuffer.view_height = view.borrow().height as u32;
+        first_textbuffer.view_height = 200;
         first_textbuffer.highlight_from(0);
         messagesender.send(Message::FocusFileUpdate(file_path.clone())).unwrap();
         messagesender.send(Message::FocusCursorMove(0, 0)).unwrap();
@@ -83,9 +83,10 @@ impl MessageListener for TextEditor {
 
 impl UIComponent for TextEditor {
     fn display(&mut self) {
-        let textbuffer = &mut self.textbuffers[self.current_textbuffer_index];
+        let mut textbuffer = &mut self.textbuffers[self.current_textbuffer_index];
         let v = self.view.borrow();
         let (t_width, t_height) = v.get_scale();
+        textbuffer.adjust_viewpoint(t_width as u32, t_height as u32);
         let display_lines = textbuffer.get_display_lines(t_width as u32, t_height as u32);
         v.set_content(display_lines, self.default_style);
         v.flush();

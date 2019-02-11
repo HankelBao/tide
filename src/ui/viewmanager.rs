@@ -71,7 +71,7 @@ impl ViewManager {
          * adjust widths
          * left_view, right_view don't need to update.
          */
-        self.statusline_view.borrow_mut().width = self.width;
+        self.statusline_view.borrow_mut().width = self.width+1;
         self.main_view.borrow_mut().width = self.width - self.left_view.borrow().width - self.right_view.borrow().width;
         self.bottom_view.borrow_mut().width = self.width - self.left_view.borrow().width - self.right_view.borrow().width;
 

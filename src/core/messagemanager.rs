@@ -29,7 +29,7 @@ impl MessageManager {
 
     pub fn start_loop(&mut self, message_recv : mpsc::Receiver<Message>) {
         loop {
-            if let Ok(message) = message_recv.try_recv() {
+            if let Ok(message) = message_recv.recv() {
                 if let Message::Quit = message {
                     break;
                 };

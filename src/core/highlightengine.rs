@@ -9,6 +9,7 @@ pub struct HighlightEngine {
     pub theme: Theme,
     pub default_style: Style,
     pub inversed_style: Style,
+    pub line_num_style: Style,
 }
 
 impl<'a> HighlightEngine {
@@ -30,6 +31,11 @@ impl<'a> HighlightEngine {
                 foreground: theme.settings.background.unwrap_or_else(|| Color::BLACK),
                 font_style: FontStyle::empty(),
             },
+            line_num_style: Style {
+                background: theme.settings.gutter.unwrap_or_else(|| Color::BLACK),
+                foreground: theme.settings.foreground.unwrap_or_else(|| Color::WHITE),
+                font_style: FontStyle::empty(),
+            }
         }
     }
 }

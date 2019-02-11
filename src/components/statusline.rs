@@ -45,7 +45,7 @@ impl UIComponent for Statusline {
         let cursor_info = String::from("Line ") + &self.line_num.clone() + ", Column " + &self.line_offset.clone();
         let syntax_name = self.syntax_name.clone();
 
-        let left_aligned = String::from(" » ") + &file_info + ", " + &cursor_info;
+        let left_aligned = String::from("» ") + &file_info + ", " + &cursor_info;
         let right_aligned = syntax_name;
 
         let mut display_content: String = " ".repeat(width);

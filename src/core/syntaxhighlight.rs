@@ -31,7 +31,6 @@ impl SyntaxHighlight for TextBuffer {
         let messagesender = self.messagesender.clone();
         let buffer_index = self.buffer_index.clone();
         let (highlight_send, highlight_recv) = mpsc::channel();
-        self.highlight_send = Some(highlight_send);
         let syntax = match ps.find_syntax_for_file(&file_path) {
             Ok(o) => {
                 match o {
@@ -41,7 +40,9 @@ impl SyntaxHighlight for TextBuffer {
             },
             Err(_) => ps.find_syntax_plain_text()
         }.clone();
+
         self.syntax_name = syntax.name.clone();
+        self.highlight_send = Some(highlight_send);
 
         thread::spawn(move || {
             let highlighter = Highlighter::new(&theme);
@@ -63,6 +64,9 @@ impl SyntaxHighlight for TextBuffer {
                  */
                 match highlight_recv.try_recv() {
                     Ok((request_line_num, target_line_num_local)) => {
+                        if current_line_num >= target_line_num_local as usize {
+                            messagesender.send(Message::HighlightReady(buffer_index)).unwrap();
+                        }
                         if (request_line_num as usize) < current_line_num {
                             /*
                             * Update cureent_line_num and current_state here.
@@ -95,7 +99,7 @@ impl SyntaxHighlight for TextBuffer {
                  */
                 let lines_len = { lines.lock().unwrap().len().clone() };
                 if current_line_num >= lines_len {
-                    thread::sleep(Duration::from_millis(100));
+                    thread::sleep(Duration::from_millis(200));
                     continue
                 }
 

@@ -46,6 +46,7 @@ impl TerminalEventWatcher {
                         messagesender.send(Message::TerminalResize(t_width, t_height)).unwrap();
                     }
                 }
+                thread::sleep(Duration::from_millis(200));
             }
         });
     }

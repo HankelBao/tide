@@ -31,7 +31,7 @@ use crate::terminal::Terminal;
 use termion::event::{Key, Event};
 
 fn main() {
-    let highlightengine = HighlightEngine::new(String::from("base16-ocean.dark"));
+    let highlightengine = HighlightEngine::new(String::from("Solarized (dark)"));
 
     let (mut messagemanager, message_recv) = MessageManager::new();
 
@@ -39,6 +39,11 @@ fn main() {
     let viewmanager = Rc::new(RefCell::new(ViewManager::new(messagemanager.get_messagesender(), terminal.clone())));
     let componentmanager = Rc::new(RefCell::new(ComponentManager::new()));
     let selectormanager = Rc::new(RefCell::new(SelectorManager::new()));
+    
+    let terminalevent_watcher = TerminalEventWatcher::new(
+        messagemanager.get_messagesender(),
+    );
+    terminalevent_watcher.start_watch_thread();
 
     let args: Vec<String> = env::args().collect();
 
@@ -77,13 +82,8 @@ fn main() {
     componentmanager.borrow_mut().register(texteditor.clone());
     componentmanager.borrow_mut().register(statusline.clone());
 
-    let terminalevent_watcher = TerminalEventWatcher::new(
-        messagemanager.get_messagesender(),
-    );
-    terminalevent_watcher.start_watch_thread();
 
     messagemanager.start_loop(message_recv);
-
 
     terminal.borrow_mut().finish();
 
