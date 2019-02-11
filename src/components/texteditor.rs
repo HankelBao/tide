@@ -3,7 +3,6 @@ use termion::event::Key;
 
 use crate::core::{Message, MessageListener};
 use crate::core::TextBuffer;
-use crate::terminal::Terminal;
 use crate::core::TextDisplay;
 use crate::core::HighlightEngine;
 use crate::core::SyntaxHighlight;
@@ -13,10 +12,7 @@ use crate::ui::View;
 use crate::ui::{UIComponent, UISelector};
 use crate::core::Style;
 
-use std::sync::{Arc, Mutex, mpsc};
-use std::thread;
-use std::time::Duration;
-use std::time::Instant;
+use std::sync::mpsc;
 use std::rc::Rc;
 use std::cell::RefCell;
 

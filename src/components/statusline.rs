@@ -6,9 +6,6 @@ use crate::terminal::StyleDescriptor;
 use crate::core::{Message, MessageSender, MessageListener};
 use crate::ui::UIComponent;
 
-use std::sync::{Arc, Mutex, mpsc};
-use std::thread;
-use std::time::Duration;
 use std::rc::Rc;
 use std::cell::RefCell;
 

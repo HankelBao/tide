@@ -2,20 +2,42 @@ extern crate syntect;
 
 use super::TextLine;
 use super::HighlightEngine;
-use super::SyntaxHighlight;
 use super::FileRW;
 use std::sync::{Arc, Mutex, mpsc};
 use crate::core::Message;
 use crate::core::Style;
 
 pub struct TextBuffer {
+    /*
+     * Record the buffer index
+     * so that TextEditor could know
+     * about the signals sent from
+     * a textbuffer.
+     */
     pub buffer_index: usize,
+
+    /*
+     * Cursor Position
+     */
     pub line_num: u32,
     pub line_offset: u32,
 
+    /*
+     * Position of the display view
+     * compared to the code.
+     */
     pub top_line: u32,
     pub left_col: u32,
+
+    /*
+     * Code Rendering need this to know when
+     * to send the ready signal.
+     */
     pub view_height: u32,
+    /*
+     * get_cursor need this to skip line num
+     * and calculate the real cursor_pos
+     */
     pub view_line_num_width: usize,
 
     pub lines: Arc<Mutex<Vec<Box<TextLine>>>>,
@@ -30,7 +52,7 @@ pub struct TextBuffer {
 
 impl TextBuffer {
     pub fn new(buffer_index: usize, messagesender: mpsc::Sender<Message>, highlightengine: &HighlightEngine) -> TextBuffer {
-        let mut textbuffer = TextBuffer {
+        let textbuffer = TextBuffer {
             buffer_index,
             line_num: 0,
             line_offset: 0,

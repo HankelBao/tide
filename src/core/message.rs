@@ -1,5 +1,4 @@
-use std::sync::{Arc, Mutex, mpsc};
-use super::TextLine;
+use std::sync::mpsc;
 use crate::terminal::Key;
 
 pub type MessageSender = mpsc::Sender<Message>;

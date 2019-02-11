@@ -32,8 +32,8 @@ impl<'a> HighlightEngine {
                 font_style: FontStyle::empty(),
             },
             line_num_style: Style {
-                background: theme.settings.gutter.unwrap_or_else(|| Color::BLACK),
                 foreground: theme.settings.foreground.unwrap_or_else(|| Color::WHITE),
+                background: theme.settings.gutter.unwrap_or_else(|| Color::BLACK),
                 font_style: FontStyle::empty(),
             }
         }

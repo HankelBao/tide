@@ -25,48 +25,77 @@ impl TextDisplay for TextBuffer {
     }
 
     fn get_display_lines(&mut self, width: u32, height: u32) -> Vec<DisplayLine> {
+        /*
+         * Display Lines are divided into two parts:
+         * - line_num: the section to display line numbers,
+         *      the width is decided by digit of the largest_line_num
+         *      with a space after it.     
+         * - code: the actual code in the view
+         *      styles here would be rearranged to match the
+         *      the left_col and width of the view.
+         */
+
+
         let mut return_content: Vec<DisplayLine> = Vec::new();
         let lines = self.lines.lock().unwrap();
-        let largest_line_num_on_view = if (lines.len() as u32 > self.top_line + height) {
+
+
+        /*
+         * Calculate the view_line_num width and 
+         */
+        let largest_line_num_on_view = if lines.len() as u32 > self.top_line + height {
             self.top_line + height
         } else {
             lines.len() as u32
         };
-        let view_line_num_width_raw = largest_line_num_on_view.to_string().chars().count();
-        self.view_line_num_width = view_line_num_width_raw + 1;
-        let content_width = width - self.view_line_num_width as u32;
+        let largest_line_num_digits = largest_line_num_on_view.to_string().chars().count();
+        let view_line_num_width = largest_line_num_digits + 1; // 1 represents the space.
+        let view_code_width = width - self.view_line_num_width as u32;
+
+        /*
+         * Record the line_num_width
+         */
+        self.view_line_num_width = view_line_num_width;
+
         for i in 0..height {
             let index = (self.top_line+i) as usize;
             if index >= lines.len() {
                 break;
             }
-            let line:DisplayLine;
             let offset = self.left_col as usize;
 
-            let content_code: String = lines[index].content().chars().skip(offset).take(content_width as usize).collect();
+            // Line number
+            let content_line_num: String = format!("{:width$} ", index+1, width=largest_line_num_digits);
+            let mut styles_line_num = vec![StyleDescriptor::from(self.line_num_style.clone(), view_line_num_width)];
+
+            // Code
+            let content_code: String = lines[index].content().chars().skip(offset).take(view_code_width as usize).collect();
             let mut styles_code: Vec<StyleDescriptor> = Vec::new();
+
             let mut current_style_start: usize = 0;
             for style in lines[index as usize].styles_cache.iter() {
-                if current_style_start + style.size < offset || current_style_start > offset+content_width as usize {
+                if current_style_start + style.size < offset || current_style_start > offset+view_code_width as usize {
                     continue;
                 }
                 let mut cloned_style = style.clone();
                 if current_style_start <= offset && offset < current_style_start+style.size {
                     cloned_style.size -= offset - current_style_start;
                 }
-                if current_style_start <= (offset + content_width as usize) && (offset + content_width as usize) < current_style_start+style.size {
-                    cloned_style.size -= current_style_start+style.size-(offset+content_width as usize);
+                if current_style_start <= (offset + view_code_width as usize) && (offset + view_code_width as usize) < current_style_start+style.size {
+                    cloned_style.size -= current_style_start+style.size-(offset+view_code_width as usize);
                 }
                 current_style_start += style.size;
                 styles_code.push(cloned_style);
             }
 
-            let content_line_num: String = format!("{:width$} ", index+1, width=view_line_num_width_raw);
-            let mut styles_line_num = vec![StyleDescriptor::from(self.line_num_style.clone(), self.view_line_num_width)];
-
-            line = DisplayLine {
+            // Combine
+            let line = DisplayLine {
                 content: content_line_num+&content_code,
                 styles: {
+                    /*
+                     * Styles line number is no longer going to be useful here.
+                     * It could be changed without problems.
+                     */
                     styles_line_num.extend(styles_code);
                     styles_line_num
                 }

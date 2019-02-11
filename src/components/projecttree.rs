@@ -6,7 +6,6 @@ use crate::core::Style;
 use crate::core::HighlightEngine;
 
 use std::fs;
-use std::sync::{Arc, Mutex};
 use std::rc::Rc;
 use std::cell::RefCell;
 
