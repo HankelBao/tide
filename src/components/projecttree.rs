@@ -68,7 +68,7 @@ impl ProjectTree {
         let mut projecttree = ProjectTree {
             messagesender,
             view,
-            style: highlightengine.inversed_style.clone(),
+            style: highlightengine.projecttree_style.clone(),
             projectnode_root: ProjectNode::new(String::from("Project"), String::from("./")),
             display_lines: Vec::new(),
         };

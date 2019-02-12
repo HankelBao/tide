@@ -62,8 +62,8 @@ impl ViewManager {
          * adjust heights
          * bottom_view don't need to update.
          */
-        self.left_view.borrow_mut().height = self.height;
-        self.right_view.borrow_mut().height = self.height;
+        self.left_view.borrow_mut().height = self.height - 1;
+        self.right_view.borrow_mut().height = self.height - 1;
         self.statusline_view.borrow_mut().height = 1;
         self.main_view.borrow_mut().height = self.height - self.bottom_view.borrow().height - 1;
 

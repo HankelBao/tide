@@ -79,7 +79,7 @@ impl MessageListener for TextEditor {
 
 impl UIComponent for TextEditor {
     fn display(&mut self) {
-        let mut textbuffer = &mut self.textbuffers[self.current_textbuffer_index];
+        let textbuffer = &mut self.textbuffers[self.current_textbuffer_index];
         let v = self.view.borrow();
         let (t_width, t_height) = v.get_scale();
         textbuffer.adjust_viewpoint(t_width as u32, t_height as u32);
@@ -99,28 +99,31 @@ impl UISelector for TextEditor {
     }
 
     fn key(&mut self, key: Key) {
-        match key {
-            Key::Char(ch)   => self.textbuffers[self.current_textbuffer_index].insert(ch),
-            Key::Ctrl('a')  => self.textbuffers[self.current_textbuffer_index].head(),
-            Key::Ctrl('e')  => self.textbuffers[self.current_textbuffer_index].end(),
-            Key::Ctrl('u')  => self.textbuffers[self.current_textbuffer_index].del_to_head(),
-            Key::Ctrl('h')  => self.textbuffers[self.current_textbuffer_index].del_to_end(),
-            Key::Ctrl('b')  => self.textbuffers[self.current_textbuffer_index].left(),
-            Key::Ctrl('f')  => self.textbuffers[self.current_textbuffer_index].right(),
-            Key::Ctrl('p')  => self.textbuffers[self.current_textbuffer_index].up(),
-            Key::Ctrl('n')  => self.textbuffers[self.current_textbuffer_index].down(),
-            Key::Ctrl('s')  => self.textbuffers[self.current_textbuffer_index].save_file(),
-            Key::Backspace  => self.textbuffers[self.current_textbuffer_index].backspace(),
-            Key::Up         => self.textbuffers[self.current_textbuffer_index].up(),
-            Key::Down       => self.textbuffers[self.current_textbuffer_index].down(),
-            Key::Left       => self.textbuffers[self.current_textbuffer_index].left(),
-            Key::Right      => self.textbuffers[self.current_textbuffer_index].right(),
-            _ => {},
+        { // Scope where current textbuffer is edited.
+            let textbuffer = &mut self.textbuffers[self.current_textbuffer_index];
+            match key {
+                Key::Char(ch)   => textbuffer.insert(ch),
+                Key::Ctrl('a')  => textbuffer.head(),
+                Key::Ctrl('e')  => textbuffer.end(),
+                Key::Ctrl('u')  => textbuffer.del_to_head(),
+                Key::Ctrl('h')  => textbuffer.del_to_end(),
+                Key::Ctrl('b')  => textbuffer.left(),
+                Key::Ctrl('f')  => textbuffer.right(),
+                Key::Ctrl('p')  => textbuffer.up(),
+                Key::Ctrl('n')  => textbuffer.down(),
+                Key::Ctrl('s')  => textbuffer.save_file(),
+                Key::Backspace  => textbuffer.backspace(),
+                Key::Up         => textbuffer.up(),
+                Key::Down       => textbuffer.down(),
+                Key::Left       => textbuffer.left(),
+                Key::Right      => textbuffer.right(),
+                _ => {},
+            }
+            self.messagesender.send(Message::FocusCursorMove(
+                textbuffer.line_num as u16,
+                textbuffer.line_offset as u16,
+            )).unwrap();
         }
-        self.messagesender.send(Message::FocusCursorMove(
-            self.textbuffers[self.current_textbuffer_index].line_num as u16,
-            self.textbuffers[self.current_textbuffer_index].line_offset as u16,
-        )).unwrap();
         self.display();
     }
 }

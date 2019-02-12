@@ -49,7 +49,7 @@ impl TextDisplay for TextBuffer {
             lines.len() as u32
         };
         let largest_line_num_digits = largest_line_num_on_view.to_string().chars().count();
-        let view_line_num_width = largest_line_num_digits + 1; // 1 represents the space.
+        let view_line_num_width = largest_line_num_digits + 4; // 1 represents the space.
         let view_code_width = width - self.view_line_num_width as u32;
 
         /*
@@ -65,7 +65,7 @@ impl TextDisplay for TextBuffer {
             let offset = self.left_col as usize;
 
             // Line number
-            let content_line_num: String = format!("{:width$} ", index+1, width=largest_line_num_digits);
+            let content_line_num: String = format!(" {:width$}   ", index+1, width=largest_line_num_digits);
             let mut styles_line_num = vec![StyleDescriptor::from(self.line_num_style.clone(), view_line_num_width)];
 
             // Code

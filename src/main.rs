@@ -31,7 +31,8 @@ use crate::terminal::Terminal;
 use termion::event::{Key, Event};
 
 fn main() {
-    let highlightengine = HighlightEngine::new(String::from("Solarized (dark)"));
+    //let highlightengine = HighlightEngine::new(None, String::from("base16-ocean.dark"));
+    let highlightengine = HighlightEngine::new(Some(String::from("./themes")), String::from("OneDark"));
 
     let (mut messagemanager, message_recv) = MessageManager::new();
 
@@ -47,7 +48,7 @@ fn main() {
 
     let args: Vec<String> = env::args().collect();
 
-    let mut texteditor: Rc<RefCell<TextEditor>> = Rc::new(RefCell::new(match args.get(1) {
+    let texteditor: Rc<RefCell<TextEditor>> = Rc::new(RefCell::new(match args.get(1) {
         Some(path) => TextEditor::new_with_file(
             messagemanager.get_messagesender(),
             viewmanager.borrow().main_view.clone(),
@@ -59,17 +60,21 @@ fn main() {
             &highlightengine),
     }));
 
-    let mut statusline: Rc<RefCell<Statusline>> = Rc::new(RefCell::new(Statusline::new(
+    let statusline: Rc<RefCell<Statusline>> = Rc::new(RefCell::new(Statusline::new(
         messagemanager.get_messagesender(),
         viewmanager.borrow().statusline_view.clone(),
         &highlightengine
     )));
 
-    let mut projecttree = Rc::new(RefCell::new(ProjectTree::new(
+    let projecttree = Rc::new(RefCell::new(ProjectTree::new(
         messagemanager.get_messagesender(),
         viewmanager.borrow().left_view.clone(),
         &highlightengine
     )));
+    /*{
+        let vm = viewmanager.borrow();
+        vm.left_view.borrow_mut().width = 20;
+    }*/
 
     selectormanager.borrow_mut().switch_focus(texteditor.clone());
 
@@ -81,6 +86,7 @@ fn main() {
 
     componentmanager.borrow_mut().register(texteditor.clone());
     componentmanager.borrow_mut().register(statusline.clone());
+    componentmanager.borrow_mut().register(projecttree.clone());
 
 
     messagemanager.start_loop(message_recv);
