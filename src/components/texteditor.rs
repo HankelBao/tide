@@ -8,6 +8,7 @@ use crate::core::HighlightEngine;
 use crate::core::SyntaxHighlight;
 use crate::core::TextEditing;
 use crate::core::FileRW;
+use crate::core::GLog;
 use crate::ui::View;
 use crate::ui::{UIComponent, UISelector};
 use crate::core::Style;
@@ -67,11 +68,10 @@ impl MessageListener for TextEditor {
         match message {
             Message::HighlightReady(buffer_index) => {
                 if buffer_index == self.current_textbuffer_index {
+                    { GLog.lock().unwrap().append("Edtior - Highlight Ready Received".to_string()); }
                     self.display();
                 }
             },
-            Message::TerminalKey(key) => {
-            }
             _ => {},
         }
     }
@@ -99,6 +99,7 @@ impl UISelector for TextEditor {
     }
 
     fn key(&mut self, key: Key) {
+        { GLog.lock().unwrap().append("Editor - Key Received".to_string()); }
         { // Scope where current textbuffer is edited.
             let textbuffer = &mut self.textbuffers[self.current_textbuffer_index];
             match key {
@@ -125,5 +126,6 @@ impl UISelector for TextEditor {
             )).unwrap();
         }
         self.display();
+        { GLog.lock().unwrap().append("Editor - Key Finished".to_string()); }
     }
 }

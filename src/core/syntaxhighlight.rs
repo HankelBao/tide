@@ -1,13 +1,16 @@
 use super::Message;
-use crate::terminal::{StyleDescriptor};
 use super::TextBuffer;
 use super::HighlightEngine;
+
+use crate::core::GLog;
+use crate::terminal::{StyleDescriptor};
+
+use syntect::parsing::{ParseState, ScopeStack};
+use syntect::highlighting::{Highlighter, HighlightState, HighlightIterator, Style};
 
 use std::thread;
 use std::time::Duration;
 use std::sync::{mpsc};
-use syntect::parsing::{ParseState, ScopeStack};
-use syntect::highlighting::{Highlighter, HighlightState, HighlightIterator, Style};
 
 static CACHE_RANGE: usize = 100;
 
@@ -71,6 +74,7 @@ impl SyntaxHighlight for TextBuffer {
                             /*
                             * Update cureent_line_num and current_state here.
                             */
+                            { GLog.lock().unwrap().append(format!("Syntax Highlight - Restart from {}", request_line_num)); }
                             let mut request_cache_point = (request_line_num / CACHE_RANGE as u32) as usize;
                             if request_cache_point >= state_cache.len() {
                                 request_cache_point = state_cache.len() - 1;
@@ -99,7 +103,7 @@ impl SyntaxHighlight for TextBuffer {
                  */
                 let lines_len = { lines.lock().unwrap().len().clone() };
                 if current_line_num >= lines_len {
-                    thread::sleep(Duration::from_millis(200));
+                    thread::sleep(Duration::from_millis(10));
                     continue
                 }
 

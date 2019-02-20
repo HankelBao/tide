@@ -6,6 +6,8 @@ use std::io::stdin;
 use std::sync::{Arc, Mutex};
 use std::thread;
 use std::time::Duration;
+use std::io::Stdin;
+use crate::core::GLog;
 
 pub struct TerminalEventWatcher {
     messagesender: MessageSender,
@@ -26,6 +28,7 @@ impl TerminalEventWatcher {
                 let evt = e.unwrap();
                 match evt {
                     Event::Key(key) => {
+                        { GLog.lock().unwrap().append("Terminal - Key Received".to_string()); }
                         match key {
                             Key::Ctrl('q')  => { messagesender.send(Message::Quit).unwrap(); break },
                             _ => { messagesender.send(Message::TerminalKey(key)).unwrap(); },

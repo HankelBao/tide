@@ -4,6 +4,7 @@ use termion::input::MouseTerminal;
 use termion::raw::IntoRawMode;
 use termion::raw::RawTerminal;
 use termion::terminal_size;
+use termion::screen::AlternateScreen;
 use std::io::{Write, stdout, stdin, Stdin, Stdout};
 use crate::core::{Style, FontStyle};
 use crate::core::HighlightEngine;
@@ -54,7 +55,7 @@ pub struct Terminal {
      * ownership of stdin, so stdin is not
      * restored here.
      */
-    screen: MouseTerminal<RawTerminal<Stdout>>,
+    screen: MouseTerminal<RawTerminal<AlternateScreen<Stdout>>>,
     width: u16,
     height: u16,
 }
@@ -62,7 +63,7 @@ pub struct Terminal {
 impl Terminal {
     pub fn new() -> Terminal {
         let mut terminal = Terminal {
-            screen: MouseTerminal::from(stdout().into_raw_mode().unwrap()),
+            screen: MouseTerminal::from(AlternateScreen::from(stdout()).into_raw_mode().unwrap()),
             width: 0,
             height: 0,
         };
@@ -162,16 +163,5 @@ impl Terminal {
 
     pub fn flush(&mut self) {
         self.screen.flush().unwrap()
-    }
-
-    pub fn finish(&mut self) {
-        /*
-         * We have the set the cursor back to
-         * the origin. Otherwise, there would be
-         * a % when the program exits and the
-         * printing history would be left.
-         */
-        self.set_cursor_pos(1, 1);
-        self.flush();
     }
 }

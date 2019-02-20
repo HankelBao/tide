@@ -6,3 +6,4 @@ authors = ["HankelBao <hankelbao@outlook.com>"]
 [dependencies]
 syntect = "*"
 termion = "*"
+lazy_static = "1.2.0"
