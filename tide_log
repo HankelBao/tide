@@ -1,504 +1,1949 @@
-[21.666µs] Log started...
-[105.65102ms] HighlightEngine initiated
-[125.603703ms] Edtior - Highlight Ready Received
-[1.285135904s] Terminal - Key Received
-[1.285267411s] Editor - Key Received
-[1.285845821s] Editor - Key Finished
-[1.526194199s] Terminal - Key Received
-[1.526305865s] Editor - Key Received
-[1.526782334s] Editor - Key Finished
-[1.706592052s] Terminal - Key Received
-[1.706637352s] Editor - Key Received
-[1.707178911s] Editor - Key Finished
-[1.875597543s] Terminal - Key Received
-[1.875648415s] Editor - Key Received
-[1.876028655s] Syntax Highlight - Restart from 3
-[1.876276875s] Editor - Key Finished
-[1.876968412s] Edtior - Highlight Ready Received
-[1.976511915s] Terminal - Key Received
-[1.976637897s] Editor - Key Received
-[1.977148898s] Editor - Key Finished
-[1.97906404s] Syntax Highlight - Restart from 3
-[1.979773555s] Edtior - Highlight Ready Received
-[2.121116584s] Terminal - Key Received
-[2.121239521s] Editor - Key Received
-[2.121823493s] Editor - Key Finished
-[2.122993354s] Syntax Highlight - Restart from 3
-[2.123710623s] Edtior - Highlight Ready Received
-[2.745736732s] Terminal - Key Received
-[2.745861289s] Editor - Key Received
-[2.746454164s] Editor - Key Finished
-[2.748765538s] Syntax Highlight - Restart from 3
-[2.749631758s] Edtior - Highlight Ready Received
-[2.860872878s] Terminal - Key Received
-[2.861001333s] Editor - Key Received
-[2.861468313s] Syntax Highlight - Restart from 3
-[2.861670772s] Editor - Key Finished
-[2.862347556s] Edtior - Highlight Ready Received
-[2.959164659s] Terminal - Key Received
-[2.95928683s] Editor - Key Received
-[2.959850248s] Editor - Key Finished
-[2.964156823s] Syntax Highlight - Restart from 3
-[2.965034168s] Edtior - Highlight Ready Received
-[3.147382978s] Terminal - Key Received
-[3.147514629s] Editor - Key Received
-[3.148243756s] Editor - Key Finished
-[3.149479707s] Syntax Highlight - Restart from 3
-[3.150207815s] Edtior - Highlight Ready Received
-[3.254634221s] Terminal - Key Received
-[3.254690727s] Editor - Key Received
-[3.255265891s] Editor - Key Finished
-[3.262254723s] Syntax Highlight - Restart from 3
-[3.262995331s] Edtior - Highlight Ready Received
-[3.459564037s] Terminal - Key Received
-[3.459686582s] Editor - Key Received
-[3.460311061s] Editor - Key Finished
-[3.467203046s] Syntax Highlight - Restart from 3
-[3.468099885s] Edtior - Highlight Ready Received
-[3.780848944s] Terminal - Key Received
-[3.78090171s] Editor - Key Received
-[3.781697029s] Editor - Key Finished
-[3.785974623s] Syntax Highlight - Restart from 3
-[3.786995459s] Edtior - Highlight Ready Received
-[3.928321432s] Terminal - Key Received
-[3.928383233s] Editor - Key Received
-[3.929136398s] Editor - Key Finished
-[3.929418041s] Syntax Highlight - Restart from 3
-[3.930428894s] Edtior - Highlight Ready Received
-[4.223187045s] Terminal - Key Received
-[4.223337125s] Editor - Key Received
-[4.224030498s] Editor - Key Finished
-[4.227280119s] Syntax Highlight - Restart from 3
-[4.228174787s] Edtior - Highlight Ready Received
-[4.476260363s] Terminal - Key Received
-[4.476393145s] Editor - Key Received
-[4.477169813s] Editor - Key Finished
-[4.484142638s] Syntax Highlight - Restart from 3
-[4.485268878s] Edtior - Highlight Ready Received
-[4.714061823s] Terminal - Key Received
-[4.714112073s] Editor - Key Received
-[4.715031149s] Editor - Key Finished
-[4.721211603s] Syntax Highlight - Restart from 3
-[4.722534596s] Edtior - Highlight Ready Received
-[4.825542564s] Terminal - Key Received
-[4.82557922s] Editor - Key Received
-[4.826073756s] Editor - Key Finished
-[4.834680791s] Syntax Highlight - Restart from 3
-[4.835646761s] Edtior - Highlight Ready Received
-[5.169619279s] Terminal - Key Received
-[5.169763244s] Editor - Key Received
-[5.170483703s] Editor - Key Finished
-[5.174687384s] Syntax Highlight - Restart from 3
-[5.175574198s] Edtior - Highlight Ready Received
-[5.587665794s] Terminal - Key Received
-[5.587791305s] Editor - Key Received
-[5.588412273s] Editor - Key Finished
-[5.596354806s] Syntax Highlight - Restart from 3
-[5.597311813s] Edtior - Highlight Ready Received
-[6.087859303s] Terminal - Key Received
-[6.087900779s] Editor - Key Received
-[6.088400427s] Editor - Key Finished
-[6.09012166s] Syntax Highlight - Restart from 3
-[6.09104846s] Edtior - Highlight Ready Received
-[6.118978454s] Terminal - Key Received
-[6.119021534s] Editor - Key Received
-[6.119674837s] Editor - Key Finished
-[6.121288292s] Syntax Highlight - Restart from 3
-[6.122358896s] Edtior - Highlight Ready Received
-[6.152489969s] Terminal - Key Received
-[6.152535957s] Editor - Key Received
-[6.152726098s] Syntax Highlight - Restart from 3
-[6.153299879s] Editor - Key Finished
-[6.153683322s] Edtior - Highlight Ready Received
-[6.179380059s] Terminal - Key Received
-[6.179493577s] Editor - Key Received
-[6.180017591s] Editor - Key Finished
-[6.18391918s] Syntax Highlight - Restart from 3
-[6.184729276s] Edtior - Highlight Ready Received
-[6.211486217s] Terminal - Key Received
-[6.211525512s] Editor - Key Received
-[6.212001182s] Editor - Key Finished
-[6.215127729s] Syntax Highlight - Restart from 3
-[6.215903855s] Edtior - Highlight Ready Received
-[6.241050504s] Terminal - Key Received
-[6.241092382s] Editor - Key Received
-[6.241788464s] Editor - Key Finished
-[6.246200006s] Syntax Highlight - Restart from 3
-[6.247035711s] Edtior - Highlight Ready Received
-[6.270831147s] Terminal - Key Received
-[6.27087144s] Editor - Key Received
-[6.271493309s] Editor - Key Finished
-[6.277225625s] Syntax Highlight - Restart from 3
-[6.278058755s] Edtior - Highlight Ready Received
-[6.301651002s] Terminal - Key Received
-[6.301695072s] Editor - Key Received
-[6.302458635s] Editor - Key Finished
-[6.308370761s] Syntax Highlight - Restart from 3
-[6.309182938s] Edtior - Highlight Ready Received
-[6.333086871s] Terminal - Key Received
-[6.333127865s] Editor - Key Received
-[6.33382548s] Editor - Key Finished
-[6.339543835s] Syntax Highlight - Restart from 3
-[6.340414228s] Edtior - Highlight Ready Received
-[6.366811177s] Terminal - Key Received
-[6.366875806s] Editor - Key Received
-[6.36745688s] Editor - Key Finished
-[6.370986375s] Syntax Highlight - Restart from 3
-[6.371882117s] Edtior - Highlight Ready Received
-[6.396659155s] Terminal - Key Received
-[6.396695676s] Editor - Key Received
-[6.397230184s] Editor - Key Finished
-[6.40223996s] Syntax Highlight - Restart from 3
-[6.403211876s] Edtior - Highlight Ready Received
-[6.423785576s] Terminal - Key Received
-[6.423835278s] Editor - Key Received
-[6.424772954s] Editor - Key Finished
-[6.433408544s] Syntax Highlight - Restart from 3
-[6.43445605s] Edtior - Highlight Ready Received
-[6.455038533s] Terminal - Key Received
-[6.455081829s] Editor - Key Received
-[6.455945488s] Editor - Key Finished
-[6.464717259s] Syntax Highlight - Restart from 3
-[6.46550604s] Edtior - Highlight Ready Received
-[6.483875589s] Terminal - Key Received
-[6.483918797s] Editor - Key Received
-[6.484754975s] Editor - Key Finished
-[6.485721241s] Syntax Highlight - Restart from 3
-[6.486495479s] Edtior - Highlight Ready Received
-[6.514411126s] Terminal - Key Received
-[6.514445446s] Editor - Key Received
-[6.514959898s] Editor - Key Finished
-[6.516827579s] Syntax Highlight - Restart from 3
-[6.517663107s] Edtior - Highlight Ready Received
-[6.54538666s] Terminal - Key Received
-[6.545442602s] Editor - Key Received
-[6.546203153s] Editor - Key Finished
-[6.547954565s] Syntax Highlight - Restart from 3
-[6.54910906s] Edtior - Highlight Ready Received
-[7.189428004s] Terminal - Key Received
-[7.18955995s] Editor - Key Received
-[7.190108984s] Editor - Key Finished
-[7.197452889s] Syntax Highlight - Restart from 3
-[7.198283327s] Edtior - Highlight Ready Received
-[7.484864099s] Terminal - Key Received
-[7.484901866s] Editor - Key Received
-[7.485373393s] Editor - Key Finished
-[7.494991286s] Syntax Highlight - Restart from 3
-[7.495795589s] Edtior - Highlight Ready Received
-[7.626964747s] Terminal - Key Received
-[7.627086156s] Editor - Key Received
-[7.627692315s] Editor - Key Finished
-[7.628057141s] Syntax Highlight - Restart from 3
-[7.628864394s] Edtior - Highlight Ready Received
-[7.754090824s] Terminal - Key Received
-[7.754135899s] Editor - Key Received
-[7.75485868s] Editor - Key Finished
-[7.761721047s] Syntax Highlight - Restart from 3
-[7.762476612s] Edtior - Highlight Ready Received
-[7.856639125s] Terminal - Key Received
-[7.856769233s] Editor - Key Received
-[7.857273251s] Editor - Key Finished
-[7.864147607s] Syntax Highlight - Restart from 3
-[7.864905285s] Edtior - Highlight Ready Received
-[7.964857616s] Terminal - Key Received
-[7.964906909s] Editor - Key Received
-[7.965383495s] Editor - Key Finished
-[7.966651109s] Syntax Highlight - Restart from 3
-[7.967378594s] Edtior - Highlight Ready Received
-[8.054579169s] Terminal - Key Received
-[8.054638112s] Editor - Key Received
-[8.055268509s] Editor - Key Finished
-[8.059026211s] Syntax Highlight - Restart from 3
-[8.059835958s] Edtior - Highlight Ready Received
-[8.438998533s] Terminal - Key Received
-[8.43905015s] Editor - Key Received
-[8.439892185s] Editor - Key Finished
-[8.440804311s] Syntax Highlight - Restart from 3
-[8.441633815s] Edtior - Highlight Ready Received
-[8.60687533s] Terminal - Key Received
-[8.606999009s] Editor - Key Received
-[8.607648997s] Editor - Key Finished
-[8.614882166s] Syntax Highlight - Restart from 3
-[8.615684324s] Edtior - Highlight Ready Received
-[8.762231814s] Terminal - Key Received
-[8.762366605s] Editor - Key Received
-[8.762917132s] Editor - Key Finished
-[8.768839328s] Syntax Highlight - Restart from 3
-[8.769570442s] Edtior - Highlight Ready Received
-[8.925554235s] Terminal - Key Received
-[8.925685705s] Editor - Key Received
-[8.926257948s] Editor - Key Finished
-[8.932493868s] Syntax Highlight - Restart from 3
-[8.9333872s] Edtior - Highlight Ready Received
-[9.093829198s] Terminal - Key Received
-[9.09394938s] Editor - Key Received
-[9.09455326s] Editor - Key Finished
-[9.096704348s] Syntax Highlight - Restart from 3
-[9.097514058s] Edtior - Highlight Ready Received
-[9.210982081s] Terminal - Key Received
-[9.211110618s] Editor - Key Received
-[9.211681107s] Editor - Key Finished
-[9.219767214s] Syntax Highlight - Restart from 3
-[9.220375404s] Edtior - Highlight Ready Received
-[9.401460329s] Terminal - Key Received
-[9.401598248s] Editor - Key Received
-[9.402256489s] Editor - Key Finished
-[9.404098319s] Syntax Highlight - Restart from 3
-[9.404985896s] Edtior - Highlight Ready Received
-[9.496697141s] Terminal - Key Received
-[9.496750493s] Editor - Key Received
-[9.497430193s] Editor - Key Finished
-[9.506513683s] Syntax Highlight - Restart from 3
-[9.507882352s] Edtior - Highlight Ready Received
-[9.676032974s] Terminal - Key Received
-[9.676171434s] Editor - Key Received
-[9.676846885s] Editor - Key Finished
-[9.681390277s] Syntax Highlight - Restart from 3
-[9.682219253s] Edtior - Highlight Ready Received
-[10.16219512s] Terminal - Key Received
-[10.162249099s] Editor - Key Received
-[10.162800756s] Editor - Key Finished
-[10.163195021s] Syntax Highlight - Restart from 3
-[10.164157497s] Edtior - Highlight Ready Received
-[10.335043068s] Terminal - Key Received
-[10.335090893s] Editor - Key Received
-[10.335561705s] Editor - Key Finished
-[10.337625152s] Syntax Highlight - Restart from 3
-[10.338480692s] Edtior - Highlight Ready Received
-[10.496260742s] Terminal - Key Received
-[10.496302157s] Editor - Key Received
-[10.4970452s] Editor - Key Finished
-[10.501070971s] Syntax Highlight - Restart from 3
-[10.501848717s] Edtior - Highlight Ready Received
-[10.688965923s] Terminal - Key Received
-[10.689105329s] Editor - Key Received
-[10.689764606s] Editor - Key Finished
-[10.695661673s] Syntax Highlight - Restart from 3
-[10.696437579s] Edtior - Highlight Ready Received
-[10.77403511s] Terminal - Key Received
-[10.774171713s] Editor - Key Received
-[10.774836323s] Editor - Key Finished
-[10.777888503s] Syntax Highlight - Restart from 3
-[10.778660945s] Edtior - Highlight Ready Received
-[10.949482601s] Terminal - Key Received
-[10.949531473s] Editor - Key Received
-[10.950082748s] Editor - Key Finished
-[10.952515845s] Syntax Highlight - Restart from 3
-[10.953423792s] Edtior - Highlight Ready Received
-[11.488013392s] Terminal - Key Received
-[11.488135367s] Editor - Key Received
-[11.488711573s] Editor - Key Finished
-[11.494866653s] Syntax Highlight - Restart from 3
-[11.496459007s] Edtior - Highlight Ready Received
-[11.629640296s] Terminal - Key Received
-[11.629766507s] Editor - Key Received
-[11.630305081s] Editor - Key Finished
-[11.638731307s] Syntax Highlight - Restart from 3
-[11.639614264s] Edtior - Highlight Ready Received
-[11.790122984s] Terminal - Key Received
-[11.790252345s] Editor - Key Received
-[11.790821101s] Editor - Key Finished
-[11.791532764s] Syntax Highlight - Restart from 3
-[11.792241258s] Edtior - Highlight Ready Received
-[11.927400651s] Terminal - Key Received
-[11.927442623s] Editor - Key Received
-[11.928010822s] Editor - Key Finished
-[11.934479552s] Syntax Highlight - Restart from 3
-[11.935153071s] Edtior - Highlight Ready Received
-[12.068765753s] Terminal - Key Received
-[12.068808431s] Editor - Key Received
-[12.06944829s] Editor - Key Finished
-[12.078738774s] Syntax Highlight - Restart from 3
-[12.079765812s] Edtior - Highlight Ready Received
-[12.225444683s] Terminal - Key Received
-[12.225492588s] Editor - Key Received
-[12.226054212s] Editor - Key Finished
-[12.233033345s] Syntax Highlight - Restart from 3
-[12.233811654s] Edtior - Highlight Ready Received
-[12.805443921s] Terminal - Key Received
-[12.805586997s] Editor - Key Received
-[12.8062819s] Editor - Key Finished
-[12.81462733s] Syntax Highlight - Restart from 3
-[12.815524773s] Edtior - Highlight Ready Received
-[12.969068618s] Terminal - Key Received
-[12.969106834s] Editor - Key Received
-[12.969861912s] Editor - Key Finished
-[12.978486516s] Syntax Highlight - Restart from 3
-[12.979180359s] Edtior - Highlight Ready Received
-[13.121445528s] Terminal - Key Received
-[13.121483663s] Editor - Key Received
-[13.121853171s] Syntax Highlight - Restart from 3
-[13.122098847s] Editor - Key Finished
-[13.12267596s] Edtior - Highlight Ready Received
-[13.275097581s] Terminal - Key Received
-[13.27514438s] Editor - Key Received
-[13.275624417s] Editor - Key Finished
-[13.276218696s] Syntax Highlight - Restart from 3
-[13.277018432s] Edtior - Highlight Ready Received
-[13.393522812s] Terminal - Key Received
-[13.393565428s] Editor - Key Received
-[13.394299654s] Editor - Key Finished
-[13.399307655s] Syntax Highlight - Restart from 3
-[13.400313537s] Edtior - Highlight Ready Received
-[13.544729328s] Terminal - Key Received
-[13.544787875s] Editor - Key Received
-[13.545472353s] Editor - Key Finished
-[13.552411539s] Syntax Highlight - Restart from 3
-[13.553397437s] Edtior - Highlight Ready Received
-[14.399186257s] Terminal - Key Received
-[14.399226698s] Editor - Key Received
-[14.399710239s] Editor - Key Finished
-[14.408967785s] Syntax Highlight - Restart from 3
-[14.409660833s] Edtior - Highlight Ready Received
-[14.552298132s] Terminal - Key Received
-[14.552427661s] Editor - Key Received
-[14.552983129s] Editor - Key Finished
-[14.561692692s] Syntax Highlight - Restart from 3
-[14.562553796s] Edtior - Highlight Ready Received
-[14.744650195s] Terminal - Key Received
-[14.74468636s] Editor - Key Received
-[14.745192624s] Editor - Key Finished
-[14.746181641s] Syntax Highlight - Restart from 3
-[14.746823543s] Edtior - Highlight Ready Received
-[15.002233304s] Terminal - Key Received
-[15.002278197s] Editor - Key Received
-[15.002813571s] Syntax Highlight - Restart from 3
-[15.002835307s] Editor - Key Finished
-[15.003764123s] Edtior - Highlight Ready Received
-[15.087273551s] Terminal - Key Received
-[15.087324401s] Editor - Key Received
-[15.088025289s] Editor - Key Finished
-[15.095338126s] Syntax Highlight - Restart from 3
-[15.096357643s] Edtior - Highlight Ready Received
-[15.345594216s] Terminal - Key Received
-[15.345719471s] Editor - Key Received
-[15.346286053s] Editor - Key Finished
-[15.35259228s] Syntax Highlight - Restart from 3
-[15.353466846s] Edtior - Highlight Ready Received
-[16.075068248s] Terminal - Key Received
-[16.075191453s] Editor - Key Received
-[16.075780948s] Editor - Key Finished
-[16.085039255s] Syntax Highlight - Restart from 3
-[16.085776272s] Edtior - Highlight Ready Received
-[16.220718832s] Terminal - Key Received
-[16.220759165s] Editor - Key Received
-[16.221315036s] Editor - Key Finished
-[16.228249752s] Syntax Highlight - Restart from 3
-[16.229019454s] Edtior - Highlight Ready Received
-[16.466108977s] Terminal - Key Received
-[16.466225598s] Editor - Key Received
-[16.466730104s] Editor - Key Finished
-[16.474701126s] Syntax Highlight - Restart from 3
-[16.475406769s] Edtior - Highlight Ready Received
-[16.733980182s] Terminal - Key Received
-[16.734123674s] Editor - Key Received
-[16.734764133s] Editor - Key Finished
-[16.741706679s] Syntax Highlight - Restart from 3
-[16.742522481s] Edtior - Highlight Ready Received
-[16.85800747s] Terminal - Key Received
-[16.858043466s] Editor - Key Received
-[16.85854531s] Editor - Key Finished
-[16.865088528s] Syntax Highlight - Restart from 3
-[16.86585218s] Edtior - Highlight Ready Received
-[17.080321688s] Terminal - Key Received
-[17.080443486s] Editor - Key Received
-[17.080716487s] Syntax Highlight - Restart from 3
-[17.081065836s] Editor - Key Finished
-[17.081669065s] Edtior - Highlight Ready Received
-[17.706111729s] Terminal - Key Received
-[17.706189896s] Editor - Key Received
-[17.706683314s] Editor - Key Finished
-[17.713209914s] Syntax Highlight - Restart from 3
-[17.713908441s] Edtior - Highlight Ready Received
-[17.855857817s] Terminal - Key Received
-[17.855959545s] Editor - Key Received
-[17.856458527s] Syntax Highlight - Restart from 3
-[17.856478752s] Editor - Key Finished
-[17.857170115s] Edtior - Highlight Ready Received
-[17.997724057s] Terminal - Key Received
-[17.997866275s] Editor - Key Received
-[17.9982878s] Editor - Key Finished
-[17.999680796s] Syntax Highlight - Restart from 3
-[18.000330785s] Edtior - Highlight Ready Received
-[18.181788253s] Terminal - Key Received
-[18.181909198s] Editor - Key Received
-[18.18248284s] Editor - Key Finished
-[18.184475646s] Syntax Highlight - Restart from 3
-[18.185200497s] Edtior - Highlight Ready Received
-[18.266135156s] Terminal - Key Received
-[18.26625199s] Editor - Key Received
-[18.266603207s] Syntax Highlight - Restart from 3
-[18.266816876s] Editor - Key Finished
-[18.267369175s] Edtior - Highlight Ready Received
-[18.475780448s] Terminal - Key Received
-[18.475840502s] Editor - Key Received
-[18.476665655s] Editor - Key Finished
-[18.480587233s] Syntax Highlight - Restart from 3
-[18.48136246s] Edtior - Highlight Ready Received
-[18.947519037s] Terminal - Key Received
-[18.947561724s] Editor - Key Received
-[18.948213293s] Editor - Key Finished
-[18.953037646s] Syntax Highlight - Restart from 3
-[18.95372632s] Edtior - Highlight Ready Received
-[19.104864561s] Terminal - Key Received
-[19.104915133s] Editor - Key Received
-[19.105393037s] Editor - Key Finished
-[19.107214054s] Syntax Highlight - Restart from 3
-[19.108016675s] Edtior - Highlight Ready Received
-[19.253583247s] Terminal - Key Received
-[19.253707744s] Editor - Key Received
-[19.254393914s] Editor - Key Finished
-[19.261048501s] Syntax Highlight - Restart from 3
-[19.261786746s] Edtior - Highlight Ready Received
-[19.38967573s] Terminal - Key Received
-[19.389718537s] Editor - Key Received
-[19.390281564s] Editor - Key Finished
-[19.394540205s] Syntax Highlight - Restart from 3
-[19.395360838s] Edtior - Highlight Ready Received
-[19.50661163s] Terminal - Key Received
-[19.506651795s] Editor - Key Received
-[19.507143867s] Syntax Highlight - Restart from 3
-[19.507235186s] Editor - Key Finished
-[19.508060645s] Edtior - Highlight Ready Received
-[19.694419391s] Terminal - Key Received
-[19.694561152s] Editor - Key Received
-[19.695278494s] Editor - Key Finished
-[19.702370058s] Syntax Highlight - Restart from 3
-[19.703112457s] Edtior - Highlight Ready Received
-[20.679250075s] Terminal - Key Received
-[20.679383403s] Editor - Key Received
-[20.680071005s] Editor - Key Finished
-[20.680566192s] Syntax Highlight - Restart from 3
-[20.681459924s] Edtior - Highlight Ready Received
-[20.790233882s] Terminal - Key Received
-[20.790355598s] Editor - Key Received
-[20.790858761s] Editor - Key Finished
-[20.793601208s] Syntax Highlight - Restart from 3
-[20.794537286s] Edtior - Highlight Ready Received
-[20.919067688s] Terminal - Key Received
-[20.919104703s] Editor - Key Received
-[20.919628806s] Editor - Key Finished
-[20.92632358s] Syntax Highlight - Restart from 3
-[20.927153526s] Edtior - Highlight Ready Received
-[21.079386999s] Terminal - Key Received
-[21.079432898s] Editor - Key Received
-[21.080102314s] Editor - Key Finished
-[21.080674604s] Syntax Highlight - Restart from 3
-[21.081562303s] Edtior - Highlight Ready Received
-[21.239092326s] Terminal - Key Received
-[21.239214374s] Editor - Key Received
-[21.239827881s] Editor - Key Finished
-[21.245184046s] Syntax Highlight - Restart from 3
-[21.246039254s] Edtior - Highlight Ready Received
-[21.714537367s] Terminal - Key Received
-[21.714658773s] Editor - Key Received
-[21.715158405s] Editor - Key Finished
-[21.71786778s] Syntax Highlight - Restart from 3
-[21.718688074s] Edtior - Highlight Ready Received
-[21.803519474s] Terminal - Key Received
-[21.803641226s] Editor - Key Received
-[21.804264297s] Editor - Key Finished
-[21.810406949s] Syntax Highlight - Restart from 3
-[21.811194863s] Edtior - Highlight Ready Received
-[41.538953722s] Terminal - Key Received
-[41.538982676s] Tide Exited
+[59.759µs] Log started...
+[353.878206ms] HighlightEngine initiated
+[372.435327ms] Edtior - Highlight Ready Received
+[891.182929ms] Terminal - Key Received
+[891.338657ms] Editor - Key Received
+[892.312085ms] Editor - Key Finished
+[899.815461ms] Syntax Highlight - Restart from 0
+[900.429323ms] Edtior - Highlight Ready Received
+[1.491147493s] Terminal - Key Received
+[1.491274401s] Editor - Key Received
+[1.492236814s] Editor - Key Finished
+[1.499958917s] Syntax Highlight - Restart from 0
+[1.500541627s] Edtior - Highlight Ready Received
+[1.531108498s] Terminal - Key Received
+[1.531207466s] Editor - Key Received
+[1.532156834s] Editor - Key Finished
+[1.541219161s] Syntax Highlight - Restart from 0
+[1.541824961s] Edtior - Highlight Ready Received
+[1.571937675s] Terminal - Key Received
+[1.572029355s] Editor - Key Received
+[1.57243221s] Syntax Highlight - Restart from 0
+[1.572934884s] Editor - Key Finished
+[1.573217931s] Edtior - Highlight Ready Received
+[1.612578208s] Terminal - Key Received
+[1.612703225s] Editor - Key Received
+[1.613545709s] Syntax Highlight - Restart from 0
+[1.613886548s] Editor - Key Finished
+[1.614246024s] Edtior - Highlight Ready Received
+[1.653238912s] Terminal - Key Received
+[1.65332304s] Editor - Key Received
+[1.654131383s] Editor - Key Finished
+[1.654664198s] Syntax Highlight - Restart from 0
+[1.655103681s] Edtior - Highlight Ready Received
+[3.815536662s] Terminal - Key Received
+[3.815652273s] Editor - Key Received
+[3.816503648s] Editor - Key Finished
+[3.825542109s] Syntax Highlight - Restart from 0
+[3.826257326s] Edtior - Highlight Ready Received
+[4.41671734s] Terminal - Key Received
+[4.416864531s] Editor - Key Received
+[4.41791411s] Editor - Key Finished
+[4.418525833s] Syntax Highlight - Restart from 0
+[4.419199819s] Edtior - Highlight Ready Received
+[4.456988773s] Terminal - Key Received
+[4.457271223s] Editor - Key Received
+[4.458040527s] Editor - Key Finished
+[4.459862166s] Syntax Highlight - Restart from 0
+[4.46053476s] Edtior - Highlight Ready Received
+[4.497999608s] Terminal - Key Received
+[4.498178251s] Editor - Key Received
+[4.499013154s] Editor - Key Finished
+[4.501177422s] Syntax Highlight - Restart from 0
+[4.501752694s] Edtior - Highlight Ready Received
+[4.53859936s] Terminal - Key Received
+[4.538770039s] Editor - Key Received
+[4.539661706s] Editor - Key Finished
+[4.542835782s] Syntax Highlight - Restart from 0
+[4.543637396s] Edtior - Highlight Ready Received
+[4.57915016s] Terminal - Key Received
+[4.579248327s] Editor - Key Received
+[4.580024231s] Editor - Key Finished
+[4.584238962s] Syntax Highlight - Restart from 0
+[4.584774289s] Edtior - Highlight Ready Received
+[4.620649718s] Terminal - Key Received
+[4.620796631s] Editor - Key Received
+[4.62166818s] Editor - Key Finished
+[4.625697474s] Syntax Highlight - Restart from 0
+[4.626279912s] Edtior - Highlight Ready Received
+[4.660819908s] Terminal - Key Received
+[4.660909537s] Editor - Key Received
+[4.661609294s] Editor - Key Finished
+[4.667012185s] Syntax Highlight - Restart from 0
+[4.667680655s] Edtior - Highlight Ready Received
+[4.701122006s] Terminal - Key Received
+[4.701276955s] Editor - Key Received
+[4.701974969s] Editor - Key Finished
+[4.708305971s] Syntax Highlight - Restart from 0
+[4.708967097s] Edtior - Highlight Ready Received
+[4.742318408s] Terminal - Key Received
+[4.742426486s] Editor - Key Received
+[4.743217687s] Editor - Key Finished
+[4.749723805s] Syntax Highlight - Restart from 0
+[4.750390582s] Edtior - Highlight Ready Received
+[4.783390748s] Terminal - Key Received
+[4.783514141s] Editor - Key Received
+[4.784202904s] Editor - Key Finished
+[4.79101848s] Syntax Highlight - Restart from 0
+[4.791600093s] Edtior - Highlight Ready Received
+[4.823506462s] Terminal - Key Received
+[4.823616011s] Editor - Key Received
+[4.824307225s] Editor - Key Finished
+[4.832279856s] Syntax Highlight - Restart from 0
+[4.832961761s] Edtior - Highlight Ready Received
+[4.864374923s] Terminal - Key Received
+[4.864493512s] Editor - Key Received
+[4.865204547s] Editor - Key Finished
+[4.873602724s] Syntax Highlight - Restart from 0
+[4.874194226s] Edtior - Highlight Ready Received
+[4.905710661s] Terminal - Key Received
+[4.90580071s] Editor - Key Received
+[4.906558736s] Editor - Key Finished
+[4.914906552s] Syntax Highlight - Restart from 0
+[4.915566242s] Edtior - Highlight Ready Received
+[4.946685207s] Terminal - Key Received
+[4.946824052s] Editor - Key Received
+[4.947586385s] Editor - Key Finished
+[4.956105613s] Syntax Highlight - Restart from 0
+[4.956803625s] Edtior - Highlight Ready Received
+[4.986599368s] Terminal - Key Received
+[4.986742248s] Editor - Key Received
+[4.987105572s] Syntax Highlight - Restart from 0
+[4.98759034s] Editor - Key Finished
+[4.987875143s] Edtior - Highlight Ready Received
+[5.028179445s] Terminal - Key Received
+[5.028322367s] Editor - Key Received
+[5.028497322s] Syntax Highlight - Restart from 0
+[5.02901924s] Editor - Key Finished
+[5.029266195s] Edtior - Highlight Ready Received
+[5.068747881s] Terminal - Key Received
+[5.068910919s] Editor - Key Received
+[5.069798272s] Editor - Key Finished
+[5.06987359s] Syntax Highlight - Restart from 0
+[5.070547655s] Edtior - Highlight Ready Received
+[5.10855945s] Terminal - Key Received
+[5.108667042s] Editor - Key Received
+[5.109373468s] Editor - Key Finished
+[5.111041212s] Syntax Highlight - Restart from 0
+[5.111545893s] Edtior - Highlight Ready Received
+[5.148799621s] Terminal - Key Received
+[5.148985292s] Editor - Key Received
+[5.149836594s] Editor - Key Finished
+[5.152270567s] Syntax Highlight - Restart from 0
+[5.152899235s] Edtior - Highlight Ready Received
+[5.1889915s] Terminal - Key Received
+[5.189090487s] Editor - Key Received
+[5.189806654s] Editor - Key Finished
+[5.193354118s] Syntax Highlight - Restart from 0
+[5.193872154s] Edtior - Highlight Ready Received
+[5.228758103s] Terminal - Key Received
+[5.228921474s] Editor - Key Received
+[5.229657328s] Editor - Key Finished
+[5.234493995s] Syntax Highlight - Restart from 0
+[5.235106528s] Edtior - Highlight Ready Received
+[5.269210632s] Terminal - Key Received
+[5.269344317s] Editor - Key Received
+[5.270026591s] Editor - Key Finished
+[5.275777583s] Syntax Highlight - Restart from 0
+[5.276486766s] Edtior - Highlight Ready Received
+[5.308549844s] Terminal - Key Received
+[5.308637131s] Editor - Key Received
+[5.309337814s] Editor - Key Finished
+[5.316827024s] Syntax Highlight - Restart from 0
+[5.317351016s] Edtior - Highlight Ready Received
+[5.348327734s] Terminal - Key Received
+[5.348401133s] Editor - Key Received
+[5.349023403s] Editor - Key Finished
+[5.357852368s] Syntax Highlight - Restart from 0
+[5.358402687s] Edtior - Highlight Ready Received
+[5.388691244s] Terminal - Key Received
+[5.388791658s] Editor - Key Received
+[5.389418275s] Editor - Key Finished
+[5.398788791s] Syntax Highlight - Restart from 0
+[5.399266726s] Edtior - Highlight Ready Received
+[5.428618651s] Terminal - Key Received
+[5.42874676s] Editor - Key Received
+[5.429394022s] Editor - Key Finished
+[5.429561484s] Syntax Highlight - Restart from 0
+[5.430017003s] Edtior - Highlight Ready Received
+[5.468337195s] Terminal - Key Received
+[5.468411846s] Editor - Key Received
+[5.469083119s] Editor - Key Finished
+[5.470447343s] Syntax Highlight - Restart from 0
+[5.470960975s] Edtior - Highlight Ready Received
+[5.508995544s] Terminal - Key Received
+[5.509124572s] Editor - Key Received
+[5.509932366s] Editor - Key Finished
+[5.511443341s] Syntax Highlight - Restart from 0
+[5.511891033s] Edtior - Highlight Ready Received
+[5.549435169s] Terminal - Key Received
+[5.549507028s] Editor - Key Received
+[5.550326761s] Editor - Key Finished
+[5.552379838s] Syntax Highlight - Restart from 0
+[5.552823271s] Edtior - Highlight Ready Received
+[5.589448494s] Terminal - Key Received
+[5.589585232s] Editor - Key Received
+[5.590195423s] Editor - Key Finished
+[5.593262096s] Syntax Highlight - Restart from 0
+[5.593713971s] Edtior - Highlight Ready Received
+[5.630257157s] Terminal - Key Received
+[5.630400853s] Editor - Key Received
+[5.631105682s] Editor - Key Finished
+[5.634231396s] Syntax Highlight - Restart from 0
+[5.634808075s] Edtior - Highlight Ready Received
+[5.671502142s] Terminal - Key Received
+[5.67159642s] Editor - Key Received
+[5.672309216s] Editor - Key Finished
+[5.675779993s] Syntax Highlight - Restart from 0
+[5.676488641s] Edtior - Highlight Ready Received
+[5.713070855s] Terminal - Key Received
+[5.713252002s] Editor - Key Received
+[5.714108337s] Editor - Key Finished
+[5.716951657s] Syntax Highlight - Restart from 0
+[5.717536865s] Edtior - Highlight Ready Received
+[5.753480014s] Terminal - Key Received
+[5.75370791s] Editor - Key Received
+[5.754559692s] Editor - Key Finished
+[5.758241066s] Syntax Highlight - Restart from 0
+[5.758774336s] Edtior - Highlight Ready Received
+[5.793068529s] Terminal - Key Received
+[5.79317888s] Editor - Key Received
+[5.794012051s] Editor - Key Finished
+[5.799795116s] Syntax Highlight - Restart from 0
+[5.800502991s] Edtior - Highlight Ready Received
+[5.833464421s] Terminal - Key Received
+[5.833633796s] Editor - Key Received
+[5.834453323s] Editor - Key Finished
+[5.841348435s] Syntax Highlight - Restart from 0
+[5.842149775s] Edtior - Highlight Ready Received
+[5.874360623s] Terminal - Key Received
+[5.874480775s] Editor - Key Received
+[5.875313105s] Editor - Key Finished
+[5.883042595s] Syntax Highlight - Restart from 0
+[5.88380637s] Edtior - Highlight Ready Received
+[5.915124008s] Terminal - Key Received
+[5.915283262s] Editor - Key Received
+[5.91617285s] Editor - Key Finished
+[5.924520714s] Syntax Highlight - Restart from 0
+[5.925278943s] Edtior - Highlight Ready Received
+[5.955727246s] Terminal - Key Received
+[5.955878675s] Editor - Key Received
+[5.956672022s] Editor - Key Finished
+[5.966110073s] Syntax Highlight - Restart from 0
+[5.966868922s] Edtior - Highlight Ready Received
+[5.997021129s] Terminal - Key Received
+[5.997127639s] Editor - Key Received
+[5.997276046s] Syntax Highlight - Restart from 0
+[5.997867659s] Editor - Key Finished
+[5.998118348s] Edtior - Highlight Ready Received
+[6.037755326s] Terminal - Key Received
+[6.037862238s] Editor - Key Received
+[6.038602558s] Editor - Key Finished
+[6.038800488s] Syntax Highlight - Restart from 0
+[6.039494659s] Edtior - Highlight Ready Received
+[6.078398387s] Terminal - Key Received
+[6.078505778s] Editor - Key Received
+[6.079409084s] Editor - Key Finished
+[6.079995068s] Syntax Highlight - Restart from 0
+[6.080666095s] Edtior - Highlight Ready Received
+[6.119187111s] Terminal - Key Received
+[6.119294715s] Editor - Key Received
+[6.120333133s] Editor - Key Finished
+[6.12119555s] Syntax Highlight - Restart from 0
+[6.121865914s] Edtior - Highlight Ready Received
+[6.160216441s] Terminal - Key Received
+[6.160326119s] Editor - Key Received
+[6.161064183s] Editor - Key Finished
+[6.162596442s] Syntax Highlight - Restart from 0
+[6.163390305s] Edtior - Highlight Ready Received
+[6.20172451s] Terminal - Key Received
+[6.201824644s] Editor - Key Received
+[6.202565227s] Editor - Key Finished
+[6.203871198s] Syntax Highlight - Restart from 0
+[6.204555817s] Edtior - Highlight Ready Received
+[6.242485896s] Terminal - Key Received
+[6.242589154s] Editor - Key Received
+[6.243403374s] Editor - Key Finished
+[6.245075896s] Syntax Highlight - Restart from 0
+[6.245744067s] Edtior - Highlight Ready Received
+[6.283644727s] Terminal - Key Received
+[6.283775618s] Editor - Key Received
+[6.284530178s] Editor - Key Finished
+[6.286626142s] Syntax Highlight - Restart from 0
+[6.287328795s] Edtior - Highlight Ready Received
+[6.323974479s] Terminal - Key Received
+[6.324129638s] Editor - Key Received
+[6.324916205s] Editor - Key Finished
+[6.327999069s] Syntax Highlight - Restart from 0
+[6.328669786s] Edtior - Highlight Ready Received
+[6.364729672s] Terminal - Key Received
+[6.364903985s] Editor - Key Received
+[6.36569176s] Editor - Key Finished
+[6.369426985s] Syntax Highlight - Restart from 0
+[6.370141762s] Edtior - Highlight Ready Received
+[6.405599534s] Terminal - Key Received
+[6.405753944s] Editor - Key Received
+[6.406623916s] Editor - Key Finished
+[6.410818889s] Syntax Highlight - Restart from 0
+[6.411573752s] Edtior - Highlight Ready Received
+[6.446661958s] Terminal - Key Received
+[6.446844051s] Editor - Key Received
+[6.447647652s] Editor - Key Finished
+[6.452640577s] Syntax Highlight - Restart from 0
+[6.453459939s] Edtior - Highlight Ready Received
+[6.488278759s] Terminal - Key Received
+[6.488435309s] Editor - Key Received
+[6.489214313s] Editor - Key Finished
+[6.494024172s] Syntax Highlight - Restart from 0
+[6.494695572s] Edtior - Highlight Ready Received
+[6.528896714s] Terminal - Key Received
+[6.529059966s] Editor - Key Received
+[6.529866542s] Editor - Key Finished
+[6.535503423s] Syntax Highlight - Restart from 0
+[6.536166011s] Edtior - Highlight Ready Received
+[6.747021905s] Terminal - Key Received
+[6.747155829s] Editor - Key Received
+[6.747977288s] Editor - Key Finished
+[6.751526678s] Syntax Highlight - Restart from 0
+[6.752117364s] Edtior - Highlight Ready Received
+[6.991093483s] Terminal - Key Received
+[6.991237741s] Editor - Key Received
+[6.991974917s] Editor - Key Finished
+[6.996390615s] Syntax Highlight - Restart from 0
+[6.996975719s] Edtior - Highlight Ready Received
+[7.345633705s] Terminal - Key Received
+[7.34581283s] Editor - Key Received
+[7.346994636s] Editor - Key Finished
+[7.349102447s] Syntax Highlight - Restart from 0
+[7.349891186s] Edtior - Highlight Ready Received
+[7.945066273s] Terminal - Key Received
+[7.94523384s] Editor - Key Received
+[7.946128665s] Editor - Key Finished
+[7.951058872s] Syntax Highlight - Restart from 0
+[7.951748622s] Edtior - Highlight Ready Received
+[7.984983462s] Terminal - Key Received
+[7.985093637s] Editor - Key Received
+[7.985831648s] Editor - Key Finished
+[7.992703723s] Syntax Highlight - Restart from 0
+[7.993463554s] Edtior - Highlight Ready Received
+[8.025085121s] Terminal - Key Received
+[8.025242081s] Editor - Key Received
+[8.025973652s] Editor - Key Finished
+[8.034029801s] Syntax Highlight - Restart from 0
+[8.034697033s] Edtior - Highlight Ready Received
+[8.065314832s] Terminal - Key Received
+[8.065424302s] Editor - Key Received
+[8.066134622s] Editor - Key Finished
+[8.07543034s] Syntax Highlight - Restart from 0
+[8.076080126s] Edtior - Highlight Ready Received
+[8.10653988s] Terminal - Key Received
+[8.106657232s] Editor - Key Received
+[8.107398404s] Editor - Key Finished
+[8.116540533s] Syntax Highlight - Restart from 0
+[8.117127155s] Edtior - Highlight Ready Received
+[8.147144801s] Terminal - Key Received
+[8.147253442s] Editor - Key Received
+[8.147684681s] Syntax Highlight - Restart from 0
+[8.147961373s] Editor - Key Finished
+[8.148181269s] Edtior - Highlight Ready Received
+[8.187877096s] Terminal - Key Received
+[8.188025938s] Editor - Key Received
+[8.18888379s] Editor - Key Finished
+[8.189079185s] Syntax Highlight - Restart from 0
+[8.189760703s] Edtior - Highlight Ready Received
+[8.22841631s] Terminal - Key Received
+[8.228509519s] Editor - Key Received
+[8.229261061s] Editor - Key Finished
+[8.230194506s] Syntax Highlight - Restart from 0
+[8.230771727s] Edtior - Highlight Ready Received
+[8.269618683s] Terminal - Key Received
+[8.269715543s] Editor - Key Received
+[8.270491213s] Editor - Key Finished
+[8.271492592s] Syntax Highlight - Restart from 0
+[8.272061825s] Edtior - Highlight Ready Received
+[8.310880069s] Terminal - Key Received
+[8.31097186s] Editor - Key Received
+[8.311760309s] Editor - Key Finished
+[8.312840875s] Syntax Highlight - Restart from 0
+[8.313525276s] Edtior - Highlight Ready Received
+[8.350966025s] Terminal - Key Received
+[8.351075561s] Editor - Key Received
+[8.351861675s] Editor - Key Finished
+[8.354002937s] Syntax Highlight - Restart from 0
+[8.354577626s] Edtior - Highlight Ready Received
+[8.390525253s] Terminal - Key Received
+[8.390675353s] Editor - Key Received
+[8.391457084s] Editor - Key Finished
+[8.395286596s] Syntax Highlight - Restart from 0
+[8.39587301s] Edtior - Highlight Ready Received
+[8.43081582s] Terminal - Key Received
+[8.430907807s] Editor - Key Received
+[8.431602118s] Editor - Key Finished
+[8.436522059s] Syntax Highlight - Restart from 0
+[8.437208884s] Edtior - Highlight Ready Received
+[8.471039169s] Terminal - Key Received
+[8.471121787s] Editor - Key Received
+[8.471962683s] Editor - Key Finished
+[8.477814658s] Syntax Highlight - Restart from 0
+[8.478418852s] Edtior - Highlight Ready Received
+[8.512065395s] Terminal - Key Received
+[8.512181774s] Editor - Key Received
+[8.513091468s] Editor - Key Finished
+[8.51898597s] Syntax Highlight - Restart from 0
+[8.519850921s] Edtior - Highlight Ready Received
+[8.553394982s] Terminal - Key Received
+[8.553498077s] Editor - Key Received
+[8.554209857s] Editor - Key Finished
+[8.560213032s] Syntax Highlight - Restart from 0
+[8.560908763s] Edtior - Highlight Ready Received
+[8.593907703s] Terminal - Key Received
+[8.594023628s] Editor - Key Received
+[8.594788233s] Editor - Key Finished
+[8.601378236s] Syntax Highlight - Restart from 0
+[8.602014265s] Edtior - Highlight Ready Received
+[8.633845964s] Terminal - Key Received
+[8.633964212s] Editor - Key Received
+[8.634836044s] Editor - Key Finished
+[8.642608758s] Syntax Highlight - Restart from 0
+[8.643225773s] Edtior - Highlight Ready Received
+[8.673867723s] Terminal - Key Received
+[8.674008291s] Editor - Key Received
+[8.67484551s] Editor - Key Finished
+[8.683609637s] Syntax Highlight - Restart from 0
+[8.684173946s] Edtior - Highlight Ready Received
+[8.713380787s] Terminal - Key Received
+[8.713473971s] Editor - Key Received
+[8.714116126s] Editor - Key Finished
+[8.714468554s] Syntax Highlight - Restart from 0
+[8.714959355s] Edtior - Highlight Ready Received
+[8.753739353s] Terminal - Key Received
+[8.753836467s] Editor - Key Received
+[8.754696699s] Editor - Key Finished
+[8.755420462s] Syntax Highlight - Restart from 0
+[8.755963787s] Edtior - Highlight Ready Received
+[8.793463954s] Terminal - Key Received
+[8.793565047s] Editor - Key Received
+[8.794258637s] Editor - Key Finished
+[8.796397288s] Syntax Highlight - Restart from 0
+[8.796941365s] Edtior - Highlight Ready Received
+[8.833749769s] Terminal - Key Received
+[8.833883911s] Editor - Key Received
+[8.834498311s] Editor - Key Finished
+[8.837446838s] Syntax Highlight - Restart from 0
+[8.837961816s] Edtior - Highlight Ready Received
+[8.873720249s] Terminal - Key Received
+[8.873816413s] Editor - Key Received
+[8.874493455s] Editor - Key Finished
+[8.878557315s] Syntax Highlight - Restart from 0
+[8.879014984s] Edtior - Highlight Ready Received
+[8.913219277s] Terminal - Key Received
+[8.913395897s] Editor - Key Received
+[8.914033406s] Editor - Key Finished
+[8.919559249s] Syntax Highlight - Restart from 0
+[8.920180995s] Edtior - Highlight Ready Received
+[8.953907668s] Terminal - Key Received
+[8.954030003s] Editor - Key Received
+[8.95469955s] Editor - Key Finished
+[8.960646899s] Syntax Highlight - Restart from 0
+[8.961238186s] Edtior - Highlight Ready Received
+[8.994547293s] Terminal - Key Received
+[8.994681067s] Editor - Key Received
+[8.995395797s] Editor - Key Finished
+[9.001752287s] Syntax Highlight - Restart from 0
+[9.002277741s] Edtior - Highlight Ready Received
+[9.034782592s] Terminal - Key Received
+[9.034915953s] Editor - Key Received
+[9.035566289s] Editor - Key Finished
+[9.042754341s] Syntax Highlight - Restart from 0
+[9.04329565s] Edtior - Highlight Ready Received
+[9.075892317s] Terminal - Key Received
+[9.076023234s] Editor - Key Received
+[9.076753067s] Editor - Key Finished
+[9.083783085s] Syntax Highlight - Restart from 0
+[9.084344845s] Edtior - Highlight Ready Received
+[9.115668345s] Terminal - Key Received
+[9.115758691s] Editor - Key Received
+[9.116407143s] Editor - Key Finished
+[9.124730337s] Syntax Highlight - Restart from 0
+[9.125265631s] Edtior - Highlight Ready Received
+[9.156027989s] Terminal - Key Received
+[9.156152775s] Editor - Key Received
+[9.156750143s] Editor - Key Finished
+[9.165796175s] Syntax Highlight - Restart from 0
+[9.166248628s] Edtior - Highlight Ready Received
+[9.196488421s] Terminal - Key Received
+[9.196566683s] Editor - Key Received
+[9.197148848s] Editor - Key Finished
+[9.206627515s] Syntax Highlight - Restart from 0
+[9.207113233s] Edtior - Highlight Ready Received
+[9.236791774s] Terminal - Key Received
+[9.236868958s] Editor - Key Received
+[9.237409378s] Syntax Highlight - Restart from 0
+[9.237586814s] Editor - Key Finished
+[9.237891579s] Edtior - Highlight Ready Received
+[9.276734262s] Terminal - Key Received
+[9.276805891s] Editor - Key Received
+[9.277463748s] Editor - Key Finished
+[9.278488874s] Syntax Highlight - Restart from 0
+[9.279001748s] Edtior - Highlight Ready Received
+[9.31629904s] Terminal - Key Received
+[9.316384572s] Editor - Key Received
+[9.31697262s] Editor - Key Finished
+[9.319450554s] Syntax Highlight - Restart from 0
+[9.32002771s] Edtior - Highlight Ready Received
+[9.356642631s] Terminal - Key Received
+[9.356784771s] Editor - Key Received
+[9.357432107s] Editor - Key Finished
+[9.360523171s] Syntax Highlight - Restart from 0
+[9.360966577s] Edtior - Highlight Ready Received
+[9.396257311s] Terminal - Key Received
+[9.396331285s] Editor - Key Received
+[9.396908823s] Editor - Key Finished
+[9.401491048s] Syntax Highlight - Restart from 0
+[9.402005027s] Edtior - Highlight Ready Received
+[9.436568394s] Terminal - Key Received
+[9.436638914s] Editor - Key Received
+[9.437157249s] Editor - Key Finished
+[9.442397587s] Syntax Highlight - Restart from 0
+[9.442925159s] Edtior - Highlight Ready Received
+[9.476731922s] Terminal - Key Received
+[9.476875588s] Editor - Key Received
+[9.477552871s] Editor - Key Finished
+[9.483320897s] Syntax Highlight - Restart from 0
+[9.48397698s] Edtior - Highlight Ready Received
+[9.51738848s] Terminal - Key Received
+[9.517519721s] Editor - Key Received
+[9.518184848s] Editor - Key Finished
+[9.524675027s] Syntax Highlight - Restart from 0
+[9.525342507s] Edtior - Highlight Ready Received
+[9.558562762s] Terminal - Key Received
+[9.5586701s] Editor - Key Received
+[9.559331471s] Editor - Key Finished
+[9.566442573s] Syntax Highlight - Restart from 0
+[9.567106752s] Edtior - Highlight Ready Received
+[9.59911687s] Terminal - Key Received
+[9.599274711s] Editor - Key Received
+[9.600043119s] Editor - Key Finished
+[9.607746646s] Syntax Highlight - Restart from 0
+[9.608457073s] Edtior - Highlight Ready Received
+[20.951136484s] Terminal - Key Received
+[20.951293785s] Editor - Key Received
+[20.951979846s] Editor - Key Finished
+[20.95807523s] Syntax Highlight - Restart from 0
+[20.958735065s] Edtior - Highlight Ready Received
+[21.551870646s] Terminal - Key Received
+[21.551973358s] Editor - Key Received
+[21.552361146s] Syntax Highlight - Restart from 0
+[21.552773234s] Editor - Key Finished
+[21.553153984s] Edtior - Highlight Ready Received
+[21.592385237s] Terminal - Key Received
+[21.592497483s] Editor - Key Received
+[21.593283998s] Editor - Key Finished
+[21.593553665s] Syntax Highlight - Restart from 0
+[21.594079993s] Edtior - Highlight Ready Received
+[21.633441907s] Terminal - Key Received
+[21.633556667s] Editor - Key Received
+[21.634337675s] Editor - Key Finished
+[21.634722416s] Syntax Highlight - Restart from 0
+[21.635232257s] Edtior - Highlight Ready Received
+[21.673601344s] Terminal - Key Received
+[21.673757187s] Editor - Key Received
+[21.674542705s] Editor - Key Finished
+[21.676072905s] Syntax Highlight - Restart from 0
+[21.676795383s] Edtior - Highlight Ready Received
+[21.714189503s] Terminal - Key Received
+[21.714319233s] Editor - Key Received
+[21.714985862s] Editor - Key Finished
+[21.717400367s] Syntax Highlight - Restart from 0
+[21.717972488s] Edtior - Highlight Ready Received
+[21.755023088s] Terminal - Key Received
+[21.755136257s] Editor - Key Received
+[21.755862632s] Editor - Key Finished
+[21.758672649s] Syntax Highlight - Restart from 0
+[21.759197645s] Edtior - Highlight Ready Received
+[21.794445752s] Terminal - Key Received
+[21.794555288s] Editor - Key Received
+[21.795313644s] Editor - Key Finished
+[21.799941726s] Syntax Highlight - Restart from 0
+[21.800500487s] Edtior - Highlight Ready Received
+[21.835368463s] Terminal - Key Received
+[21.835508632s] Editor - Key Received
+[21.836266749s] Editor - Key Finished
+[21.841117053s] Syntax Highlight - Restart from 0
+[21.841649846s] Edtior - Highlight Ready Received
+[21.876550656s] Terminal - Key Received
+[21.876693373s] Editor - Key Received
+[21.877480335s] Editor - Key Finished
+[21.882615822s] Syntax Highlight - Restart from 0
+[21.883266146s] Edtior - Highlight Ready Received
+[21.917797909s] Terminal - Key Received
+[21.917926897s] Editor - Key Received
+[21.918738706s] Editor - Key Finished
+[21.923828082s] Syntax Highlight - Restart from 0
+[21.924487741s] Edtior - Highlight Ready Received
+[21.958861529s] Terminal - Key Received
+[21.958975339s] Editor - Key Received
+[21.959710393s] Editor - Key Finished
+[21.965344982s] Syntax Highlight - Restart from 0
+[21.966006357s] Edtior - Highlight Ready Received
+[21.998776135s] Terminal - Key Received
+[21.998925038s] Editor - Key Received
+[21.999755872s] Editor - Key Finished
+[22.006575819s] Syntax Highlight - Restart from 0
+[22.007238361s] Edtior - Highlight Ready Received
+[22.039602769s] Terminal - Key Received
+[22.039712696s] Editor - Key Received
+[22.040468269s] Editor - Key Finished
+[22.047697165s] Syntax Highlight - Restart from 0
+[22.048346827s] Edtior - Highlight Ready Received
+[22.080084809s] Terminal - Key Received
+[22.080188879s] Editor - Key Received
+[22.080950242s] Editor - Key Finished
+[22.089120424s] Syntax Highlight - Restart from 0
+[22.089783195s] Edtior - Highlight Ready Received
+[22.120236035s] Terminal - Key Received
+[22.120348032s] Editor - Key Received
+[22.121011502s] Editor - Key Finished
+[22.130493848s] Syntax Highlight - Restart from 0
+[22.131165659s] Edtior - Highlight Ready Received
+[22.160233496s] Terminal - Key Received
+[22.160318408s] Editor - Key Received
+[22.161011758s] Editor - Key Finished
+[22.161488521s] Syntax Highlight - Restart from 0
+[22.162043312s] Edtior - Highlight Ready Received
+[22.201508661s] Terminal - Key Received
+[22.20164969s] Editor - Key Received
+[22.202376285s] Editor - Key Finished
+[22.202687004s] Syntax Highlight - Restart from 0
+[22.203337498s] Edtior - Highlight Ready Received
+[22.242272928s] Terminal - Key Received
+[22.242382059s] Editor - Key Received
+[22.243140865s] Editor - Key Finished
+[22.243921044s] Syntax Highlight - Restart from 0
+[22.244498596s] Edtior - Highlight Ready Received
+[22.282724098s] Terminal - Key Received
+[22.282929297s] Editor - Key Received
+[22.283727586s] Editor - Key Finished
+[22.285212038s] Syntax Highlight - Restart from 0
+[22.285730809s] Edtior - Highlight Ready Received
+[22.323704725s] Terminal - Key Received
+[22.32385451s] Editor - Key Received
+[22.324616972s] Editor - Key Finished
+[22.326482399s] Syntax Highlight - Restart from 0
+[22.327066403s] Edtior - Highlight Ready Received
+[22.363835565s] Terminal - Key Received
+[22.363938521s] Editor - Key Received
+[22.364714572s] Editor - Key Finished
+[22.367693994s] Syntax Highlight - Restart from 0
+[22.368351223s] Edtior - Highlight Ready Received
+[22.404791992s] Terminal - Key Received
+[22.404913387s] Editor - Key Received
+[22.405658048s] Editor - Key Finished
+[22.409248342s] Syntax Highlight - Restart from 0
+[22.409967389s] Edtior - Highlight Ready Received
+[22.445087576s] Terminal - Key Received
+[22.445244114s] Editor - Key Received
+[22.445964708s] Editor - Key Finished
+[22.45039669s] Syntax Highlight - Restart from 0
+[22.451056816s] Edtior - Highlight Ready Received
+[22.485773352s] Terminal - Key Received
+[22.485888681s] Editor - Key Received
+[22.486617712s] Editor - Key Finished
+[22.492147432s] Syntax Highlight - Restart from 0
+[22.492752623s] Edtior - Highlight Ready Received
+[22.526751747s] Terminal - Key Received
+[22.526858873s] Editor - Key Received
+[22.527508985s] Editor - Key Finished
+[22.533258751s] Syntax Highlight - Restart from 0
+[22.533816802s] Edtior - Highlight Ready Received
+[22.567051997s] Terminal - Key Received
+[22.567157857s] Editor - Key Received
+[22.568102078s] Editor - Key Finished
+[22.574458859s] Syntax Highlight - Restart from 0
+[22.575029696s] Edtior - Highlight Ready Received
+[22.6069544s] Terminal - Key Received
+[22.60710825s] Editor - Key Received
+[22.607837829s] Editor - Key Finished
+[22.615526605s] Syntax Highlight - Restart from 0
+[22.616125498s] Edtior - Highlight Ready Received
+[22.64704045s] Terminal - Key Received
+[22.647183216s] Editor - Key Received
+[22.64795975s] Editor - Key Finished
+[22.656756243s] Syntax Highlight - Restart from 0
+[22.657380317s] Edtior - Highlight Ready Received
+[22.687893591s] Terminal - Key Received
+[22.688035183s] Editor - Key Received
+[22.688662769s] Editor - Key Finished
+[22.697866993s] Syntax Highlight - Restart from 0
+[22.698455801s] Edtior - Highlight Ready Received
+[22.728027426s] Terminal - Key Received
+[22.728122467s] Editor - Key Received
+[22.728681502s] Syntax Highlight - Restart from 0
+[22.728772917s] Editor - Key Finished
+[22.729145998s] Edtior - Highlight Ready Received
+[22.768681594s] Terminal - Key Received
+[22.768790871s] Editor - Key Received
+[22.769679939s] Syntax Highlight - Restart from 0
+[22.769704532s] Editor - Key Finished
+[22.770261261s] Edtior - Highlight Ready Received
+[22.809362843s] Terminal - Key Received
+[22.809461222s] Editor - Key Received
+[22.810263844s] Editor - Key Finished
+[22.810696442s] Syntax Highlight - Restart from 0
+[22.811290935s] Edtior - Highlight Ready Received
+[22.849560594s] Terminal - Key Received
+[22.849680998s] Editor - Key Received
+[22.850344033s] Editor - Key Finished
+[22.851721552s] Syntax Highlight - Restart from 0
+[22.852186844s] Edtior - Highlight Ready Received
+[22.889891073s] Terminal - Key Received
+[22.889989543s] Editor - Key Received
+[22.890619823s] Editor - Key Finished
+[22.892619547s] Syntax Highlight - Restart from 0
+[22.893137291s] Edtior - Highlight Ready Received
+[22.930901647s] Terminal - Key Received
+[22.930993031s] Editor - Key Received
+[22.931676292s] Editor - Key Finished
+[22.933630123s] Syntax Highlight - Restart from 0
+[22.934101806s] Edtior - Highlight Ready Received
+[22.970886508s] Terminal - Key Received
+[22.97096398s] Editor - Key Received
+[22.971687529s] Editor - Key Finished
+[22.974602371s] Syntax Highlight - Restart from 0
+[22.975029399s] Edtior - Highlight Ready Received
+[23.012277593s] Terminal - Key Received
+[23.012427425s] Editor - Key Received
+[23.013273642s] Editor - Key Finished
+[23.015720688s] Syntax Highlight - Restart from 0
+[23.016352131s] Edtior - Highlight Ready Received
+[23.053347842s] Terminal - Key Received
+[23.053455059s] Editor - Key Received
+[23.054308434s] Editor - Key Finished
+[23.056876171s] Syntax Highlight - Restart from 0
+[23.05743974s] Edtior - Highlight Ready Received
+[23.09423517s] Terminal - Key Received
+[23.094395484s] Editor - Key Received
+[23.095099437s] Editor - Key Finished
+[23.09816217s] Syntax Highlight - Restart from 0
+[23.098748134s] Edtior - Highlight Ready Received
+[23.134593766s] Terminal - Key Received
+[23.134741033s] Editor - Key Received
+[23.135468109s] Editor - Key Finished
+[23.139497938s] Syntax Highlight - Restart from 0
+[23.140131379s] Edtior - Highlight Ready Received
+[23.175339621s] Terminal - Key Received
+[23.17550226s] Editor - Key Received
+[23.17624862s] Editor - Key Finished
+[23.180740174s] Syntax Highlight - Restart from 0
+[23.181350316s] Edtior - Highlight Ready Received
+[23.215886372s] Terminal - Key Received
+[23.216054022s] Editor - Key Received
+[23.216929015s] Editor - Key Finished
+[23.222333858s] Syntax Highlight - Restart from 0
+[23.222977662s] Edtior - Highlight Ready Received
+[23.256943957s] Terminal - Key Received
+[23.257114874s] Editor - Key Received
+[23.257978545s] Editor - Key Finished
+[23.263480824s] Syntax Highlight - Restart from 0
+[23.264197941s] Edtior - Highlight Ready Received
+[23.297395572s] Terminal - Key Received
+[23.297558368s] Editor - Key Received
+[23.298448122s] Editor - Key Finished
+[23.304766761s] Syntax Highlight - Restart from 0
+[23.305523519s] Edtior - Highlight Ready Received
+[23.337540211s] Terminal - Key Received
+[23.337695096s] Editor - Key Received
+[23.338445134s] Editor - Key Finished
+[23.34633754s] Syntax Highlight - Restart from 0
+[23.347104569s] Edtior - Highlight Ready Received
+[23.378247703s] Terminal - Key Received
+[23.378400705s] Editor - Key Received
+[23.379138755s] Editor - Key Finished
+[23.38761382s] Syntax Highlight - Restart from 0
+[23.388368923s] Edtior - Highlight Ready Received
+[23.418253364s] Terminal - Key Received
+[23.418423902s] Editor - Key Received
+[23.418851874s] Syntax Highlight - Restart from 0
+[23.419290293s] Editor - Key Finished
+[23.419706838s] Edtior - Highlight Ready Received
+[23.458244299s] Terminal - Key Received
+[23.458401791s] Editor - Key Received
+[23.459140733s] Editor - Key Finished
+[23.460370162s] Syntax Highlight - Restart from 0
+[23.460992718s] Edtior - Highlight Ready Received
+[23.499099505s] Terminal - Key Received
+[23.499249166s] Editor - Key Received
+[23.500202021s] Editor - Key Finished
+[23.501961339s] Syntax Highlight - Restart from 0
+[23.502711518s] Edtior - Highlight Ready Received
+[23.539155362s] Terminal - Key Received
+[23.539319277s] Editor - Key Received
+[23.540191593s] Editor - Key Finished
+[23.543328691s] Syntax Highlight - Restart from 0
+[23.544169959s] Edtior - Highlight Ready Received
+[23.58011245s] Terminal - Key Received
+[23.580272644s] Editor - Key Received
+[23.581065599s] Editor - Key Finished
+[23.584996943s] Syntax Highlight - Restart from 0
+[23.585691883s] Edtior - Highlight Ready Received
+[23.621028839s] Terminal - Key Received
+[23.621204809s] Editor - Key Received
+[23.622057724s] Editor - Key Finished
+[23.626538072s] Syntax Highlight - Restart from 0
+[23.627361943s] Edtior - Highlight Ready Received
+[23.661645148s] Terminal - Key Received
+[23.661811898s] Editor - Key Received
+[23.662583293s] Editor - Key Finished
+[23.667978602s] Syntax Highlight - Restart from 0
+[23.668652021s] Edtior - Highlight Ready Received
+[23.702199936s] Terminal - Key Received
+[23.702347516s] Editor - Key Received
+[23.703183492s] Editor - Key Finished
+[23.709418478s] Syntax Highlight - Restart from 0
+[23.710126791s] Edtior - Highlight Ready Received
+[23.742473043s] Terminal - Key Received
+[23.742616692s] Editor - Key Received
+[23.743493758s] Editor - Key Finished
+[23.750708233s] Syntax Highlight - Restart from 0
+[23.75146965s] Edtior - Highlight Ready Received
+[23.783611204s] Terminal - Key Received
+[23.783777938s] Editor - Key Received
+[23.784663716s] Editor - Key Finished
+[23.792239509s] Syntax Highlight - Restart from 0
+[23.793006787s] Edtior - Highlight Ready Received
+[23.824535208s] Terminal - Key Received
+[23.824685629s] Editor - Key Received
+[23.825424224s] Editor - Key Finished
+[23.833675692s] Syntax Highlight - Restart from 0
+[23.834434404s] Edtior - Highlight Ready Received
+[23.866087164s] Terminal - Key Received
+[23.866315448s] Editor - Key Received
+[23.867105994s] Editor - Key Finished
+[23.875220454s] Syntax Highlight - Restart from 0
+[23.87597845s] Edtior - Highlight Ready Received
+[24.463261343s] Terminal - Key Received
+[24.463429377s] Editor - Key Received
+[24.464307202s] Editor - Key Finished
+[24.473254013s] Syntax Highlight - Restart from 0
+[24.47386584s] Edtior - Highlight Ready Received
+[25.065818554s] Terminal - Key Received
+[25.065955558s] Editor - Key Received
+[25.067152433s] Editor - Key Finished
+[25.076330747s] Syntax Highlight - Restart from 0
+[25.077180375s] Edtior - Highlight Ready Received
+[25.105173815s] Terminal - Key Received
+[25.105349016s] Editor - Key Received
+[25.106155253s] Editor - Key Finished
+[25.107839844s] Syntax Highlight - Restart from 0
+[25.108457558s] Edtior - Highlight Ready Received
+[25.145607107s] Terminal - Key Received
+[25.145791796s] Editor - Key Received
+[25.146643917s] Editor - Key Finished
+[25.149244116s] Syntax Highlight - Restart from 0
+[25.149912658s] Edtior - Highlight Ready Received
+[25.18649943s] Terminal - Key Received
+[25.18660896s] Editor - Key Received
+[25.18742355s] Editor - Key Finished
+[25.190545374s] Syntax Highlight - Restart from 0
+[25.191157617s] Edtior - Highlight Ready Received
+[25.226410327s] Terminal - Key Received
+[25.226504107s] Editor - Key Received
+[25.227230549s] Editor - Key Finished
+[25.23215587s] Syntax Highlight - Restart from 0
+[25.232932313s] Edtior - Highlight Ready Received
+[25.26651956s] Terminal - Key Received
+[25.266662673s] Editor - Key Received
+[25.26751321s] Editor - Key Finished
+[25.273361603s] Syntax Highlight - Restart from 0
+[25.273943484s] Edtior - Highlight Ready Received
+[25.30697581s] Terminal - Key Received
+[25.307129497s] Editor - Key Received
+[25.30785814s] Editor - Key Finished
+[25.314497173s] Syntax Highlight - Restart from 0
+[25.315072108s] Edtior - Highlight Ready Received
+[25.346841055s] Terminal - Key Received
+[25.346990517s] Editor - Key Received
+[25.34771068s] Editor - Key Finished
+[25.355731441s] Syntax Highlight - Restart from 0
+[25.356327656s] Edtior - Highlight Ready Received
+[25.38760713s] Terminal - Key Received
+[25.387712918s] Editor - Key Received
+[25.388442464s] Editor - Key Finished
+[25.39689899s] Syntax Highlight - Restart from 0
+[25.397568908s] Edtior - Highlight Ready Received
+[25.427949889s] Terminal - Key Received
+[25.428117425s] Editor - Key Received
+[25.428844275s] Editor - Key Finished
+[25.438313843s] Syntax Highlight - Restart from 0
+[25.438984182s] Edtior - Highlight Ready Received
+[25.468342092s] Terminal - Key Received
+[25.468438643s] Editor - Key Received
+[25.469241404s] Editor - Key Finished
+[25.46950788s] Syntax Highlight - Restart from 0
+[25.470143215s] Edtior - Highlight Ready Received
+[25.508617907s] Terminal - Key Received
+[25.508705299s] Editor - Key Received
+[25.509436155s] Editor - Key Finished
+[25.51071902s] Syntax Highlight - Restart from 0
+[25.511292872s] Edtior - Highlight Ready Received
+[25.548798354s] Terminal - Key Received
+[25.548916538s] Editor - Key Received
+[25.549747079s] Editor - Key Finished
+[25.552061845s] Syntax Highlight - Restart from 0
+[25.552643095s] Edtior - Highlight Ready Received
+[25.588991611s] Terminal - Key Received
+[25.589080565s] Editor - Key Received
+[25.589983487s] Editor - Key Finished
+[25.593269889s] Syntax Highlight - Restart from 0
+[25.593808275s] Edtior - Highlight Ready Received
+[25.628912649s] Terminal - Key Received
+[25.629026215s] Editor - Key Received
+[25.629795501s] Editor - Key Finished
+[25.634427475s] Syntax Highlight - Restart from 0
+[25.635002787s] Edtior - Highlight Ready Received
+[25.668731483s] Terminal - Key Received
+[25.668822612s] Editor - Key Received
+[25.669592664s] Editor - Key Finished
+[25.676025021s] Syntax Highlight - Restart from 0
+[25.676786401s] Edtior - Highlight Ready Received
+[25.70922536s] Terminal - Key Received
+[25.709337068s] Editor - Key Received
+[25.710173024s] Editor - Key Finished
+[25.717261665s] Syntax Highlight - Restart from 0
+[25.717837576s] Edtior - Highlight Ready Received
+[25.749930104s] Terminal - Key Received
+[25.750023668s] Editor - Key Received
+[25.750728627s] Editor - Key Finished
+[25.758611283s] Syntax Highlight - Restart from 0
+[25.759298807s] Edtior - Highlight Ready Received
+[25.790424346s] Terminal - Key Received
+[25.790536352s] Editor - Key Received
+[25.791214715s] Editor - Key Finished
+[25.799880016s] Syntax Highlight - Restart from 0
+[25.800549221s] Edtior - Highlight Ready Received
+[25.83133469s] Terminal - Key Received
+[25.831479104s] Editor - Key Received
+[25.832203773s] Editor - Key Finished
+[25.841067839s] Syntax Highlight - Restart from 0
+[25.841689794s] Edtior - Highlight Ready Received
+[25.872642704s] Terminal - Key Received
+[25.872741163s] Editor - Key Received
+[25.873545468s] Editor - Key Finished
+[25.882493086s] Syntax Highlight - Restart from 0
+[25.883269838s] Edtior - Highlight Ready Received
+[25.912421697s] Terminal - Key Received
+[25.912506348s] Editor - Key Received
+[25.913331246s] Editor - Key Finished
+[25.913504789s] Syntax Highlight - Restart from 0
+[25.914087308s] Edtior - Highlight Ready Received
+[25.953302641s] Terminal - Key Received
+[25.953427404s] Editor - Key Received
+[25.954067322s] Editor - Key Finished
+[25.954588992s] Syntax Highlight - Restart from 0
+[25.955100856s] Edtior - Highlight Ready Received
+[25.994574621s] Terminal - Key Received
+[25.994662921s] Editor - Key Received
+[25.995397917s] Editor - Key Finished
+[25.995688982s] Syntax Highlight - Restart from 0
+[25.996265728s] Edtior - Highlight Ready Received
+[26.035166725s] Terminal - Key Received
+[26.035321567s] Editor - Key Received
+[26.036017358s] Editor - Key Finished
+[26.036694259s] Syntax Highlight - Restart from 0
+[26.037269371s] Edtior - Highlight Ready Received
+[26.075947957s] Terminal - Key Received
+[26.07604003s] Editor - Key Received
+[26.076825708s] Editor - Key Finished
+[26.07780273s] Syntax Highlight - Restart from 0
+[26.078395026s] Edtior - Highlight Ready Received
+[26.117192995s] Terminal - Key Received
+[26.117336548s] Editor - Key Received
+[26.118147827s] Editor - Key Finished
+[26.119244841s] Syntax Highlight - Restart from 0
+[26.119932966s] Edtior - Highlight Ready Received
+[26.157975848s] Terminal - Key Received
+[26.15807314s] Editor - Key Received
+[26.158771469s] Editor - Key Finished
+[26.160367174s] Syntax Highlight - Restart from 0
+[26.160865874s] Edtior - Highlight Ready Received
+[26.197716656s] Terminal - Key Received
+[26.197850707s] Editor - Key Received
+[26.198551959s] Editor - Key Finished
+[26.201388311s] Syntax Highlight - Restart from 0
+[26.201972746s] Edtior - Highlight Ready Received
+[26.237772969s] Terminal - Key Received
+[26.237923781s] Editor - Key Received
+[26.238532724s] Editor - Key Finished
+[26.242368123s] Syntax Highlight - Restart from 0
+[26.243087623s] Edtior - Highlight Ready Received
+[26.27822005s] Terminal - Key Received
+[26.278360021s] Editor - Key Received
+[26.279081139s] Editor - Key Finished
+[26.283469636s] Syntax Highlight - Restart from 0
+[26.283981604s] Edtior - Highlight Ready Received
+[26.319330625s] Terminal - Key Received
+[26.319428534s] Editor - Key Received
+[26.32023263s] Editor - Key Finished
+[26.324547918s] Syntax Highlight - Restart from 0
+[26.325162555s] Edtior - Highlight Ready Received
+[26.359827769s] Terminal - Key Received
+[26.359945436s] Editor - Key Received
+[26.360809743s] Editor - Key Finished
+[26.365795747s] Syntax Highlight - Restart from 0
+[26.366449975s] Edtior - Highlight Ready Received
+[26.400332687s] Terminal - Key Received
+[26.40046458s] Editor - Key Received
+[26.401129497s] Editor - Key Finished
+[26.406850363s] Syntax Highlight - Restart from 0
+[26.4074489s] Edtior - Highlight Ready Received
+[26.441181751s] Terminal - Key Received
+[26.441326941s] Editor - Key Received
+[26.44208235s] Editor - Key Finished
+[26.44834625s] Syntax Highlight - Restart from 0
+[26.448996627s] Edtior - Highlight Ready Received
+[26.481758932s] Terminal - Key Received
+[26.481908515s] Editor - Key Received
+[26.482617443s] Editor - Key Finished
+[26.489617247s] Syntax Highlight - Restart from 0
+[26.490207295s] Edtior - Highlight Ready Received
+[26.521937128s] Terminal - Key Received
+[26.522027775s] Editor - Key Received
+[26.522731575s] Editor - Key Finished
+[26.530788591s] Syntax Highlight - Restart from 0
+[26.531440105s] Edtior - Highlight Ready Received
+[26.563053582s] Terminal - Key Received
+[26.563175873s] Editor - Key Received
+[26.563821832s] Editor - Key Finished
+[26.572232998s] Syntax Highlight - Restart from 0
+[26.572939899s] Edtior - Highlight Ready Received
+[26.6032625s] Terminal - Key Received
+[26.603391348s] Editor - Key Received
+[26.604129673s] Editor - Key Finished
+[26.613259853s] Syntax Highlight - Restart from 0
+[26.613948266s] Edtior - Highlight Ready Received
+[26.644025606s] Terminal - Key Received
+[26.644137372s] Editor - Key Received
+[26.644945242s] Editor - Key Finished
+[26.654485134s] Syntax Highlight - Restart from 0
+[26.655182365s] Edtior - Highlight Ready Received
+[26.684479803s] Terminal - Key Received
+[26.684589322s] Editor - Key Received
+[26.685425447s] Editor - Key Finished
+[26.68563838s] Syntax Highlight - Restart from 0
+[26.68625836s] Edtior - Highlight Ready Received
+[26.725265273s] Terminal - Key Received
+[26.725375656s] Editor - Key Received
+[26.726074489s] Editor - Key Finished
+[26.726794888s] Syntax Highlight - Restart from 0
+[26.727379285s] Edtior - Highlight Ready Received
+[26.765563022s] Terminal - Key Received
+[26.765671904s] Editor - Key Received
+[26.766431792s] Editor - Key Finished
+[26.767968406s] Syntax Highlight - Restart from 0
+[26.768569397s] Edtior - Highlight Ready Received
+[26.806358202s] Terminal - Key Received
+[26.80650206s] Editor - Key Received
+[26.807101596s] Editor - Key Finished
+[26.809351405s] Syntax Highlight - Restart from 0
+[26.809986388s] Edtior - Highlight Ready Received
+[26.847127738s] Terminal - Key Received
+[26.847269977s] Editor - Key Received
+[26.847991714s] Editor - Key Finished
+[26.850491868s] Syntax Highlight - Restart from 0
+[26.851067651s] Edtior - Highlight Ready Received
+[26.888527984s] Terminal - Key Received
+[26.888709819s] Editor - Key Received
+[26.889432805s] Editor - Key Finished
+[26.892045988s] Syntax Highlight - Restart from 0
+[26.892710164s] Edtior - Highlight Ready Received
+[26.929499828s] Terminal - Key Received
+[26.929692569s] Editor - Key Received
+[26.93040687s] Editor - Key Finished
+[26.933373818s] Syntax Highlight - Restart from 0
+[26.933951918s] Edtior - Highlight Ready Received
+[26.971010388s] Terminal - Key Received
+[26.971166382s] Editor - Key Received
+[26.971888514s] Editor - Key Finished
+[26.97483749s] Syntax Highlight - Restart from 0
+[26.975435683s] Edtior - Highlight Ready Received
+[27.011484387s] Terminal - Key Received
+[27.011633567s] Editor - Key Received
+[27.012356831s] Editor - Key Finished
+[27.016564981s] Syntax Highlight - Restart from 0
+[27.017338366s] Edtior - Highlight Ready Received
+[27.052533452s] Terminal - Key Received
+[27.052642716s] Editor - Key Received
+[27.053496815s] Editor - Key Finished
+[27.058225187s] Syntax Highlight - Restart from 0
+[27.059038275s] Edtior - Highlight Ready Received
+[27.092394139s] Terminal - Key Received
+[27.092557754s] Editor - Key Received
+[27.093464639s] Editor - Key Finished
+[27.099830312s] Syntax Highlight - Restart from 0
+[27.100490763s] Edtior - Highlight Ready Received
+[27.133665016s] Terminal - Key Received
+[27.133790845s] Editor - Key Received
+[27.134514891s] Editor - Key Finished
+[27.141091215s] Syntax Highlight - Restart from 0
+[27.141753351s] Edtior - Highlight Ready Received
+[27.173882535s] Terminal - Key Received
+[27.174004685s] Editor - Key Received
+[27.174675305s] Editor - Key Finished
+[27.182375737s] Syntax Highlight - Restart from 0
+[27.183215946s] Edtior - Highlight Ready Received
+[27.215445172s] Terminal - Key Received
+[27.215591453s] Editor - Key Received
+[27.216296594s] Editor - Key Finished
+[27.223708765s] Syntax Highlight - Restart from 0
+[27.224401153s] Edtior - Highlight Ready Received
+[27.255930356s] Terminal - Key Received
+[27.256052577s] Editor - Key Received
+[27.256761164s] Editor - Key Finished
+[27.264844191s] Syntax Highlight - Restart from 0
+[27.265491728s] Edtior - Highlight Ready Received
+[27.295669821s] Terminal - Key Received
+[27.295780281s] Editor - Key Received
+[27.295853571s] Syntax Highlight - Restart from 0
+[27.296457413s] Editor - Key Finished
+[27.296706989s] Edtior - Highlight Ready Received
+[27.33672345s] Terminal - Key Received
+[27.336856206s] Editor - Key Received
+[27.337089496s] Syntax Highlight - Restart from 0
+[27.337591025s] Editor - Key Finished
+[27.337849112s] Edtior - Highlight Ready Received
+[27.378040403s] Terminal - Key Received
+[27.37820297s] Editor - Key Received
+[27.378467807s] Syntax Highlight - Restart from 0
+[27.378954188s] Editor - Key Finished
+[27.379217809s] Edtior - Highlight Ready Received
+[27.418356672s] Terminal - Key Received
+[27.418514139s] Editor - Key Received
+[27.419153299s] Editor - Key Finished
+[27.41969762s] Syntax Highlight - Restart from 0
+[27.420275624s] Edtior - Highlight Ready Received
+[27.45931139s] Terminal - Key Received
+[27.459454121s] Editor - Key Received
+[27.460220641s] Editor - Key Finished
+[27.460875128s] Syntax Highlight - Restart from 0
+[27.461441616s] Edtior - Highlight Ready Received
+[27.499485652s] Terminal - Key Received
+[27.499621879s] Editor - Key Received
+[27.500305951s] Editor - Key Finished
+[27.502223998s] Syntax Highlight - Restart from 0
+[27.502960362s] Edtior - Highlight Ready Received
+[27.540156394s] Terminal - Key Received
+[27.540296568s] Editor - Key Received
+[27.541017044s] Editor - Key Finished
+[27.543365836s] Syntax Highlight - Restart from 0
+[27.54401312s] Edtior - Highlight Ready Received
+[27.580156585s] Terminal - Key Received
+[27.580258998s] Editor - Key Received
+[27.58091277s] Editor - Key Finished
+[27.584815174s] Syntax Highlight - Restart from 0
+[27.585400266s] Edtior - Highlight Ready Received
+[27.619816869s] Terminal - Key Received
+[27.619906545s] Editor - Key Received
+[27.620490278s] Editor - Key Finished
+[27.626426827s] Syntax Highlight - Restart from 0
+[27.627089983s] Edtior - Highlight Ready Received
+[27.660137187s] Terminal - Key Received
+[27.660279246s] Editor - Key Received
+[27.660863041s] Editor - Key Finished
+[27.667841833s] Syntax Highlight - Restart from 0
+[27.668506661s] Edtior - Highlight Ready Received
+[27.701390464s] Terminal - Key Received
+[27.701524764s] Editor - Key Received
+[27.702200574s] Editor - Key Finished
+[27.709272633s] Syntax Highlight - Restart from 0
+[27.709993094s] Edtior - Highlight Ready Received
+[27.742086868s] Terminal - Key Received
+[27.742257168s] Editor - Key Received
+[27.742930027s] Editor - Key Finished
+[27.750482982s] Syntax Highlight - Restart from 0
+[27.751057173s] Edtior - Highlight Ready Received
+[27.783494107s] Terminal - Key Received
+[27.783602346s] Editor - Key Received
+[27.784359731s] Editor - Key Finished
+[27.791724952s] Syntax Highlight - Restart from 0
+[27.792461664s] Edtior - Highlight Ready Received
+[27.824053636s] Terminal - Key Received
+[27.824194296s] Editor - Key Received
+[27.824777692s] Editor - Key Finished
+[27.833128594s] Syntax Highlight - Restart from 0
+[27.833886614s] Edtior - Highlight Ready Received
+[27.865153637s] Terminal - Key Received
+[27.865257738s] Editor - Key Received
+[27.865951547s] Editor - Key Finished
+[27.874337301s] Syntax Highlight - Restart from 0
+[27.874955082s] Edtior - Highlight Ready Received
+[27.905963145s] Terminal - Key Received
+[27.906082839s] Editor - Key Received
+[27.906751343s] Editor - Key Finished
+[27.915403919s] Syntax Highlight - Restart from 0
+[27.915968122s] Edtior - Highlight Ready Received
+[27.946514833s] Terminal - Key Received
+[27.946654066s] Editor - Key Received
+[27.947223195s] Editor - Key Finished
+[27.956365143s] Syntax Highlight - Restart from 0
+[27.95690723s] Edtior - Highlight Ready Received
+[27.986779744s] Terminal - Key Received
+[27.986925319s] Editor - Key Received
+[27.987204604s] Syntax Highlight - Restart from 0
+[27.987526315s] Editor - Key Finished
+[27.987931052s] Edtior - Highlight Ready Received
+[28.026953188s] Terminal - Key Received
+[28.027036248s] Editor - Key Received
+[28.02755041s] Editor - Key Finished
+[28.028393809s] Syntax Highlight - Restart from 0
+[28.028853711s] Edtior - Highlight Ready Received
+[28.067830052s] Terminal - Key Received
+[28.067918964s] Editor - Key Received
+[28.068492052s] Editor - Key Finished
+[28.069365666s] Syntax Highlight - Restart from 0
+[28.069937405s] Edtior - Highlight Ready Received
+[28.108338995s] Terminal - Key Received
+[28.1084884s] Editor - Key Received
+[28.109018766s] Editor - Key Finished
+[28.110391582s] Syntax Highlight - Restart from 0
+[28.11085199s] Edtior - Highlight Ready Received
+[28.14851811s] Terminal - Key Received
+[28.1486482s] Editor - Key Received
+[28.149199415s] Editor - Key Finished
+[28.151396784s] Syntax Highlight - Restart from 0
+[28.151900082s] Edtior - Highlight Ready Received
+[28.188865788s] Terminal - Key Received
+[28.188998326s] Editor - Key Received
+[28.189591905s] Editor - Key Finished
+[28.228812219s] Terminal - Key Received
+[28.228917292s] Editor - Key Received
+[28.229453564s] Editor - Key Finished
+[28.269947905s] Terminal - Key Received
+[28.270111748s] Editor - Key Received
+[28.270775804s] Editor - Key Finished
+[28.310833453s] Terminal - Key Received
+[28.310989616s] Editor - Key Received
+[28.311612419s] Editor - Key Finished
+[28.352177294s] Terminal - Key Received
+[28.352290624s] Editor - Key Received
+[28.353112596s] Editor - Key Finished
+[28.393015745s] Terminal - Key Received
+[28.393126209s] Editor - Key Received
+[28.393872038s] Editor - Key Finished
+[28.433850924s] Terminal - Key Received
+[28.433966646s] Editor - Key Received
+[28.434580499s] Editor - Key Finished
+[28.47498768s] Terminal - Key Received
+[28.475158877s] Editor - Key Received
+[28.475770972s] Editor - Key Finished
+[28.515923966s] Terminal - Key Received
+[28.516097606s] Editor - Key Received
+[28.516925745s] Editor - Key Finished
+[28.555861565s] Terminal - Key Received
+[28.556023704s] Editor - Key Received
+[28.556794845s] Editor - Key Finished
+[28.596298583s] Terminal - Key Received
+[28.59646374s] Editor - Key Received
+[28.597208976s] Editor - Key Finished
+[28.636896526s] Terminal - Key Received
+[28.637049962s] Editor - Key Received
+[28.637788635s] Editor - Key Finished
+[28.677857199s] Terminal - Key Received
+[28.677996047s] Editor - Key Received
+[28.678574105s] Editor - Key Finished
+[28.717892322s] Terminal - Key Received
+[28.718041079s] Editor - Key Received
+[28.718615214s] Editor - Key Finished
+[28.758604375s] Terminal - Key Received
+[28.7587651s] Editor - Key Received
+[28.7593349s] Editor - Key Finished
+[28.798900397s] Terminal - Key Received
+[28.799053926s] Editor - Key Received
+[28.799747494s] Editor - Key Finished
+[28.838910245s] Terminal - Key Received
+[28.839054715s] Editor - Key Received
+[28.839697194s] Editor - Key Finished
+[28.879330586s] Terminal - Key Received
+[28.879480658s] Editor - Key Received
+[28.880127093s] Editor - Key Finished
+[28.920256709s] Terminal - Key Received
+[28.920417963s] Editor - Key Received
+[28.921033681s] Editor - Key Finished
+[28.962460718s] Terminal - Key Received
+[28.962571189s] Editor - Key Received
+[28.963258739s] Editor - Key Finished
+[29.002140345s] Terminal - Key Received
+[29.002231219s] Editor - Key Received
+[29.002757478s] Editor - Key Finished
+[29.042187233s] Terminal - Key Received
+[29.042297219s] Editor - Key Received
+[29.042999482s] Editor - Key Finished
+[29.082493338s] Terminal - Key Received
+[29.082653011s] Editor - Key Received
+[29.083397668s] Editor - Key Finished
+[29.122898176s] Terminal - Key Received
+[29.12300501s] Editor - Key Received
+[29.12357579s] Editor - Key Finished
+[29.163382973s] Terminal - Key Received
+[29.163525893s] Editor - Key Received
+[29.164099384s] Editor - Key Finished
+[29.203971643s] Terminal - Key Received
+[29.204115364s] Editor - Key Received
+[29.204795033s] Editor - Key Finished
+[29.244856043s] Terminal - Key Received
+[29.24500085s] Editor - Key Received
+[29.245642648s] Editor - Key Finished
+[29.285319023s] Terminal - Key Received
+[29.285472512s] Editor - Key Received
+[29.286059393s] Editor - Key Finished
+[29.326019604s] Terminal - Key Received
+[29.326170884s] Editor - Key Received
+[29.326786205s] Editor - Key Finished
+[29.569481016s] Terminal - Key Received
+[29.569609803s] Editor - Key Received
+[29.570198726s] Editor - Key Finished
+[29.576981017s] Syntax Highlight - Restart from 0
+[29.577510717s] Edtior - Highlight Ready Received
+[30.170894606s] Terminal - Key Received
+[30.171048644s] Editor - Key Received
+[30.171811968s] Editor - Key Finished
+[30.176989824s] Syntax Highlight - Restart from 0
+[30.177654584s] Edtior - Highlight Ready Received
+[30.210841525s] Terminal - Key Received
+[30.210930315s] Editor - Key Received
+[30.211623196s] Editor - Key Finished
+[30.218626019s] Syntax Highlight - Restart from 0
+[30.219310369s] Edtior - Highlight Ready Received
+[30.252027484s] Terminal - Key Received
+[30.252140531s] Editor - Key Received
+[30.252789934s] Editor - Key Finished
+[30.259907902s] Syntax Highlight - Restart from 0
+[30.26057134s] Edtior - Highlight Ready Received
+[30.292798509s] Terminal - Key Received
+[30.292955018s] Editor - Key Received
+[30.293566505s] Editor - Key Finished
+[30.301067619s] Syntax Highlight - Restart from 0
+[30.301651915s] Edtior - Highlight Ready Received
+[30.333834717s] Terminal - Key Received
+[30.333938193s] Editor - Key Received
+[30.334644174s] Editor - Key Finished
+[30.342294827s] Syntax Highlight - Restart from 0
+[30.342948156s] Edtior - Highlight Ready Received
+[30.374420954s] Terminal - Key Received
+[30.374518662s] Editor - Key Received
+[30.375162425s] Editor - Key Finished
+[30.383406874s] Syntax Highlight - Restart from 0
+[30.384058146s] Edtior - Highlight Ready Received
+[30.414744533s] Terminal - Key Received
+[30.414899125s] Editor - Key Received
+[30.415595648s] Editor - Key Finished
+[30.424571464s] Syntax Highlight - Restart from 0
+[30.42523566s] Edtior - Highlight Ready Received
+[30.45482562s] Terminal - Key Received
+[30.454927849s] Editor - Key Received
+[30.45562555s] Syntax Highlight - Restart from 0
+[30.455653518s] Editor - Key Finished
+[30.456159191s] Edtior - Highlight Ready Received
+[30.495056433s] Terminal - Key Received
+[30.495166608s] Editor - Key Received
+[30.49587774s] Editor - Key Finished
+[30.496700441s] Syntax Highlight - Restart from 0
+[30.497286095s] Edtior - Highlight Ready Received
+[30.535380369s] Terminal - Key Received
+[30.535479024s] Editor - Key Received
+[30.536159681s] Editor - Key Finished
+[30.537850882s] Syntax Highlight - Restart from 0
+[30.538450279s] Edtior - Highlight Ready Received
+[30.576072971s] Terminal - Key Received
+[30.57623961s] Editor - Key Received
+[30.576940423s] Editor - Key Finished
+[30.579230283s] Syntax Highlight - Restart from 0
+[30.579885542s] Edtior - Highlight Ready Received
+[30.616833977s] Terminal - Key Received
+[30.616924665s] Editor - Key Received
+[30.617708207s] Editor - Key Finished
+[30.620469578s] Syntax Highlight - Restart from 0
+[30.621055632s] Edtior - Highlight Ready Received
+[30.657501284s] Terminal - Key Received
+[30.657644853s] Editor - Key Received
+[30.658427956s] Editor - Key Finished
+[30.66199831s] Syntax Highlight - Restart from 0
+[30.662656902s] Edtior - Highlight Ready Received
+[30.698199041s] Terminal - Key Received
+[30.698321776s] Editor - Key Received
+[30.699069382s] Editor - Key Finished
+[30.703347178s] Syntax Highlight - Restart from 0
+[30.704012061s] Edtior - Highlight Ready Received
+[30.738766823s] Terminal - Key Received
+[30.73891218s] Editor - Key Received
+[30.739648018s] Editor - Key Finished
+[30.744550135s] Syntax Highlight - Restart from 0
+[30.74513546s] Edtior - Highlight Ready Received
+[30.779031729s] Terminal - Key Received
+[30.779177625s] Editor - Key Received
+[30.779941843s] Editor - Key Finished
+[30.785905096s] Syntax Highlight - Restart from 0
+[30.786578221s] Edtior - Highlight Ready Received
+[30.819100646s] Terminal - Key Received
+[30.819248868s] Editor - Key Received
+[30.8201008s] Editor - Key Finished
+[30.826990614s] Syntax Highlight - Restart from 0
+[30.827761536s] Edtior - Highlight Ready Received
+[30.859008716s] Terminal - Key Received
+[30.859106024s] Editor - Key Received
+[30.859969255s] Editor - Key Finished
+[30.868358867s] Syntax Highlight - Restart from 0
+[30.869019359s] Edtior - Highlight Ready Received
+[30.898989653s] Terminal - Key Received
+[30.899082528s] Editor - Key Received
+[30.899448873s] Syntax Highlight - Restart from 0
+[30.899836174s] Editor - Key Finished
+[30.900061962s] Edtior - Highlight Ready Received
+[30.939140027s] Terminal - Key Received
+[30.939235442s] Editor - Key Received
+[30.939943812s] Editor - Key Finished
+[30.940576832s] Syntax Highlight - Restart from 0
+[30.941153744s] Edtior - Highlight Ready Received
+[30.978974169s] Terminal - Key Received
+[30.979105377s] Editor - Key Received
+[30.979985263s] Editor - Key Finished
+[30.981965669s] Syntax Highlight - Restart from 0
+[30.982574965s] Edtior - Highlight Ready Received
+[31.018984961s] Terminal - Key Received
+[31.019071234s] Editor - Key Received
+[31.019959181s] Editor - Key Finished
+[31.023221657s] Syntax Highlight - Restart from 0
+[31.02381212s] Edtior - Highlight Ready Received
+[31.059130612s] Terminal - Key Received
+[31.059267998s] Editor - Key Received
+[31.060031906s] Editor - Key Finished
+[31.064580614s] Syntax Highlight - Restart from 0
+[31.065161177s] Edtior - Highlight Ready Received
+[31.099492934s] Terminal - Key Received
+[31.099707435s] Editor - Key Received
+[31.100555893s] Editor - Key Finished
+[31.105923131s] Syntax Highlight - Restart from 0
+[31.106711141s] Edtior - Highlight Ready Received
+[31.140173784s] Terminal - Key Received
+[31.140304556s] Editor - Key Received
+[31.140993709s] Editor - Key Finished
+[31.147197232s] Syntax Highlight - Restart from 0
+[31.147769081s] Edtior - Highlight Ready Received
+[31.180724587s] Terminal - Key Received
+[31.180808857s] Editor - Key Received
+[31.181523446s] Editor - Key Finished
+[31.188205782s] Syntax Highlight - Restart from 0
+[31.188793401s] Edtior - Highlight Ready Received
+[31.220754035s] Terminal - Key Received
+[31.220857417s] Editor - Key Received
+[31.221727133s] Editor - Key Finished
+[31.229223276s] Syntax Highlight - Restart from 0
+[31.229902653s] Edtior - Highlight Ready Received
+[31.260669753s] Terminal - Key Received
+[31.260751399s] Editor - Key Received
+[31.261438005s] Editor - Key Finished
+[31.270369993s] Syntax Highlight - Restart from 0
+[31.270885409s] Edtior - Highlight Ready Received
+[31.300790049s] Terminal - Key Received
+[31.300895702s] Editor - Key Received
+[31.301202864s] Syntax Highlight - Restart from 0
+[31.301782944s] Editor - Key Finished
+[31.302022824s] Edtior - Highlight Ready Received
+[31.340884744s] Terminal - Key Received
+[31.340990455s] Editor - Key Received
+[31.341719657s] Editor - Key Finished
+[31.342300001s] Syntax Highlight - Restart from 0
+[31.342808637s] Edtior - Highlight Ready Received
+[31.381281865s] Terminal - Key Received
+[31.381360202s] Editor - Key Received
+[31.382011445s] Editor - Key Finished
+[31.383235748s] Syntax Highlight - Restart from 0
+[31.383755349s] Edtior - Highlight Ready Received
+[31.42194324s] Terminal - Key Received
+[31.422087356s] Editor - Key Received
+[31.422779653s] Editor - Key Finished
+[31.424341511s] Syntax Highlight - Restart from 0
+[31.424925041s] Edtior - Highlight Ready Received
+[31.462950722s] Terminal - Key Received
+[31.463104722s] Editor - Key Received
+[31.463824918s] Editor - Key Finished
+[31.465436578s] Syntax Highlight - Restart from 0
+[31.465992082s] Edtior - Highlight Ready Received
+[31.503172408s] Terminal - Key Received
+[31.503273826s] Editor - Key Received
+[31.50395629s] Editor - Key Finished
+[31.506394068s] Syntax Highlight - Restart from 0
+[31.506926603s] Edtior - Highlight Ready Received
+[31.543576497s] Terminal - Key Received
+[31.54370695s] Editor - Key Received
+[31.544477296s] Editor - Key Finished
+[31.547481151s] Syntax Highlight - Restart from 0
+[31.548038731s] Edtior - Highlight Ready Received
+[31.58326205s] Terminal - Key Received
+[31.583363527s] Editor - Key Received
+[31.584159584s] Editor - Key Finished
+[31.588525788s] Syntax Highlight - Restart from 0
+[31.589097942s] Edtior - Highlight Ready Received
+[31.623904795s] Terminal - Key Received
+[31.624010433s] Editor - Key Received
+[31.624635496s] Editor - Key Finished
+[31.6296573s] Syntax Highlight - Restart from 0
+[31.630221002s] Edtior - Highlight Ready Received
+[31.663962564s] Terminal - Key Received
+[31.664096249s] Editor - Key Received
+[31.664884349s] Editor - Key Finished
+[31.670679165s] Syntax Highlight - Restart from 0
+[31.671256471s] Edtior - Highlight Ready Received
+[31.703468118s] Terminal - Key Received
+[31.703572591s] Editor - Key Received
+[31.704298648s] Editor - Key Finished
+[31.71167799s] Syntax Highlight - Restart from 0
+[31.712236242s] Edtior - Highlight Ready Received
+[31.744022449s] Terminal - Key Received
+[31.744157273s] Editor - Key Received
+[31.744905585s] Editor - Key Finished
+[31.752647425s] Syntax Highlight - Restart from 0
+[31.753277666s] Edtior - Highlight Ready Received
+[31.785077428s] Terminal - Key Received
+[31.785204224s] Editor - Key Received
+[31.785905104s] Editor - Key Finished
+[31.79367343s] Syntax Highlight - Restart from 0
+[31.794212242s] Edtior - Highlight Ready Received
+[31.826220857s] Terminal - Key Received
+[31.826324781s] Editor - Key Received
+[31.826929515s] Editor - Key Finished
+[31.834552863s] Syntax Highlight - Restart from 0
+[31.835093652s] Edtior - Highlight Ready Received
+[31.867409597s] Terminal - Key Received
+[31.867491132s] Editor - Key Received
+[31.868272786s] Editor - Key Finished
+[31.87575606s] Syntax Highlight - Restart from 0
+[31.876500148s] Edtior - Highlight Ready Received
+[31.907292969s] Terminal - Key Received
+[31.907387275s] Editor - Key Received
+[31.908024052s] Editor - Key Finished
+[31.916990912s] Syntax Highlight - Restart from 0
+[31.917649948s] Edtior - Highlight Ready Received
+[31.948218308s] Terminal - Key Received
+[31.948377628s] Editor - Key Received
+[31.949164959s] Editor - Key Finished
+[31.958454286s] Syntax Highlight - Restart from 0
+[31.95920774s] Edtior - Highlight Ready Received
+[31.988311687s] Terminal - Key Received
+[31.988463927s] Editor - Key Received
+[31.989218721s] Editor - Key Finished
+[31.989706644s] Syntax Highlight - Restart from 0
+[31.990380612s] Edtior - Highlight Ready Received
+[32.028838834s] Terminal - Key Received
+[32.029005018s] Editor - Key Received
+[32.029941621s] Editor - Key Finished
+[32.030946606s] Syntax Highlight - Restart from 0
+[32.031595512s] Edtior - Highlight Ready Received
+[32.069600499s] Terminal - Key Received
+[32.069725967s] Editor - Key Received
+[32.070557239s] Editor - Key Finished
+[32.072518596s] Syntax Highlight - Restart from 0
+[32.07334355s] Edtior - Highlight Ready Received
+[32.110323132s] Terminal - Key Received
+[32.110428872s] Editor - Key Received
+[32.111299546s] Editor - Key Finished
+[32.113967757s] Syntax Highlight - Restart from 0
+[32.114724545s] Edtior - Highlight Ready Received
+[32.150740903s] Terminal - Key Received
+[32.150876119s] Editor - Key Received
+[32.151788004s] Editor - Key Finished
+[32.155580347s] Syntax Highlight - Restart from 0
+[32.15645895s] Edtior - Highlight Ready Received
+[32.191126883s] Terminal - Key Received
+[32.191243677s] Editor - Key Received
+[32.191998548s] Editor - Key Finished
+[32.196850688s] Syntax Highlight - Restart from 0
+[32.197520678s] Edtior - Highlight Ready Received
+[32.231734831s] Terminal - Key Received
+[32.231888877s] Editor - Key Received
+[32.233237725s] Editor - Key Finished
+[32.23812472s] Syntax Highlight - Restart from 0
+[32.238875559s] Edtior - Highlight Ready Received
+[32.272532236s] Terminal - Key Received
+[32.272635322s] Editor - Key Received
+[32.273440623s] Editor - Key Finished
+[32.279804549s] Syntax Highlight - Restart from 0
+[32.280592341s] Edtior - Highlight Ready Received
+[32.313367039s] Terminal - Key Received
+[32.313492612s] Editor - Key Received
+[32.314332348s] Editor - Key Finished
+[32.321190111s] Syntax Highlight - Restart from 0
+[32.321773611s] Edtior - Highlight Ready Received
+[32.353005362s] Terminal - Key Received
+[32.353175679s] Editor - Key Received
+[32.353918118s] Editor - Key Finished
+[32.36257347s] Syntax Highlight - Restart from 0
+[32.363396196s] Edtior - Highlight Ready Received
+[32.561476157s] Terminal - Key Received
+[32.561667179s] Editor - Key Received
+[32.562506583s] Editor - Key Finished
+[32.570555613s] Syntax Highlight - Restart from 0
+[32.571393732s] Edtior - Highlight Ready Received
+[33.162147584s] Terminal - Key Received
+[33.162232724s] Editor - Key Received
+[33.16302344s] Editor - Key Finished
+[33.169864693s] Syntax Highlight - Restart from 0
+[33.170441535s] Edtior - Highlight Ready Received
+[33.202440176s] Terminal - Key Received
+[33.202521999s] Editor - Key Received
+[33.203302813s] Editor - Key Finished
+[33.210954578s] Syntax Highlight - Restart from 0
+[33.211497167s] Edtior - Highlight Ready Received
+[33.242737448s] Terminal - Key Received
+[33.242829703s] Editor - Key Received
+[33.243532506s] Editor - Key Finished
+[33.252008564s] Syntax Highlight - Restart from 0
+[33.252563566s] Edtior - Highlight Ready Received
+[33.283284842s] Terminal - Key Received
+[33.283380377s] Editor - Key Received
+[33.284058168s] Editor - Key Finished
+[33.292998291s] Syntax Highlight - Restart from 0
+[33.293590235s] Edtior - Highlight Ready Received
+[33.323579183s] Terminal - Key Received
+[33.323723839s] Editor - Key Received
+[33.323878852s] Syntax Highlight - Restart from 0
+[33.324454559s] Editor - Key Finished
+[33.324673311s] Edtior - Highlight Ready Received
+[33.363669636s] Terminal - Key Received
+[33.363760643s] Editor - Key Received
+[33.364578811s] Editor - Key Finished
+[33.364923505s] Syntax Highlight - Restart from 0
+[33.365537018s] Edtior - Highlight Ready Received
+[33.403459943s] Terminal - Key Received
+[33.403548344s] Editor - Key Received
+[33.404287704s] Editor - Key Finished
+[33.406384307s] Syntax Highlight - Restart from 0
+[33.406913897s] Edtior - Highlight Ready Received
+[33.44378676s] Terminal - Key Received
+[33.443913648s] Editor - Key Received
+[33.444622904s] Editor - Key Finished
+[33.447559806s] Syntax Highlight - Restart from 0
+[33.448097064s] Edtior - Highlight Ready Received
+[33.483914049s] Terminal - Key Received
+[33.484065882s] Editor - Key Received
+[33.484802513s] Editor - Key Finished
+[33.489024689s] Syntax Highlight - Restart from 0
+[33.489690572s] Edtior - Highlight Ready Received
+[33.524141599s] Terminal - Key Received
+[33.524309511s] Editor - Key Received
+[33.525167071s] Editor - Key Finished
+[33.5303423s] Syntax Highlight - Restart from 0
+[33.531105146s] Edtior - Highlight Ready Received
+[33.565140928s] Terminal - Key Received
+[33.565321696s] Editor - Key Received
+[33.566173838s] Editor - Key Finished
+[33.571847862s] Syntax Highlight - Restart from 0
+[33.572605537s] Edtior - Highlight Ready Received
+[33.605220677s] Terminal - Key Received
+[33.605353581s] Editor - Key Received
+[33.606303636s] Editor - Key Finished
+[33.613187585s] Syntax Highlight - Restart from 0
+[33.613948125s] Edtior - Highlight Ready Received
+[33.645909812s] Terminal - Key Received
+[33.64601396s] Editor - Key Received
+[33.646869883s] Editor - Key Finished
+[33.654629478s] Syntax Highlight - Restart from 0
+[33.655427627s] Edtior - Highlight Ready Received
+[33.68671976s] Terminal - Key Received
+[33.686846022s] Editor - Key Received
+[33.687747887s] Editor - Key Finished
+[33.696546811s] Syntax Highlight - Restart from 0
+[33.697285058s] Edtior - Highlight Ready Received
+[33.727380054s] Terminal - Key Received
+[33.727518906s] Editor - Key Received
+[33.727606351s] Syntax Highlight - Restart from 0
+[33.728258191s] Editor - Key Finished
+[33.728484418s] Edtior - Highlight Ready Received
+[33.768239385s] Terminal - Key Received
+[33.768354271s] Editor - Key Received
+[33.769025313s] Syntax Highlight - Restart from 0
+[33.769122689s] Editor - Key Finished
+[33.769734074s] Edtior - Highlight Ready Received
+[33.809042696s] Terminal - Key Received
+[33.809164593s] Editor - Key Received
+[33.809997426s] Editor - Key Finished
+[33.810212582s] Syntax Highlight - Restart from 0
+[33.810776552s] Edtior - Highlight Ready Received
+[33.850229743s] Terminal - Key Received
+[33.850348078s] Editor - Key Received
+[33.851177372s] Editor - Key Finished
+[33.851657598s] Syntax Highlight - Restart from 0
+[33.852297681s] Edtior - Highlight Ready Received
+[33.890823487s] Terminal - Key Received
+[33.890923534s] Editor - Key Received
+[33.891708443s] Editor - Key Finished
+[33.893095168s] Syntax Highlight - Restart from 0
+[33.893665691s] Edtior - Highlight Ready Received
+[33.930949397s] Terminal - Key Received
+[33.931076772s] Editor - Key Received
+[33.931849063s] Editor - Key Finished
+[33.934485871s] Syntax Highlight - Restart from 0
+[33.935058572s] Edtior - Highlight Ready Received
+[33.971383335s] Terminal - Key Received
+[33.971526208s] Editor - Key Received
+[33.972264352s] Editor - Key Finished
+[33.975845775s] Syntax Highlight - Restart from 0
+[33.976463156s] Edtior - Highlight Ready Received
+[34.012525211s] Terminal - Key Received
+[34.01271074s] Editor - Key Received
+[34.013609586s] Editor - Key Finished
+[34.017027961s] Syntax Highlight - Restart from 0
+[34.01760533s] Edtior - Highlight Ready Received
+[34.053978004s] Terminal - Key Received
+[34.054164024s] Editor - Key Received
+[34.055118211s] Editor - Key Finished
+[34.058210237s] Syntax Highlight - Restart from 0
+[34.058751297s] Edtior - Highlight Ready Received
+[34.093783828s] Terminal - Key Received
+[34.093944253s] Editor - Key Received
+[34.094673501s] Editor - Key Finished
+[34.099562663s] Syntax Highlight - Restart from 0
+[34.100106508s] Edtior - Highlight Ready Received
+[34.1338329s] Terminal - Key Received
+[34.133937224s] Editor - Key Received
+[34.134689712s] Editor - Key Finished
+[34.140829862s] Syntax Highlight - Restart from 0
+[34.14145325s] Edtior - Highlight Ready Received
+[34.174275756s] Terminal - Key Received
+[34.174436423s] Editor - Key Received
+[34.175291177s] Editor - Key Finished
+[34.182237436s] Syntax Highlight - Restart from 0
+[34.183185542s] Edtior - Highlight Ready Received
+[34.215583085s] Terminal - Key Received
+[34.215752286s] Editor - Key Received
+[34.216504832s] Editor - Key Finished
+[34.223579755s] Syntax Highlight - Restart from 0
+[34.224234266s] Edtior - Highlight Ready Received
+[34.255934995s] Terminal - Key Received
+[34.25610286s] Editor - Key Received
+[34.256975502s] Editor - Key Finished
+[34.26485752s] Syntax Highlight - Restart from 0
+[34.265616592s] Edtior - Highlight Ready Received
+[34.296670479s] Terminal - Key Received
+[34.296841864s] Editor - Key Received
+[34.29756109s] Editor - Key Finished
+[34.306461782s] Syntax Highlight - Restart from 0
+[34.307254028s] Edtior - Highlight Ready Received
+[34.337296476s] Terminal - Key Received
+[34.337452532s] Editor - Key Received
+[34.337554393s] Syntax Highlight - Restart from 0
+[34.338132056s] Editor - Key Finished
+[34.338352839s] Edtior - Highlight Ready Received
+[34.378435364s] Terminal - Key Received
+[34.378523985s] Editor - Key Received
+[34.378890343s] Syntax Highlight - Restart from 0
+[34.379248054s] Editor - Key Finished
+[34.379706069s] Edtior - Highlight Ready Received
+[34.418785951s] Terminal - Key Received
+[34.418875546s] Editor - Key Received
+[34.419644923s] Editor - Key Finished
+[34.420023691s] Syntax Highlight - Restart from 0
+[34.420601042s] Edtior - Highlight Ready Received
+[34.459691812s] Terminal - Key Received
+[34.459848195s] Editor - Key Received
+[34.460616559s] Editor - Key Finished
+[34.461195965s] Syntax Highlight - Restart from 0
+[34.46171624s] Edtior - Highlight Ready Received
+[34.500418801s] Terminal - Key Received
+[34.500517612s] Editor - Key Received
+[34.501327075s] Editor - Key Finished
+[34.50255518s] Syntax Highlight - Restart from 0
+[34.503114901s] Edtior - Highlight Ready Received
+[34.540570465s] Terminal - Key Received
+[34.540713845s] Editor - Key Received
+[34.541526286s] Editor - Key Finished
+[34.543708704s] Syntax Highlight - Restart from 0
+[34.544332954s] Edtior - Highlight Ready Received
+[34.581634673s] Terminal - Key Received
+[34.581782185s] Editor - Key Received
+[34.582624461s] Editor - Key Finished
+[34.584900275s] Syntax Highlight - Restart from 0
+[34.585483302s] Edtior - Highlight Ready Received
+[34.622775851s] Terminal - Key Received
+[34.622906953s] Editor - Key Received
+[34.623553123s] Editor - Key Finished
+[34.626365492s] Syntax Highlight - Restart from 0
+[34.626880725s] Edtior - Highlight Ready Received
+[34.663612332s] Terminal - Key Received
+[34.663720056s] Editor - Key Received
+[34.664596113s] Editor - Key Finished
+[34.667559103s] Syntax Highlight - Restart from 0
+[34.66818949s] Edtior - Highlight Ready Received
+[34.703962622s] Terminal - Key Received
+[34.704103286s] Editor - Key Received
+[34.704919198s] Editor - Key Finished
+[34.708838171s] Syntax Highlight - Restart from 0
+[34.709427282s] Edtior - Highlight Ready Received
+[34.744146811s] Terminal - Key Received
+[34.744300407s] Editor - Key Received
+[34.744980576s] Editor - Key Finished
+[34.750090331s] Syntax Highlight - Restart from 0
+[34.750672323s] Edtior - Highlight Ready Received
+[34.785207406s] Terminal - Key Received
+[34.785313272s] Editor - Key Received
+[34.785970844s] Editor - Key Finished
+[34.791257866s] Syntax Highlight - Restart from 0
+[34.791874632s] Edtior - Highlight Ready Received
+[34.824375092s] Terminal - Key Received
+[34.824540148s] Editor - Key Received
+[34.825383057s] Editor - Key Finished
+[34.83251949s] Syntax Highlight - Restart from 0
+[34.833177856s] Edtior - Highlight Ready Received
+[34.865534784s] Terminal - Key Received
+[34.865681294s] Editor - Key Received
+[34.86645705s] Editor - Key Finished
+[34.873498141s] Syntax Highlight - Restart from 0
+[34.874116253s] Edtior - Highlight Ready Received
+[34.905637074s] Terminal - Key Received
+[34.905746578s] Editor - Key Received
+[34.90664638s] Editor - Key Finished
+[34.914673178s] Syntax Highlight - Restart from 0
+[34.915337575s] Edtior - Highlight Ready Received
+[34.946064145s] Terminal - Key Received
+[34.946295655s] Editor - Key Received
+[34.946974211s] Editor - Key Finished
+[34.95597038s] Syntax Highlight - Restart from 0
+[34.956677645s] Edtior - Highlight Ready Received
+[34.986919082s] Terminal - Key Received
+[34.987074803s] Editor - Key Received
+[34.987852558s] Editor - Key Finished
+[34.997244981s] Syntax Highlight - Restart from 0
+[34.99783479s] Edtior - Highlight Ready Received
+[35.029098045s] Terminal - Key Received
+[35.029239191s] Editor - Key Received
+[35.029867334s] Editor - Key Finished
+[35.038559995s] Syntax Highlight - Restart from 0
+[35.039239901s] Edtior - Highlight Ready Received
+[35.069267128s] Terminal - Key Received
+[35.069400245s] Editor - Key Received
+[35.06969567s] Syntax Highlight - Restart from 0
+[35.070220366s] Editor - Key Finished
+[35.070526136s] Edtior - Highlight Ready Received
+[35.110419548s] Terminal - Key Received
+[35.1105838s] Editor - Key Received
+[35.110990451s] Syntax Highlight - Restart from 0
+[35.111288666s] Editor - Key Finished
+[35.111537921s] Edtior - Highlight Ready Received
+[35.151476592s] Terminal - Key Received
+[35.151640887s] Editor - Key Received
+[35.152354062s] Editor - Key Finished
+[35.152520199s] Syntax Highlight - Restart from 0
+[35.153303282s] Edtior - Highlight Ready Received
+[35.192646495s] Terminal - Key Received
+[35.192828737s] Editor - Key Received
+[35.19366063s] Editor - Key Finished
+[35.193778685s] Syntax Highlight - Restart from 0
+[35.194457346s] Edtior - Highlight Ready Received
+[35.233693289s] Terminal - Key Received
+[35.233901635s] Editor - Key Received
+[35.234651832s] Editor - Key Finished
+[35.235021019s] Syntax Highlight - Restart from 0
+[35.235696769s] Edtior - Highlight Ready Received
+[35.273764229s] Terminal - Key Received
+[35.27393062s] Editor - Key Received
+[35.274641943s] Editor - Key Finished
+[35.276647144s] Syntax Highlight - Restart from 0
+[35.277323656s] Edtior - Highlight Ready Received
+[35.314493511s] Terminal - Key Received
+[35.314613712s] Editor - Key Received
+[35.315380237s] Editor - Key Finished
+[35.317972772s] Syntax Highlight - Restart from 0
+[35.318651702s] Edtior - Highlight Ready Received
+[35.355724874s] Terminal - Key Received
+[35.35586314s] Editor - Key Received
+[35.35671221s] Editor - Key Finished
+[35.359687258s] Syntax Highlight - Restart from 0
+[35.360431448s] Edtior - Highlight Ready Received
+[35.396633668s] Terminal - Key Received
+[35.396793525s] Editor - Key Received
+[35.397460299s] Editor - Key Finished
+[35.438172482s] Terminal - Key Received
+[35.438354903s] Editor - Key Received
+[35.43917222s] Editor - Key Finished
+[35.479052619s] Terminal - Key Received
+[35.479221773s] Editor - Key Received
+[35.480168264s] Editor - Key Finished
+[35.519257613s] Terminal - Key Received
+[35.519421555s] Editor - Key Received
+[35.520215938s] Editor - Key Finished
+[35.559705051s] Terminal - Key Received
+[35.559894112s] Editor - Key Received
+[35.560663222s] Editor - Key Finished
+[35.601143898s] Terminal - Key Received
+[35.601280458s] Editor - Key Received
+[35.602008388s] Editor - Key Finished
+[35.641463013s] Terminal - Key Received
+[35.641634067s] Editor - Key Received
+[35.642495767s] Editor - Key Finished
+[35.681279706s] Terminal - Key Received
+[35.681378729s] Editor - Key Received
+[35.682097509s] Editor - Key Finished
+[35.721592749s] Terminal - Key Received
+[35.721700525s] Editor - Key Received
+[35.722426886s] Editor - Key Finished
+[35.762985535s] Terminal - Key Received
+[35.76309994s] Editor - Key Received
+[35.763789329s] Editor - Key Finished
+[35.804131262s] Terminal - Key Received
+[35.804237014s] Editor - Key Received
+[35.804841742s] Editor - Key Finished
+[35.845288617s] Terminal - Key Received
+[35.845468863s] Editor - Key Received
+[35.846253798s] Editor - Key Finished
+[35.886239569s] Terminal - Key Received
+[35.886371037s] Editor - Key Received
+[35.886993396s] Editor - Key Finished
+[35.927204347s] Terminal - Key Received
+[35.927316942s] Editor - Key Received
+[35.928008049s] Editor - Key Finished
+[35.967837036s] Terminal - Key Received
+[35.967945171s] Editor - Key Received
+[35.968796253s] Editor - Key Finished
+[36.008956666s] Terminal - Key Received
+[36.009119355s] Editor - Key Received
+[36.009830243s] Editor - Key Finished
+[36.049620448s] Terminal - Key Received
+[36.049791924s] Editor - Key Received
+[36.050397616s] Editor - Key Finished
+[36.089442144s] Terminal - Key Received
+[36.089640952s] Editor - Key Received
+[36.090358606s] Editor - Key Finished
+[36.129917586s] Terminal - Key Received
+[36.13006882s] Editor - Key Received
+[36.130688999s] Editor - Key Finished
+[36.170196079s] Terminal - Key Received
+[36.170375808s] Editor - Key Received
+[36.170995698s] Editor - Key Finished
+[36.210297128s] Terminal - Key Received
+[36.210442698s] Editor - Key Received
+[36.211131376s] Editor - Key Finished
+[36.249952295s] Terminal - Key Received
+[36.25010342s] Editor - Key Received
+[36.250690004s] Editor - Key Finished
+[36.290374386s] Terminal - Key Received
+[36.290517209s] Editor - Key Received
+[36.291051094s] Editor - Key Finished
+[36.330298666s] Terminal - Key Received
+[36.330389783s] Editor - Key Received
+[36.330914129s] Editor - Key Finished
+[36.371664731s] Terminal - Key Received
+[36.371766247s] Editor - Key Received
+[36.372294449s] Editor - Key Finished
+[36.412089765s] Terminal - Key Received
+[36.412231898s] Editor - Key Received
+[36.412803406s] Editor - Key Finished
+[36.452529877s] Terminal - Key Received
+[36.45268094s] Editor - Key Received
+[36.453290467s] Editor - Key Finished
+[36.49303336s] Terminal - Key Received
+[36.493118286s] Editor - Key Received
+[36.493644113s] Editor - Key Finished
+[36.534907534s] Terminal - Key Received
+[36.534989715s] Editor - Key Received
+[36.535514822s] Editor - Key Finished
+[45.030089813s] Terminal - Key Received
+[45.030162743s] Tide Exited

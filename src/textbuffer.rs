@@ -71,7 +71,7 @@ pub struct TextBuffer {
 
 impl TextBuffer {
     pub fn new() -> TextBuffer {
-        let mut textbuffer = TextBuffer {
+        let textbuffer = TextBuffer {
             cursor_pos: CursorPos::from(0, 0),
             buffers: vec![Box::new(String::from(""))],
             line_info: vec![Box::new(LineInfo::new())],
@@ -85,7 +85,6 @@ impl TextBuffer {
 
         if buffer_offset + line_offset as usize == self.buffers[buffer_index].len() {
             self.buffers[buffer_index].push(ch);
-            
         } else {
             let rest_str = self.buffers[buffer_index].split_off(buffer_offset + line_offset as usize);
             self.buffers.insert(buffer_index+1, Box::new(String::from(rest_str)));

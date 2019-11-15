@@ -19,8 +19,8 @@ impl TextDisplay for TextBuffer {
         if self.left_col > self.line_offset {
             self.left_col = self.line_offset;
         }
-        if self.left_col + width - 1 < self.line_offset {
-            self.left_col = self.line_offset - width + 1;
+        if self.left_col + width - 1 < self.line_offset + self.view_line_num_width as u32 {
+            self.left_col = self.line_offset + self.view_line_num_width as u32 - width + 1;
         }
     }
 
